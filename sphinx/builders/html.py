@@ -561,13 +561,14 @@ class StandaloneHTMLBuilder(Builder):
             if not path.isdir(staticdirname):
                 self.warn('static directory %r does not exist' % staticdirname)
                 continue
+            ctx = self.globalcontext.copy()
+            ctx.update(self.indexer.globalcontext_for_searchtool())
             for filename in os.listdir(staticdirname):
                 if filename.startswith('.'):
                     continue
                 fullname = path.join(staticdirname, filename)
                 targetname = path.join(self.outdir, '_static', filename)
-                copy_static_entry(fullname, targetname, self,
-                                  self.globalcontext)
+                copy_static_entry(fullname, targetname, self, ctx)
         # last, copy logo file (handled differently)
         if self.config.html_logo:
             logobase = path.basename(self.config.html_logo)

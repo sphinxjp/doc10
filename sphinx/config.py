@@ -87,6 +87,8 @@ class Config(object):
         html_show_sphinx = (True, 'html'),
         html_context = ({}, 'html'),
         html_output_encoding = ('utf-8', 'html'),
+        html_search_language = ('en', 'html'),
+        html_search_language_option = ({}, 'html'),
 
         # HTML help only options
         htmlhelp_basename = (lambda self: make_filename(self.project), None),
