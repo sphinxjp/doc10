@@ -50,7 +50,7 @@ class Splitter(object):
         self.split = self.split_by_tinysegmenter
 
     def split_by_tinysegmenter(self, input):
-        return self.tinysegmenter.segment(input.decode("utf8"))
+        return self.tinysegmenter.segment(input)
 
     def _init_yahoo(self, option):
         self.appid = option["appid"]
