@@ -8,42 +8,54 @@
 
 .. _metadata:
 
+ファイルに関するメタデータ
+--------------------------
+
 .. File-wide metadata
-.. ------------------
-
-
+   ------------------
 
 .. reST has the concept of "field lists"; these are a sequence of fields marked up
-   like this::
+   like this:
 
-   :Field name: Field content
+      :fieldname: Field content
 
-reSTは "フィールドリスト"という考えがあります。以下のようなものが、このフィールドのマークアップのリストのサンプルになります。
+reSTには "フィールドリスト"という考えがあります。以下のようなものが、このフィールドのマークアップのリストのサンプルになります::
 
-.. A field list at the very top of a file is parsed as the "docinfo", which in
-   normal documents can be used to record the author, date of publication and
-   other metadata.  In Sphinx, the docinfo is used as metadata, too, but not
-   displayed in the output.
+   :フィールド名: フィールドの内容
 
-ファイルの先頭のフィールドリストは "docinfo" としてパースされます。これは通常のドキュメントでは著者名や、公開日などのメタデータを記録するのに使用します。Sphinxでは、 docinfoはメタデータとして使用されますが、出力はされません。
+.. A field list at the very top of a file is parsed by docutils as the "docinfo",
+   which is normally used to record the author, date of publication and other
+   metadata.  *In Sphinx*, the docinfo is used as metadata, too, but not displayed
+   in the output.
+
+docutilsは、ファイルの先頭のフィールドリストを "docinfo" としてパースします。これは通常のドキュメントでは著者名や、公開日などのメタデータを記録するのに使用されます。 **Sphinxでは**, docinfoはメタデータとして使用されますが、出力はされません。
 
 .. At the moment, these metadata fields are recognized:
 
 このタイミングでは、以下のメタデータのフィールドが識別されています:
 
 ``tocdepth``
+   .. The maximum depth for a table of contents of this file.
+
    このファイルに表示する目次の最大の深さ
 
    .. versionadded:: 0.4
 
-..  The maximum depth for a table of contents of this file.
-
 
 ``nocomments``
+   .. If set, the web application won't display a comment form for a page generated
+      from this source file.
+
    もし設定されていれば、このソースファイルから生成されたページをウェブアプリケーションが表示する際には、コメントフォームが表示されなくなります。
 
-.. If set, the web application won't display a comment form for a page generated
-   from this source file.
+
+``orphan``
+   .. If set, warnings about this file not being included in any toctree will be
+      suppressed.
+
+   もしこれが設定されると、toctreeから参照されていない時に出力される警告が抑制されます。
+
+   .. versionadded:: 1.0
 
 
 .. Meta-information markup
@@ -52,25 +64,44 @@ reSTは "フィールドリスト"という考えがあります。以下のよ�
 メタ情報マークアップ
 --------------------
 
-.. directive:: sectionauthor
+..
+  .. directive:: .. sectionauthor:: 名前 <Eメール>
 
-   現在のセクションの著者名を指定します。引数には必ず、表示するための著者の名前と、電子メールのアドレスを入れます。アドレスのドメイン名の部分は小文字でなければなりません::
+.. directive:: .. sectionauthor:: name <email>
+
+   .. Identifies the author of the current section.  The argument should include
+      the author's name such that it can be used for presentation and email
+      address.  The domain name portion of the address should be lower case.
+
+   現在のセクションの著者名を指定します。引数には必ず、表示するための著者の名前と、電子メールのアドレスを入れます。アドレスのドメイン名の部分は小文字でなければなりません。
+
+   .. Example:
+
+   サンプル::
 
      .. sectionauthor:: Guido van Rossum <guido@python.org>
 
-   デフォルトでは、このマークアップは出力に反映されません(貢献者の名前を調べる手助けにはなります)。しかし、設定ファイルの :confval:`show_authors` をTrueに設定すると、出力ファイルの中にこの情報に関する段落が作成されます。
+   .. By default, this markup isn't reflected in the output in any way (it helps
+      keep track of contributions), but you can set the configuration value
+      :confval:`show_authors` to True to make them produce a paragraph in the
+      output.
 
-.. Identifies the author of the current section.  The argument should include
-   the author's name such that it can be used for presentation and email
-   address.  The domain name portion of the address should be lower case.
-   Example::
+   デフォルトでは、このマークアップは出力に反映されません(貢献者の名前を調べる手助けにはなります)。しかし、設定ファイルの :confval:`show_authors` をTrueに設定すると、出力ファイルの中にこの情報に関する段落が作成されます。
 
       .. sectionauthor:: Guido van Rossum <guido@python.org>
 
-   By default, this markup isn't reflected in the output in any way (it helps
-   keep track of contributions), but you can set the configuration value
-   :confval:`show_authors` to True to make them produce a paragraph in the
-   output.
+..
+   .. directive:: .. codeauthor:: name <email>
+
+.. directive:: .. codeauthor:: 名前 <Eメール>
+
+   .. The :dir:`codeauthor` directive, which can appear multiple times, names the
+      authors of the described code, just like :dir:`sectionauthor` names the
+      author(s) of a piece of documentation.  It too only produces output if the
+      :confval:`show_authors` configuration value is True.
+
+   :dir:`codeauthor` ディレクティブは、 :dir:`sectionauthor` の名前と同じく、説明しているコードの作者名について、複数人書くことができます。 :confval:`show_authors` 設定値をTrueにしないかぎり、出力はされません。
+
 
 .. _tags:
 
@@ -113,12 +144,12 @@ reSTは "フィールドリスト"という考えがあります。以下のよ�
 テーブル
 --------
 
-.. Use standard reStructuredText tables.  They work fine in HTML output, however
-   there are some gotchas when using tables in LaTeX: the column width is hard to
-   determine correctly automatically.  For this reason, the following directive
-   exists:
+.. Use :ref:`standard reStructuredText tables <rst-tables>`.  They work fine in
+   HTML output, however there are some gotchas when using tables in LaTeX: the
+   column width is hard to determine correctly automatically.  For this reason, the
+   following directive exists:
 
-標準のreStructuredTextの表を使用すると、HTML出力では非常にきれいな表を作成することができますが、LaTeXで出力すると、ちょっとがっかりしてしまうでしょう。現在の仕様ではカラムを自動で正しく決定するのは簡単ではありません。このような理由から、それをサポートするディレクティブがいくつか用意されています:
+:ref:`標準のreStructuredTextの表 <rst-tables>` を使用すると、HTML出力では非常にきれいな表を作成することができますが、LaTeXで出力すると、ちょっとがっかりしてしまうでしょう。現在の仕様ではカラムを自動で正しく決定するのは簡単ではありません。このような理由から、それをサポートするディレクティブがいくつか用意されています:
 
 .. .. directive:: .. tabularcolumns:: column spec
 

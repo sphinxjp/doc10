@@ -10,6 +10,7 @@ Sphinxは標準のreSTに対して、数多くの新しいディレクティブ�
 
 .. toctree::
 
+   toctree
    desc
    para
    code
