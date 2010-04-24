@@ -70,23 +70,78 @@ Sphinxに組み込まれていないテーマを利用する方法は2通りの�
 .. Builtin themes
    --------------
 
-.. Sphinx comes with a selection of themes to choose from:
+.. cssclass:: right
 
-Sphinxでは以下のテーマから選択することができます。
+.. +--------------------+--------------------+
+   | **Theme overview** |                    |
+   +--------------------+--------------------+
+   | |default|          | |sphinxdoc|        |
+   |                    |                    |
+   | *default*          | *sphinxdoc*        |
+   +--------------------+--------------------+
+   | |scrolls|          | |agogo|            |
+   |                    |                    |
+   | *scrolls*          | *agogo*            |
+   +--------------------+--------------------+
+   | |traditional|      | |nature|           |
+   |                    |                    |
+   | *traditional*      | *nature*           |
+   +--------------------+--------------------+
+   | |haiku|            |                    |
+   |                    |                    |
+   | *haiku*            |                    |
+   +--------------------+--------------------+
+
++--------------------+--------------------+
+| **テーマ一覧**     |                    |
++--------------------+--------------------+
+| |default|          | |sphinxdoc|        |
+|                    |                    |
+| *default*          | *sphinxdoc*        |
++--------------------+--------------------+
+| |scrolls|          | |agogo|            |
+|                    |                    |
+| *scrolls*          | *agogo*            |
++--------------------+--------------------+
+| |traditional|      | |nature|           |
+|                    |                    |
+| *traditional*      | *nature*           |
++--------------------+--------------------+
+| |haiku|            |                    |
+|                    |                    |
+| *haiku*            |                    |
++--------------------+--------------------+
+
+.. |default|     image:: themes/default.png
+.. |sphinxdoc|   image:: themes/sphinxdoc.png
+.. |scrolls|     image:: themes/scrolls.png
+.. |agogo|       image:: themes/agogo.png
+.. |traditional| image:: themes/traditional.png
+.. |nature|      image:: themes/nature.png
+.. |haiku|       image:: themes/haiku.png
+
+.. Sphinx comes with a selection of themes to choose from.
+
+Sphinxではテーマを選択することができます。
+
+.. These themes are:
+
+テーマには次のようなものがあります。
 
 .. * **basic** -- This is a basically unstyled layout used as the base for the
-     *default* and *sphinxdoc* themes, and usable as the base for custom themes as
+     other themes, and usable as the base for custom themes as
      well.  The HTML contains all important elements like sidebar and relation bar.
-     There is one option (which is inherited by *default* and *sphinxdoc*):
+     There is one option (which is inherited by other themes):
 
      - **nosidebar** (true or false): Don't include the sidebar.  Defaults to
        false.
 
-* **basic** -- *default* や *sphinxdoc* のテーマのベースとして使用されているテーマです。基本的にレイアウトなどは設定されていません。これはカスタムテーマを作成するのに使用することができます。このHTMLには、サイドバーやリレーションバーなどの重要な要素はすべて含まれています。このテーマは一つのオプションを持っています。このオプションは *default*, *sphinxdoc* にも継承されます。
+* 他ののテーマのベースとして使用されているテーマです。基本的にレイアウトなどは設定されていません。これはカスタムテーマを作成するのに使用することができます。このHTMLには、サイドバーやリレーションバーなどの重要な要素はすべて含まれています。このテーマは一つのオプションを持っています。このオプションは他のテーマにも継承されます。
 
   - **nosidebar** (true / false): サイドバーが含まれなくなります。デフォルトは false です。
 
-.. * **default** -- This is the default theme.  It can be customized via these
+.. * **default** -- This is the default theme, which looks like `the Python
+     documentation <http://docs.python.org/>`_.  It can be customized via these
      options:
 
      - **rightsidebar** (true or false): Put the sidebar on the right side.
@@ -120,7 +175,7 @@ Sphinxでは以下のテーマから選択することができます。
      - **bodyfont** (CSS font-family): Font for normal text.
      - **headfont** (CSS font-family): Font for headings.
 
-* **default** -- デフォルトのテーマです。以下のようなカスタマイズ用オプションを持っています:
+* **default** -- `Pythonのドキュメント <http://docs.python.org/>`_ とよく似たデフォルトのテーマです。以下のようなカスタマイズ用オプションを持っています:
 
   - **rightsidebar** (true / false): サイドバーを右側に表示します。デフォルトは false です。
 
@@ -154,7 +209,85 @@ Sphinxでは以下のテーマから選択することができます。
 .. * **traditional** -- A theme resembling the old Python documentation.  There are
      currently no options beyond *nosidebar*.
 
+.. * **scrolls** -- A more lightweight theme, based on `the Jinja documentation
+     <http://jinja.pocoo.org/2/documentation/>`_.  The following color options are
+     available:
+
+* **scrolls** -- `テンプレートエンジンのJinjaのドキュメント <http://jinja.pocoo.org/2/documentation/>`_ で使用されている、軽量なテーマです。次のような色に関するオプションがあります。
+
+  - **headerbordercolor**
+  - **subheadlinecolor**
+  - **linkcolor**
+  - **visitedlinkcolor**
+  - **admonitioncolor**
+
+.. * **agogo** -- A theme created by Andi Albrecht.  The following options are
+     supported:
+
+     - **bodyfont** (CSS font family): Font for normal text.
+     - **headerfont** (CSS font family): Font for headings.
+     - **pagewidth** (CSS length): Width of the page content, default 70em.
+     - **documentwidth** (CSS length): Width of the document (without sidebar),
+       default 50em.
+     - **sidebarwidth** (CSS length): Width of the sidebar, default 20em.
+     - **bgcolor** (CSS color): Background color.
+     - **headerbg** (CSS value for "background"): background for the header area,
+         default a grayish gradient.
+     - **footerbg** (CSS value for "background"): background for the footer area,
+       default a light gray gradient.
+     - **linkcolor** (CSS color): Body link color.
+     - **headercolor1**, **headercolor2** (CSS color): colors for <h1> and <h2>
+       headings.
+     - **headerlinkcolor** (CSS color): Color for the backreference link in
+       headings.
+     - **textalign** (CSS *text-align* value): Text alignment for the body, default
+       is ``justify``.
+
+* **agogo** -- Andi Albrechtが作ったテーマです。次のようなオプションが提供されています:
+
+  - **bodyfont** (CSSフォントファミリー): 通常のテキストのフォントです。
+  - **headerfont** (CSSフォントファミリー): 見出しのフォントです。
+  - **pagewidth** (CSS長さ): ページのコンテンツの幅です。デフォルトは 70em です。
+  - **documentwidth** (CSS長さ): ドキュメントの幅です。デフォルトは 50em です。
+  - **sidebarwidth** (CSS長さ): サイドバーの幅です。デフォルトは 20em です。
+  - **bgcolor** (CSSカラー): 背景の色です。
+  - **headerbg** (CSSの"background"の値): ヘッダーの領域の背景です。デフォルトはグラデーションのかかったグレーです。
+  - **footerbg** (CSSの"background"の値): フッターの領域の背景です。デフォルトはグラデーションのかかった明るいグレーです。
+  - **linkcolor** (CSSカラー): Bodyのリンクのカラーです。
+  - **headcolor1**, **headercolor2** (CSSカラー): <h1>, <h2>の色です。
+  - **headlinkcolor** (CSSカラー): 見出しの逆参照のリンクの色です。
+  - **textalign** (CSS *text-align* の値): Bodyのテキストの配置です。デフォルトは ``justify`` です。
+
+.. * **nature** -- A greenish theme.  There are currently no options beyond
+     *nosidebar*.
+
+* **nature** -- 緑色のテーマです。現在は *nosidebar* 以外のオプションはありません。
+
+.. * **haiku** -- A theme without sidebar inspired by the `Haiku OS user guide
+     <http://www.haiku-os.org/docs/userguide/en/contents.html>`_.  The following
+     options are supported:
+
+     - **full_logo** (true or false, default false): If this is true, the header
+       will only show the :confval:`html_logo`.  Use this for large logos.  If this
+       is false, the logo (if present) will be shown floating right, and the
+       documentation title will be put in the header.
+     - **textcolor**, **headingcolor**, **linkcolor**, **visitedlinkcolor**,
+       **hoverlinkcolor** (CSS colors): Colors for various body elements.
+
+* **haiku** -- `Haiku OS user guide <http://www.haiku-os.org/docs/userguide/en/contents.html>`_ にインスパイアされた、サイドバーのないテーマです。次のようなオプションが提供されています:
+
+  - **full_logo** (True/False デフォルトはFalse): もしTrueの場合は、ヘッダーには :confval:`html_logo` だけが表示されます。大きなロゴを使用するときに設定して下さい。Falseが設定されると、ロゴはフローティングで右寄せに表示され(あれば)、ドキュメントタイトルがヘッダに表示されます。
+  - **textcolor**, **headingcolor**, **linkcolor**, **visitedlinkcolor**,
+    **hoverlinkcolor** (CSS カラー): それぞれの要素の色。
+
 * **traditional** -- 古いPythonのドキュメントに似たテーマです。 *nosidebar* 以外のオプションはありません。
+
+.. * **epub** -- A theme for the epub builder.  There are currently no options.
+     This theme tries to save visual space which is a sparse resource on ebook
+     readers.
+
+* **epub** -- epubビルダーのためのテーマです。現在はオプションはありません。電子ブックビューア用に、ビジュアル要素の空間をなるべく少なくしたテーマです。
+
 
 .. Creating themes
    ---------------
