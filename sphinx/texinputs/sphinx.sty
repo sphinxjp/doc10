@@ -140,12 +140,11 @@
 \newlength\leftsidespace
 \def\mycolorbox#1{%
   \setlength\leftsidespace{\@totalleftmargin}%
-  \setlength\distancetoright{\textwidth}%
+  \setlength\distancetoright{\linewidth}%
   \advance\distancetoright -\@totalleftmargin %
   \noindent\hspace*{\@totalleftmargin}%
   \fcolorbox{VerbatimBorderColor}{VerbatimColor}{%
   \begin{minipage}{\distancetoright}%
-    \smallskip%
     \noindent\hspace*{-\leftsidespace}%
     #1
   \end{minipage}%
@@ -154,6 +153,9 @@
 \def\FrameCommand{\mycolorbox}
 
 \renewcommand{\Verbatim}[1][1]{%
+  % list starts new par, but we don't want it to be set apart vertically
+  \bgroup\parskip=0pt%
+  \smallskip%
   % The list environement is needed to control perfectly the vertical
   % space.
   \list{}{%
@@ -171,6 +173,8 @@
     \endOriginalVerbatim%
   \endMakeFramed%
   \endlist%
+  % close group to restore \parskip
+  \egroup%
 }
 
 
@@ -233,7 +237,7 @@
 \newcommand{\pysiglinewithargsret}[3]{%
   \settowidth{\py@argswidth}{#1\code{(}}%
   \addtolength{\py@argswidth}{-2\py@argswidth}%
-  \addtolength{\py@argswidth}{\textwidth}%
+  \addtolength{\py@argswidth}{\linewidth}%
   \item[#1\code{(}\py@sigparams{#2}{#3}]}
 
 % This version is being checked in for the historical record; it shows
@@ -440,7 +444,8 @@
 % Include hyperref last.
 \RequirePackage[colorlinks,breaklinks,
                 linkcolor=InnerLinkColor,filecolor=OuterLinkColor,
-                menucolor=OuterLinkColor,urlcolor=OuterLinkColor]{hyperref}
+                menucolor=OuterLinkColor,urlcolor=OuterLinkColor,
+                citecolor=InnerLinkColor]{hyperref}
 
 % From docutils.writers.latex2e
 \providecommand{\DUspan}[2]{%

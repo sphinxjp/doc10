@@ -87,7 +87,7 @@ General configuration
 .. confval:: master_doc
 
    The document name of the "master" document, that is, the document that
-   contains the root :dir:`toctree` directive.  Default is ``'contents'``.
+   contains the root :rst:dir:`toctree` directive.  Default is ``'contents'``.
 
 .. confval:: exclude_patterns
 
@@ -151,7 +151,8 @@ General configuration
    :confval:`language`), relative to the source directory.  The directories on
    this path are searched by the standard :mod:`gettext` module for a text
    domain of ``sphinx``; so if you add the directory :file:`./locale` to this
-   settting, the message catalogs must be in
+   settting, the message catalogs (compiled from ``.po`` format using
+   :program:`msgfmt`) must be in
    :file:`./locale/{language}/LC_MESSAGES/sphinx.mo`.
 
    The default is ``[]``.
@@ -184,6 +185,13 @@ General configuration
 
    .. versionadded:: 0.6
 
+.. confval:: rst_prolog
+
+   A string of reStructuredText that will be included at the beginning of every
+   source file that is read.
+
+   .. versionadded:: 1.0
+
 .. confval:: default_domain
 
    .. index:: default; domain
@@ -203,7 +211,7 @@ General configuration
    "filter".  The default is ``None``, which doesn't reassign the default role.
 
    The default role can always be set within individual documents using the
-   standard reST :dir:`default-role` directive.
+   standard reST :rst:dir:`default-role` directive.
 
    .. versionadded:: 0.4
 
@@ -283,6 +291,7 @@ Project information
    * ``pt_BR`` -- Brazilian Portuguese
    * ``ru`` -- Russian
    * ``sl`` -- Slovenian
+   * ``tr`` -- Turkish
    * ``uk_UA`` -- Ukrainian
    * ``zh_CN`` -- Simplified Chinese
    * ``zh_TW`` -- Traditional Chinese
@@ -328,11 +337,11 @@ Project information
 
    A boolean that decides whether module names are prepended to all
    :term:`object` names (for object types where a "module" of some kind is
-   defined), e.g. for :dir:`function` directives.  Default is ``True``.
+   defined), e.g. for :rst:dir:`function` directives.  Default is ``True``.
 
 .. confval:: show_authors
 
-   A boolean that decides whether :dir:`moduleauthor` and :dir:`sectionauthor`
+   A boolean that decides whether :rst:dir:`moduleauthor` and :rst:dir:`sectionauthor`
    directives produce any output in the built files.
 
 .. confval:: modindex_common_prefix
@@ -647,6 +656,21 @@ that use Sphinx' HTMLWriter class.
    Encoding of HTML output files. Default is ``'utf-8'``.  Note that this
    encoding name must both be a valid Python encoding name and a valid HTML
    ``charset`` value.
+
+   .. versionadded:: 1.0
+
+.. confval:: html_compact_lists
+
+   If true, list items containing only a single paragraph will not be rendered
+   with a ``<p>`` element.  This is standard docutils behavior.  Default:
+   ``True``.
+
+   .. versionadded:: 1.0
+
+.. confval:: html_secnumber_suffix
+
+   Suffix for section numbers.  Default: ``". "``.  Set to ``" "`` to suppress
+   the final dot on section numbers.
 
    .. versionadded:: 1.0
 
