@@ -39,7 +39,7 @@ Sphinxドメイン
    have names like ``domain:name``, e.g. ``py:function``.  Domains can also provide
    custom indices (like the Python Module Index).
 
-ドメインというのは、説明のためのマークアップ(reStructuredTextの :term:`directive` と :term:`role`)と、プログラミング言語の構成部品と関連する :term:`object` へのリンクによってできています。ドメインに属するディレクティブとロール名は ``py:function`` などのように、 ``ドメイン:名前:`` という名前を持ちます。ドメインを使って、Pythonのモジュール索引のような、専用の索引を作成することもできます。
+ドメインというのは、説明のためのマークアップ(reStructuredTextの :term:`ディレクティブ` と :term:`ロール`)と、プログラミング言語の構成部品と関連する :term:`オブジェクト` へのリンクによってできています。ドメインに属するディレクティブとロール名は ``py:function`` などのように、 ``ドメイン:名前:`` という名前を持ちます。ドメインを使って、Pythonのモジュール索引のような、専用の索引を作成することもできます。
 
 .. Having domains means that there are no naming problems when one set of
    documentation wants to refer to e.g. C++ and Python classes.  It also means that
@@ -102,7 +102,7 @@ Sphinxドメイン
 
 もし、Pythonしか登場しないプロジェクトで、Pythonオブジェクトの説明しか書かない場合に、ドメイン名を毎回書かなくても良いようにする機能が提供されています。 :confval:`default_domain` 設定値と、専用のディレクティブの2つの方法で、デフォルトのドメインを指定できるようになっています。
 
-.. directive:: .. default-domain:: name
+.. rst:directive:: .. default-domain:: name
 
    .. Select a new default domain.  While the :confval:`default_domain` selects a
       global default, this only has an effect within the same file.
@@ -148,10 +148,10 @@ Sphinxドメイン
 
 簡単に説明すると:
 
-.. * You may supply an explicit title and reference target: ``:role:`title
+.. * You may supply an explicit title and reference target: ``:rst:role:`title
     <target>``` will refer to *target*, but the link text will be *title*.
 
-* 明示的なリンク名と、リンクターゲットを指定できます。 ``:role:`タイトル <ターゲット>``` と書くと、 **ターゲット** を参照しますが、リンクテキストは **タイトル** になります。
+* 明示的なリンク名と、リンクターゲットを指定できます。 ``:rst:role:`タイトル <ターゲット>``` と書くと、 **ターゲット** を参照しますが、リンクテキストは **タイトル** になります。
 
 .. * If you prefix the content with ``!``, no reference/hyperlink will be created.
 
@@ -175,15 +175,15 @@ Pythonドメイン
 
 Pythonドメイン(**py**)では、モジュールの説明のために、次のようなディレクティブを提供しています:
 
-.. .. directive:: .. py:module:: name
+.. .. rst:directive:: .. py:module:: name
 
-.. directive:: .. py:module:: 名前
+.. rst:directive:: .. py:module:: 名前
 
    .. This directive marks the beginning of the description of a module (or package
       submodule, in which case the name should be fully qualified, including the
-      package name).  It does not create content (like e.g. :dir:`py:class` does).
+      package name).  It does not create content (like e.g. :rst:dir:`py:class` does).
 
-   このディレクティブはモジュールの説明の開始時に使用します。パッケージやサブモジュールにも使用できますが、この場合はパッケージ名を含む、完全な名前を指定してください。この ディレクティブは :dir:`py:class` ディレクティブのようなコンテンツを作成することはできません。
+   このディレクティブはモジュールの説明の開始時に使用します。パッケージやサブモジュールにも使用できますが、この場合はパッケージ名を含む、完全な名前を指定してください。この ディレクティブは :rst:dir:`py:class` ディレクティブのようなコンテンツを作成することはできません。
 
    .. This directive will also cause an entry in the global module index.
 
@@ -208,18 +208,18 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
    ``deprecated`` オプションを使用すると、このモジュールが古くて、使用するのを推奨しない、ということを示すことができます。オプションは取りません。このディレクティブは様々な場所で使用されるでしょう。
 
 
-.. .. directive:: .. py:currentmodule:: name
+.. .. rst:directive:: .. py:currentmodule:: name
 
-.. directive:: .. py:currentmodule:: 名前
+.. rst:directive:: .. py:currentmodule:: 名前
 
    .. This directive tells Sphinx that the classes, functions etc. documented from
-      here are in the given module (like :dir:`py:module`), but it will not create
+      here are in the given module (like :rst:dir:`py:module`), but it will not create
       index entries, an entry in the Global Module Index, or a link target for
-      :role:`mod`.  This is helpful in situations where documentation for things in
+      :rst:role:`mod`.  This is helpful in situations where documentation for things in
       a module is spread over multiple files or sections -- one location has the
-      :dir:`py:module` directive, the others only :dir:`py:currentmodule`.
+      :rst:dir:`py:module` directive, the others only :rst:dir:`py:currentmodule`.
 
-   このディレクティブはSphinxに対して、この行以降のクラスや関数などが、指定された与えられたモジュール (:dir:`py:module` のように)の中にある、ということを通知します。これを使用しても、索引のエントリーは作成されません。 :role:`mod` へのリンクターゲットも作成されません。このディレクティブは、モジュールに含まれる項目へのドキュメントが様々なファイルやセクションに分割されている場合に便利です。この場合には一カ所だけ :dir:`py:module` ディレクティブを使用して、他の箇所で :dir:`py:currentmodule` を使用するようにします。
+   このディレクティブはSphinxに対して、この行以降のクラスや関数などが、指定された与えられたモジュール (:rst:dir:`py:module` のように)の中にある、ということを通知します。これを使用しても、索引のエントリーは作成されません。 :rst:role:`mod` へのリンクターゲットも作成されません。このディレクティブは、モジュールに含まれる項目へのドキュメントが様々なファイルやセクションに分割されている場合に便利です。この場合には一カ所だけ :rst:dir:`py:module` ディレクティブを使用して、他の箇所で :rst:dir:`py:currentmodule` を使用するようにします。
 
 
 .. The following directives are provided for module and class contents:
@@ -227,9 +227,9 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
 モジュールとクラスの中の構成要素を記述するために、次のようなディレクティブが提供されています:
 
 
-.. .. directive:: .. py:data:: name
+.. .. rst:directive:: .. py:data:: name
 
-.. directive:: .. py:data:: データ名
+.. rst:directive:: .. py:data:: データ名
 
    .. Describes global data in a module, including both variables and values used
       as "defined constants."  Class and object attributes are not documented
@@ -238,9 +238,9 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
    モジュール内のグローバルなデータの説明をします。変数も値も"定義された定数"として取り込むことができます。クラスとオブジェクトの属性はこの環境を使用してドキュメントを書くことはできません。
 
 
-.. .. directive:: .. py:exception:: name
+.. .. rst:directive:: .. py:exception:: name
 
-.. directive:: .. py:exception:: 例外名
+.. rst:directive:: .. py:exception:: 例外名
 
    .. Describes an exception class.  The signature can, but need not include
       parentheses with constructor arguments.
@@ -248,9 +248,9 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
    例外クラスの説明をします。シグニチャには、コンストラクタの引数を括弧付きで含めることもできますが、しなくてもかまいません。
 
 
-.. .. directive:: .. py:function:: name(signature)
+.. .. rst:directive:: .. py:function:: name(signature)
 
-.. directive:: .. py:function:: 関数名(シグニチャ)
+.. rst:directive:: .. py:function:: 関数名(シグニチャ)
 
    .. Describes a module-level function.  The signature should include the
       parameters, enclosing optional parameters in brackets.  Default values can be
@@ -275,9 +275,9 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
    説明にはパラメータに必要な関する情報と、それらがどのように使用されるのか(変更可能なオブジェクトが渡されたときに、変更されるのかどうか)、副作用、投げられる可能性のある例外の情報を含まなければなりません。小さいサンプルが提供されるでしょう。
 
 
-.. .. directive:: .. py:class:: name[(signature)]
+.. .. rst:directive:: .. py:class:: name[(signature)]
 
-.. directive:: .. py:class:: クラス名[(シグニチャ)]
+.. rst:directive:: .. py:class:: クラス名[(シグニチャ)]
 
    .. Describes a class.  The signature can include parentheses with parameters
       which will be shown as the constructor arguments.  See also
@@ -314,9 +314,9 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
    最初の書き方が推奨です。
 
 
-.. .. directive:: .. py:attribute:: name
+.. .. rst:directive:: .. py:attribute:: name
 
-.. directive:: .. py:attribute:: 属性名
+.. rst:directive:: .. py:attribute:: 属性名
 
    .. Describes an object data attribute.  The description should include
       information about the type of the data to be expected and whether it may be
@@ -325,9 +325,9 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
    オブジェクトの属性のデータの説明をします。この説明には期待されるデータの型、値を直接変更することができるかどうか、という情報を含めます。
 
 
-.. .. directive:: .. py:method:: name(signature)
+.. .. rst:directive:: .. py:method:: name(signature)
 
-.. directive:: .. py:method:: メソッド名(シグニチャ)
+.. rst:directive:: .. py:method:: メソッド名(シグニチャ)
 
    .. Describes an object method.  The parameters should not include the ``self``
       parameter.  The description should include similar information to that
@@ -337,25 +337,25 @@ Pythonドメイン(**py**)では、モジュールの説明のために、次の
 
 
 .. 
-   .. directive:: .. py:staticmethod:: name(signature)
+   .. rst:directive:: .. py:staticmethod:: name(signature)
 
-.. directive:: .. py:staticmethod:: メソッド名(シグニチャ)
+.. rst:directive:: .. py:staticmethod:: メソッド名(シグニチャ)
 
-   :dir:`py:method` とほぼ一緒ですが、メソッドがスタティックメソッドであるということを表します。
+   :rst:dir:`py:method` とほぼ一緒ですが、メソッドがスタティックメソッドであるということを表します。
 
-   .. Like :dir:`py:method`, but indicates that the method is a static method.
+   .. Like :rst:dir:`py:method`, but indicates that the method is a static method.
 
 
    .. versionadded:: 0.4
 
 
-.. .. directive:: .. py:classmethod:: name(signature)
+.. .. rst:directive:: .. py:classmethod:: name(signature)
 
-.. directive:: .. py:classmethod:: メソッド名(シグニチャ)
+.. rst:directive:: .. py:classmethod:: メソッド名(シグニチャ)
 
-   .. Like :dir:`py:method`, but indicates that the method is a static method.
+   .. Like :rst:dir:`py:method`, but indicates that the method is a static method.
 
-   :dir:`py:method` とほぼ一緒ですが、メソッドがクラスメソッドであるということを表します。
+   :rst:dir:`py:method` とほぼ一緒ですが、メソッドがクラスメソッドであるということを表します。
 
    .. versionadded:: 0.6
 
@@ -502,7 +502,7 @@ Pythonオブジェクトのクロススリファンレス
 以下のロールを使用すると、モジュール内のオブジェクトを参照することができます。一致する識別子が見つかれば、ハイパーリンクが作成されます:
 
 
-.. role:: py:mod
+.. rst:role:: py:mod
 
    .. Reference a module; a dotted name may be used.  This should also be used for
       package names.
@@ -510,7 +510,7 @@ Pythonオブジェクトのクロススリファンレス
    モジュールへの参照です。ドットで区切られた名前も使用できます。これはパッケージ名としても利用可能です。
 
 
-.. role:: py:func
+.. rst:role:: py:func
 
    .. Reference a Python function; dotted names may be used.  The role text needs
       not include trailing parentheses to enhance readability; they will be added
@@ -520,14 +520,14 @@ Pythonオブジェクトのクロススリファンレス
    Pythonの関数への参照です。ドットで区切られた名前も使用できます。ロールのテキストは読みやすさのために括弧を後ろに含める必要はありません。 :confval:`add_function_parentheses` 設定値をtrue(デフォルト)にしておくと、Sphinxが自動で括弧を追加します。
 
 
-.. role:: py:data
+.. rst:role:: py:data
 
    .. Reference a module-level variable.
 
    モジュール変数を参照します。
 
 
-.. role:: py:const
+.. rst:role:: py:const
 
    .. Reference a "defined" constant.  This may be a C-language ``#define`` or a
       Python variable that is not intended to be changed.
@@ -535,13 +535,13 @@ Pythonオブジェクトのクロススリファンレス
    定義済みの定数への参照です。これはC言語の ``#define`` や、 Pythonで変更されることのない変数に使います。
 
 
-.. role:: py:class
+.. rst:role:: py:class
 
    .. Reference a class; a dotted name may be used.
 
    クラス名です。ドットで区切られた名前も使用できます。
 
-.. role:: py:meth
+.. rst:role:: py:meth
 
    .. Reference a method of an object.  The role text can include the type name and
       the method name; if it occurs within the description of a type, the type name
@@ -550,19 +550,19 @@ Pythonオブジェクトのクロススリファンレス
    オブジェクトのメソッドへの参照です。ロールのテキストには型名とメソッド名を含めなければなりません。ただし、型の記述中に書く場合には省略することもできます。ドットで区切られた名前も使用できます。
 
 
-.. role:: py:attr
+.. rst:role:: py:attr
 
    .. Reference a data attribute of an object.
 
    オブジェクトの属性への参照です。
 
-.. role:: py:exc
+.. rst:role:: py:exc
 
    .. Reference an exception.  A dotted name may be used.
 
    例外への参照です。ドットで区切られた名前も使用できます。
 
-.. role:: py:obj
+.. rst:role:: py:obj
 
    .. Reference an object of unspecified type.  Useful e.g. as the
       :confval:`default_role`.
@@ -605,9 +605,9 @@ C言語ドメイン
 C言語ドメイン(**c**)はC言語のAPIのドキュメントを書くのに適しています。
 
 ..
-   .. directive:: .. c:function:: type name(signature)
+   .. rst:directive:: .. c:function:: type name(signature)
 
-.. directive:: .. c:function:: 型 関数名(シグニチャ)
+.. rst:directive:: .. c:function:: 型 関数名(シグニチャ)
 
    .. Describes a C function. The signature should be given as in C, e.g.:
 
@@ -626,9 +626,9 @@ C言語ドメイン(**c**)はC言語のAPIのドキュメントを書くのに�
    シグネチャ内のアスタリスクはバックスラッシュでエスケープする必要はありません。この中はreSTの行内のテキスト処理のパーサは実行されず、専用のパーサで処理されます。
 
 ..
-  .. directive:: .. c:member:: type name
+  .. rst:directive:: .. c:member:: type name
 
-.. directive:: .. c:member:: 型 構造体メンバー名
+.. rst:directive:: .. c:member:: 型 構造体メンバー名
 
    .. Describes a C struct member. Example signature:
 
@@ -644,9 +644,9 @@ C言語ドメイン(**c**)はC言語のAPIのドキュメントを書くのに�
 
 
 ..
-  .. directive:: .. c:macro:: name
+  .. rst:directive:: .. c:macro:: name
 
-.. directive:: .. c:macro:: マクロ名
+.. rst:directive:: .. c:macro:: マクロ名
 
    .. Describes a "simple" C macro.  Simple macros are macros which are used for
       code expansion, but which do not take arguments so cannot be described as
@@ -658,9 +658,9 @@ C言語ドメイン(**c**)はC言語のAPIのドキュメントを書くのに�
 
 
 .. 
-   .. directive:: .. c:type:: name
+   .. rst:directive:: .. c:type:: name
 
-.. directive:: .. c:type:: 型名
+.. rst:directive:: .. c:type:: 型名
 
    Describes a C type (whether defined by a typedef or struct). The signature
    should just be the type name.
@@ -669,9 +669,9 @@ C言語ドメイン(**c**)はC言語のAPIのドキュメントを書くのに�
 
 
 ..
-   .. directive:: .. c:var:: type name
+   .. rst:directive:: .. c:var:: type name
 
-.. directive:: .. c:var:: 型 変数名
+.. rst:directive:: .. c:var:: 型 変数名
 
    .. Describes a global C variable.  The signature should include the type, such
       as:
@@ -692,25 +692,25 @@ C言語の要素へのクロスリファレンス
 
 以下のロールは、もしドキュメントの中に定義の説明があれば、C言語の要素へのクロスリファレンスを作成します:
 
-.. role:: c:data
+.. rst:role:: c:data
 
    .. Reference a C-language variable.
 
    C言語の変数への参照です。
 
-.. role:: c:func
+.. rst:role:: c:func
 
    .. Reference a C-language function. Should include trailing parentheses.
 
    C言語の関数への参照です。カッコを省略することはできません。
 
-.. role:: c:macro
+.. rst:role:: c:macro
 
    .. Reference a "simple" C macro, as defined above.
 
    前の説明で述べた、シンプルなC言語のマクロへの参照です。
 
-.. role:: c:type
+.. rst:role:: c:type
 
    .. Reference a C-language type.
 
@@ -732,12 +732,12 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 次のようなディレクティブが利用可能です:
 
 ..
-   .. directive:: .. cpp:class:: signatures
+   .. rst:directive:: .. cpp:class:: signatures
                   .. cpp:function:: signatures
                   .. cpp:member:: signatures
                   .. cpp:type:: signatures
 
-.. directive:: .. cpp:class:: シグニチャ
+.. rst:directive:: .. cpp:class:: シグニチャ
                .. cpp:function:: シグニチャ
                .. cpp:member:: シグニチャ
                .. cpp:type:: シグニチャ
@@ -756,9 +756,9 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
          IntArrayクラスの配列演算子の説明・・・
 
 .. 
-   .. directive:: .. cpp:namespace:: namespace
+   .. rst:directive:: .. cpp:namespace:: namespace
 
-.. directive:: .. cpp:namespace:: 名前空間
+.. rst:directive:: .. cpp:namespace:: 名前空間
 
    .. Select the current C++ namespace for the following objects.
 
@@ -768,7 +768,7 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 
 このドメインは次のようなオブジェクトの種類へのロールを提供しています:
 
-.. role:: cpp:class
+.. rst:role:: cpp:class
           cpp:func
           cpp:member
           cpp:type
@@ -801,9 +801,9 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 現在は、コマンドラインのプログラムを説明するためのディレクティブ群が提供されています:
 
 ..
-   .. directive:: .. option:: name args, name args, ...
+   .. rst:directive:: .. option:: name args, name args, ...
 
-.. directive:: .. option:: 名前 引数, 名前 引数, ...
+.. rst:directive:: .. option:: 名前 引数, 名前 引数, ...
 
    .. Describes a command line option or switch.  Option argument names should be
       enclosed in angle brackets.  Example:
@@ -819,36 +819,36 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
          モジュールをスクリプトとみなして実行します
 
    .. The directive will create a cross-reference target named after the *first*
-      option, referencable by :role:`option` (in the example case, you'd use
+      option, referencable by :rst:role:`option` (in the example case, you'd use
       something like ``:option:`-m```).
 
-   このディレクティブは *最初* のオプションを名前付きのターゲットとみなして、クロスリファレンスを作成します。これは :role:`option` にて参照可能です。このサンプルの場合は、 ``:option:`-m``` という形式でリンクを張ることができます。
+   このディレクティブは *最初* のオプションを名前付きのターゲットとみなして、クロスリファレンスを作成します。これは :rst:role:`option` にて参照可能です。このサンプルの場合は、 ``:option:`-m``` という形式でリンクを張ることができます。
 
 
 ..
-   .. directive:: .. envvar:: name
+   .. rst:directive:: .. envvar:: name
 
-.. directive:: .. envvar:: 名前
+.. rst:directive:: .. envvar:: 名前
 
    .. Describes an environment variable that the documented code or program uses or
-      defines.  Referencable by :role:`envvar`.
+      defines.  Referencable by :rst:role:`envvar`.
 
-   現在ドキュメントの対象ととなっているコードやプログラムが使用したり、定義する環境変数について説明します。 :role:`envvar` というロールを使って参照することができます。
+   現在ドキュメントの対象ととなっているコードやプログラムが使用したり、定義する環境変数について説明します。 :rst:role:`envvar` というロールを使って参照することができます。
 
 
 ..
-   .. directive:: .. program:: name
+   .. rst:directive:: .. program:: name
 
-.. directive:: .. program:: 名前
+.. rst:directive:: .. program:: 名前
 
-   .. Like :dir:`py:currentmodule`, this directive produces no output.  Instead, it
-      serves to notify Sphinx that all following :dir:`option` directives
+   .. Like :rst:dir:`py:currentmodule`, this directive produces no output.  Instead, it
+      serves to notify Sphinx that all following :rst:dir:`option` directives
       document options for the program called *name*.
 
-   :dir:`py:currentmodule` と同様に、このディレクティブは何も出力しません。その代わりにこのディレクティブを定義すると、Sphinxはこの後に定義される :dir:`option` ディレクティブが説明するオプションが、ここで指定された *名前* を持つプログラムに属するということを認識できるようになります。
+   :rst:dir:`py:currentmodule` と同様に、このディレクティブは何も出力しません。その代わりにこのディレクティブを定義すると、Sphinxはこの後に定義される :rst:dir:`option` ディレクティブが説明するオプションが、ここで指定された *名前* を持つプログラムに属するということを認識できるようになります。
 
-   .. If you use :dir:`program`, you have to qualify the references in your
-      :role:`option` roles by the program name, so if you have the following
+   .. If you use :rst:dir:`program`, you have to qualify the references in your
+      :rst:role:`option` roles by the program name, so if you have the following
       situation :
 
       .. program:: rm
@@ -863,7 +863,7 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 
          Specify the revision to work upon.
 
-   :dir:`program` を使用する場合には、 :role:`option` ロールとプログラム名を適合させる必要があります。以下のような状況について見てみます::
+   :rst:dir:`program` を使用する場合には、 :rst:role:`option` ロールとプログラム名を適合させる必要があります。以下のような状況について見てみます::
 
       .. program:: rm
 
@@ -896,10 +896,10 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 どこのドメインにも俗さ名様な、非常に汎用的なオブジェクトの説明用のディレクティブも存在します:
 
 
-.. .. directive:: .. describe:: text
+.. .. rst:directive:: .. describe:: text
                   .. object:: text
 
-.. directive:: .. describe:: テキスト
+.. rst:directive:: .. describe:: テキスト
                .. object:: テキスト
 
    .. This directive produces the same formatting as the specific ones provided by
@@ -928,9 +928,9 @@ JavaScriptドメイン
 JavaScriptドメイン(**js**)は次のようなディレクティブを提供します:
 
 ..
-   .. directive:: .. js:function:: name(signature)
+   .. rst:directive:: .. js:function:: name(signature)
 
-.. directive:: .. js:function:: 名前(シグニチャ)
+.. rst:directive:: .. js:function:: 名前(シグニチャ)
 
    .. Describes a JavaScript function, method or constructor.  If you want to
       describe arguments as optional use square brackets as :ref:`documented
@@ -990,18 +990,18 @@ JavaScriptドメイン(**js**)は次のようなディレクティブを提供�
 
 
 ..
-   .. directive:: .. js:data:: name
+   .. rst:directive:: .. js:data:: name
 
-.. directive:: .. js:data:: 名前
+.. rst:directive:: .. js:data:: 名前
 
    .. Describes a global variable or constant.
 
    グローバル変数や定数の説明です。
 
 ..
-   .. directive:: .. js:attribute:: object.name
+   .. rst:directive:: .. js:attribute:: object.name
 
-.. directive:: .. js:attribute:: オブジェクト.属性名
+.. rst:directive:: .. js:attribute:: オブジェクト.属性名
 
    .. Describes the attribute *name* of *object*.
 
@@ -1011,6 +1011,105 @@ JavaScriptドメイン(**js**)は次のようなディレクティブを提供�
 
 このドメインでは、オブジェクトの説明を参照する、次のようなロールが提供されています:
 
-.. role:: js:func
-          js:data
-          js:attr
+.. rst:role:: js:func
+              js:data
+              js:attr
+
+
+.. The reStructuredText domain
+   ---------------------------
+
+reStructuredTextドメイン
+------------------------
+
+.. The reStructuredText domain (name **rst**) provides the following directives:
+
+reStructuredTextドメイン(**rst**)は、次のようなディレクティブを提供します:
+
+.. rst:directive:: .. rst:directive:: name
+
+   .. Describes a reST directive.  The *name* can be a single directive name or
+      actual directive syntax (`..` prefix and `::` suffix) with arguments that
+      will be rendered differently. 
+
+   reSTディレクティブの説明をします。 *name* には単独のディレクティブ名か、引数付きの実際のディレクティブの文法(`..` を前に付けたり、後ろに `::` を付けたり)で記述をします。
+
+   .. For example
+
+      .. rst:directive:: foo
+
+         Foo description.
+
+      .. rst:directive:: .. bar:: baz
+
+         Bar description.
+
+   サンプル::
+
+      .. rst:directive:: foo
+
+         Fooの説明
+
+      .. rst:directive:: .. bar:: baz
+
+         Barの説明
+
+   .. will be rendered as:
+
+   これは次のようにレンダリングされます
+
+      .. rst:directive:: foo
+
+         Fooの説明
+
+      .. rst:directive:: .. bar:: baz
+
+         Barの説明
+
+   .. .. rst:directive:: foo
+
+         Foo description.
+
+      .. rst:directive:: .. bar:: baz
+
+         Bar description.
+
+
+
+.. rst:directive:: .. rst:role:: name
+
+   .. Describes a reST role.  
+
+   reSTのロールの説明をします。
+
+   .. For example:
+
+      .. rst:role:: foo
+
+         Foo description.
+
+   サンプル::
+
+      .. rst:role:: foo
+
+         Fooの説明
+
+   .. will be rendered as:
+
+   次のようにレンダリングされます:
+
+      .. rst:role:: foo
+
+         Fooの説明
+
+   .. 
+      .. rst:role:: foo
+
+         Foo description.
+
+.. These roles are provided to refer to the described objects:
+
+説明したオブジェクトを参照するために、次のようなロールが提供されます:
+
+.. rst:role:: rst:dir
+              rst:role

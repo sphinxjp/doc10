@@ -90,7 +90,7 @@ SCons
    documentation; it is hosted here: http://bitbucket.org/zondo/sphinx-scons
 
 PyPI
-    Jannis Leidelが `setuptools
+    Jannis Leidelが `setuptoolsコマンド <http://pypi.python.org/pypi/Sphinx-PyPI-upload>`_ を作成しています。このコマンドを実行すると、自動的にSphinxで作られたドキュメントを、PyPIパッケージのドキュメント領域(http://packages.python.org/)にアップロードします。
 
 ..  Jannis Leidel wrote a `setuptools command
     <http://pypi.python.org/pypi/Sphinx-PyPI-upload>`_ that automatically uploads
@@ -109,7 +109,42 @@ github pages
 .. _xhtmlからreST: http://docutils.sourceforge.net/sandbox/xhtml2rest/xhtml2rest.py
 
 
-.. code-block:: html+django
+Google Analytics
+   次のようなカスタムの ``layout.html`` テンプレートを使用することができます:
+
+   .. code-block:: html+django
+
+      {% extends "!layout.html" %}
+
+      {%- block extrahead %}
+      {{ super() }}
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'XXX アカウント番号 XXX']);
+        _gaq.push(['_trackPageview']);
+      </script>
+      {% endblock %}
+
+      {% block footer %}
+      {{ super() }}
+      <div class="footer">このページは統計情報を収集するために<a href="http://analytics.google.com/">
+      Google Analytics</a>を使用しています。もしも無効にしたい場合には、www.google-analytics.com
+      からロードされるJavaScriptをブロックして下さい。
+      <script type="text/javascript">
+        (function() {
+          var ga = document.createElement('script');
+          ga.src = ('https:' == document.location.protocol ?
+                    'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          ga.setAttribute('async', 'true');
+          document.documentElement.firstChild.appendChild(ga);
+       })();
+      </script>
+      </div>
+      {% endblock %}
+
+.. You can use a custom ``layout.html`` template, like this:
+
+   .. code-block:: html+django
 
       {% extends "!layout.html" %}
 
@@ -143,37 +178,49 @@ github pages
    .. _api role: http://git.savannah.gnu.org/cgit/kenozooid.git/tree/doc/extapi.py
    .. _xhtml to reST: http://docutils.sourceforge.net/sandbox/xhtml2rest/xhtml2rest.py
 
-
 .. _epub-faq:
 
-Epub info
----------
+.. Epub info
+   ---------
 
-The epub builder is currently in an experimental stage.  It has only been tested
-with the Sphinx documentation itself.  If you want to create epubs, here are
-some notes:
+Epub情報
+--------
 
-* Split the text into several files. The longer the individual HTML files are,
-  the longer it takes the ebook reader to render them.  In extreme cases, the
-  rendering can take up to one minute.
+.. The epub builder is currently in an experimental stage.  It has only been tested
+   with the Sphinx documentation itself.  If you want to create epubs, here are
+   some notes:
 
-* Try to minimize the markup.  This also pays in rendering time.
+現在、epubビルダーはまだ実験的実装の段階です。まだSphinx本体のドキュメントでしかテストされていません。もしもepubファイルを生成したいのであれば、次の注意点をご覧になってください:
 
-* For some readers you can use embedded or external fonts using the CSS
-  ``@font-face`` directive.  This is *extremely* useful for code listings which
-  are often cut at the right margin.  The default Courier font (or variant) is
-  quite wide and you can only display up to 60 characters on a line.  If you
-  replace it with a narrower font, you can get more characters on a line.  You
-  may even use `FontForge <http://fontforge.sourceforge.net/>`_ and create
-  narrow variants of some free font.  In my case I get up to 70 characters on a
-  line.
+.. * Split the text into several files. The longer the individual HTML files are,
+     the longer it takes the ebook reader to render them.  In extreme cases, the
+     rendering can take up to one minute.
 
-  You may have to experiment a little until you get reasonable results.
+* テキストはいくつかのファイルに分割されます。長さの長いHTMLファイルの場合、電子ブックリーダーによってはレンダリングに長い時間がかかります。極端な場合には、1分ほどかかることもあります。
 
-* Test the created epubs. You can use several alternatives.  The ones I am aware
-  of are Epubcheck_, Calibre_, FBreader_ (although it does not render the CSS),
-  and Bookworm_.  For bookworm you can download the source from
-  http://code.google.com/p/threepress/ and run your own local server.
+.. * Try to minimize the markup.  This also pays in rendering time.
+
+* マークアップは少なくなるようにしてください。これはレンダリング時間に関わってきます。
+
+.. * For some readers you can use embedded or external fonts using the CSS
+     ``@font-face`` directive.  This is *extremely* useful for code listings which
+     are often cut at the right margin.  The default Courier font (or variant) is
+     quite wide and you can only display up to 60 characters on a line.  If you
+     replace it with a narrower font, you can get more characters on a line.  You
+     may even use `FontForge <http://fontforge.sourceforge.net/>`_ and create
+     narrow variants of some free font.  In my case I get up to 70 characters on a
+     line.
+
+* いくつかのリーダーでは、CSSの ``@font-face`` ディレクティブを使うことで、組み込みフォントや外部フォントを使用することができます。ソースコードのリストを表現する場合には、正しいマージンが行われるようになるため、 **非常に** これが役立ちます。デフォルトのCourierフォント(もしくはvariant)の場合には、一行につき60文字しか表現できません。もしもより狭いフォントを指定すると、一行の表示文字数を増やせます。 `FontForge <http://fontforge.sourceforge.net/>`_ を使用して、フリーフォントの幅を短くしたバージョンを作成することができます。私が試した限りでは一行あたり70文字まで増やすことができました。
+
+  納得のいく結果を得るためには、多少の試行錯誤が必要になるでしょう。  
+
+.. * Test the created epubs. You can use several alternatives.  The ones I am aware
+     of are Epubcheck_, Calibre_, FBreader_ (although it does not render the CSS),
+     and Bookworm_.  For bookworm you can download the source from
+     http://code.google.com/p/threepress/ and run your own local server.
+
+* 作成されたepubファイルはテストしてください。いくつかの選択肢があります。私が確認するようにしているのは、 Epubcheck_, Calibre_, FBreader_ (これはCSSをレンダリングできません), Bookworm_ です。Bookwormは、 http://code.google.com/p/threepress/ からダウンロードして、ローカルのサーバ上で実行します。
 
 .. _Epubcheck: http://code.google.com/p/epubcheck/
 .. _Calibre: http://calibre-ebook.com/

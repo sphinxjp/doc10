@@ -22,13 +22,13 @@
 
 この拡張機能は次のディレクティブを追加します。
 
-.. directive:: inheritance-diagram
+.. rst:directive:: inheritance-diagram
 
    .. This directive has one or more arguments, each giving a module or class
       name.  Class names can be unqualified; in that case they are taken to exist
-      in the currently described module (see :dir:`module`).
+      in the currently described module (see :rst:dir:`module`).
 
-   このディレクティブは1つ以上の引数を持ちます。モジュールかクラス名を与えます。現在説明中のモジュールの中であれば(:dir:`module` 参照)、クラス名の名前には完全修飾名以外も使えます。
+   このディレクティブは1つ以上の引数を持ちます。モジュールかクラス名を与えます。現在説明中のモジュールの中であれば(:rst:dir:`module` 参照)、クラス名の名前には完全修飾名以外も使えます。
 
    .. For each given class, and each class in each given module, the base classes
       are determined.  Then, from all classes and their base classes, a graph is

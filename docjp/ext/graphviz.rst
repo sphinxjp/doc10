@@ -22,7 +22,7 @@
 この拡張モジュールは以下のディレクティブを提供します:
 
 
-.. directive:: graphviz
+.. rst:directive:: graphviz
 
    .. Directive to embed graphviz code.  The input code for ``dot`` is given as the
       content.  For example::
@@ -38,9 +38,6 @@
             "bar" -> "baz";
          }
 
-   .. In HTML output, the code will be rendered to a PNG image.  In LaTeX output,
-      the code will be rendered to an embeddable PDF file.
-
    .. In HTML output, the code will be rendered to a PNG or SVG image (see
       :confval:`graphviz_output_format`).  In LaTeX output, the code will be
       rendered to an embeddable PDF file.
@@ -50,7 +47,7 @@
    :confval:`graphviz_output_format` を参照してください。
 
 
-.. directive:: graph
+.. rst:directive:: graph
 
    .. Directive for embedding a single undirected graph.  The name is given as a
       directive argument, the contents of the graph are the directive content.
@@ -67,7 +64,7 @@
          "bar" -- "baz";
 
 
-.. directive:: digraph
+.. rst:directive:: digraph
 
    .. Directive for embedding a single directed graph.  The name is given as a
       directive argument, the contents of the graph are the directive content.
