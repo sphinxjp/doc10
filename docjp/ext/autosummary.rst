@@ -6,10 +6,12 @@
 :mod:`sphinx.ext.autosummary` -- autodocのサマリーの生成
 ========================================================
 
+.. 
+   .. module:: sphinx.ext.autosummary
+      .. :synopsis: Generate autodoc summaries
+
 .. module:: sphinx.ext.autosummary
    :synopsis: autodocのサマリーの生成
-
-.. :synopsis: Generate autodoc summaries
 
 .. versionadded:: 0.6
 
@@ -24,13 +26,13 @@
 
 :mod:`sphinx.ext.autosummary` は以下の２つの機能を持っています:
 
-.. 1. There is an :dir:`autosummary` directive for generating summary listings that
+.. 1. There is an :rst:dir:`autosummary` directive for generating summary listings that
       contain links to the documented items, and short summary blurbs extracted
       from their docstrings.
 
    2. The convenience script :program:`sphinx-autogen` or the new
       :confval:`autosummary_generate` config value can be used to generate short
-      "stub" files for the entries listed in the :dir:`autosummary` directives.
+      "stub" files for the entries listed in the :rst:dir:`autosummary` directives.
       These by default contain only the corresponding :mod:`sphinx.ext.autodoc`
       directive.
 
@@ -38,15 +40,15 @@
 
 2. 便利なスクリプト :program:`sphinx-autogen` あるいは、新しい設定値の :confval:`autosummary_generate` を使用して、短い"スタブ"ファイルを生成することができます。このファイルは :dir:`autosummary` ディレクティブ内に書かれているエントリーが記述されます。デフォルトでは、関連する :mod:`sphinx.ext.autodoc` ディレクティブだけが含まれます。
 
+
 .. directive:: autosummary
 
    .. Insert a table that contains links to documented items, and a short summary
       blurb (the first sentence of the docstring) for each of them.  The
-      :dir:`autosummary` directive can also optionally serve as a :dir:`toctree`
+      :rst:dir:`autosummary` directive can also optionally serve as a :rst:dir:`toctree`
       entry for the included items.
 
-   ドキュメントされている項目へのリンクを含むテーブルを挿入します。この中には、それぞれに対するサマリー文(docstringの最初の文)も含まれます。 :dir:`autosummary` ディレクティブはおまけとして、含まれている項目への :dir:`toctree` のような働きもします。
-
+   ドキュメントされている項目へのリンクを含むテーブルを挿入します。この中には、それぞれに対するサマリー文(docstringの最初の文)も含まれます。 :rst:dir:`autosummary` ディレクティブはおまけとして、含まれている項目への :rst:dir:`toctree` のような働きもします。
 
    .. For example, :
 
@@ -82,7 +84,7 @@
 
    **オプション**
 
-   .. * If you want the :dir:`autosummary` table to also serve as a :dir:`toctree`
+   .. * If you want the :rst:dir:`autosummary` table to also serve as a :rst:dir:`toctree`
        entry, use the ``toctree`` option, for example:
 
            .. autosummary::
@@ -98,7 +100,7 @@
        directory. If no argument is given, output is placed in the same directory
        as the file that contains the directive.
 
-   * :dir:`autosummary` テーブルを :dir:`toctree` のエントリーと同様に提供したい場合には、以下のようにします::
+   * :rst:dir:`autosummary` テーブルを :rst:dir:`toctree` のエントリーと同様に提供したい場合には、以下のようにします::
 
         .. autosummary::
            :toctree: ディレクトリ名
@@ -108,10 +110,10 @@
 
      ``toctree`` オプションは、このディレクティブに含まれるエントリーのリストに対するスタブのページを作成する、 :program:`sphinx-autogen` スクリプトにも伝えられます。このオプションは、ディレクトリ名を引数として受け取ります。デフォルトでは :program:`sphinx-autogen` はこのディレクトリに出力します。もしも引数が与えられなかった場合には、そのディレクティブが含まれているファイルがある、同じディレクトリに出力します。
 
-   .. * If you don't want the :dir:`autosummary` to show function signatures in the
+   .. * If you don't want the :rst:dir:`autosummary` to show function signatures in the
         listing, include the ``nosignatures`` option:
 
-   * 関数のシグネチャを、:dir:`autosummary` が出力するリストの中に入れたくない場合には、 ``nosignatures`` オプションを設定します::
+   * 関数のシグネチャを、:rst:dir:`autosummary` が出力するリストの中に入れたくない場合には、 ``nosignatures`` オプションを設定します::
 
          .. autosummary::
             :nosignatures:
@@ -132,6 +134,7 @@
             sphinx.environment.BuildEnvironment
 
      このサンプルのコードをビルドすると、 :confval:`templates_path` に含まれる、 :file:`mytemplate.rst` という名前のテンプレートファイルを使用して、エントリーのすべてのリストのページを生成します。詳しくは `テンプレートのカスタマイズ`_ を参照してください。
+
      .. versionadded:: 1.0
 
    ..  would use the template :file:`mytemplate.rst` in your
@@ -147,9 +150,9 @@
 --------------------------------------------------------
 
 .. The :program:`sphinx-autogen` script can be used to conveniently generate stub
-   documentation pages for items included in :dir:`autosummary` listings.
+   documentation pages for items included in :rst:dir:`autosummary` listings.
 
-:program:`sphinx-autogen` スクリプトは :dir:`autosummary` にリストアップされた要素のためのドキュメントページのスタブを簡単に生成するのに使用されます。
+:program:`sphinx-autogen` スクリプトは :rst:dir:`autosummary` にリストアップされた要素のためのドキュメントページのスタブを簡単に生成するのに使用されます。
 
 .. For example, the command :
 
@@ -157,12 +160,12 @@
 
     $ sphinx-autogen -o generated *.rst
 
-.. will read all :dir:`autosummary` tables in the :file:`*.rst` files that have the
+.. will read all :rst:dir:`autosummary` tables in the :file:`*.rst` files that have the
    ``:toctree:`` option set, and output corresponding stub pages in directory
    ``generated`` for all documented items.  The generated pages by default contain
    text of the form:
 
-このコマンドを実行すると、 :file:`*.rst` にマッチして、なおかつ ``:toctree:`` オプションを持つすべてのファイルを読み込み、その中に定義されているすべての :dir:`autosummary` テーブルを読み込みます。読み込んだ後はすべてのドキュメント付けされた要素に関連するスタブページを ``generated`` ディレクトリに出力します。デフォルトでは、以下のようなテキストを含むページが生成されます::
+このコマンドを実行すると、 :file:`*.rst` にマッチして、なおかつ ``:toctree:`` オプションを持つすべてのファイルを読み込み、その中に定義されているすべての :rst:dir:`autosummary` テーブルを読み込みます。読み込んだ後はすべてのドキュメント付けされた要素に関連するスタブページを ``generated`` ディレクトリに出力します。デフォルトでは、以下のようなテキストを含むページが生成されます::
 
     sphinx.util.relative_uri
     ========================
@@ -173,6 +176,7 @@
    directories specified in the ``:toctree:`` options.
 
 もしも ``-o`` オプションが指定されなかった場合には、 ``:toctree:`` オプションで設定されたディレクトリにファイルを出力します。
+
 
 .. Generating stub pages automatically
    -----------------------------------
@@ -329,7 +333,7 @@ autosummaryは以下のテンプレートファイルを使用します:
 
 .. note::
    
-   :dir:`autosummay` ディレクティブは、スタブページの中でも使用することができます。スタブページは、これらのディレクティブを元に生成されます。
+   :rst:dir:`autosummay` ディレクティブは、スタブページの中でも使用することができます。スタブページは、これらのディレクティブを元に生成されます。
 
-   .. You can use the :dir:`autosummary` directive in the stub pages.
+   .. You can use the :rst:dir:`autosummary` directive in the stub pages.
       Stub pages are generated also based on these directives.

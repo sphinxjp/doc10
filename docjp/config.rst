@@ -139,9 +139,9 @@
 .. confval:: master_doc
 
    .. The document name of the "master" document, that is, the document that
-      contains the root :dir:`toctree` directive.  Default is ``'contents'``.
+      contains the root :rst:dir:`toctree` directive.  Default is ``'contents'``.
 
-   "マスター"ドキュメントのドキュメント名を指定します。"マスター"ドキュメントには、ルートとなる :dir:`toctree` ディレクティブが含まれます。デフォルトは ``'contents'`` です。
+   "マスター"ドキュメントのドキュメント名を指定します。"マスター"ドキュメントには、ルートとなる :rst:dir:`toctree` ディレクティブが含まれます。デフォルトは ``'contents'`` です。
 
 
 .. confval:: exclude_patterns
@@ -277,7 +277,7 @@
       file that is read.  This is the right place to add substitutions that should
       be available in every file.  An example:
 
-   読み込まれたすべてのソースファイルに挿入されるreSturucturedTextの文字列を設定します。この設定を利用すると、文字列置換をすべてのファイルに対して行いたいときに、うまく動作します:
+   読み込まれたすべてのソースファイルの末尾に挿入されるreSturucturedTextの文字列を設定します。この設定を利用すると、文字列置換をすべてのファイルに対して行いたいときに、うまく動作します:
 
    .. rst_epilog = """
       .. |psf| replace:: Python Software Foundation
@@ -290,6 +290,16 @@
       """
 
    .. versionadded:: 0.6
+
+
+.. confval:: rst_prolog
+
+   .. A string of reStructuredText that will be included at the beginning of every
+      source file that is read.
+
+   読み込まれたすべてのソースファイルの先頭に挿入されるreSturucturedTextの文字列を設定します。
+
+   .. versionadded:: 1.0
 
 
 .. confval:: default_domain
@@ -314,15 +324,15 @@
 
    .. The name of a reST role (builtin or Sphinx extension) to use as the default
       role, that is, for text marked up ```like this```.  This can be set to
-      ``'obj'`` to make ```filter``` a cross-reference to the function "filter".
+      ``'py:obj'`` to make ```filter``` a cross-reference to the function "filter".
       The default is ``None``, which doesn t reassign the default role.
 
    デフォルトロールとして使用する、reSTロールの名前(組み込み、もしくはSphinx拡張)を設定します。これは ```このような``` テキストのマークアップに対して適用されます。これは ``'py:obj'`` というものがあれば、 ```filter``` という関数と、Pythonの "filter" のクロスリファレンスを行います。デフォルトは ``None`` で、デフォルトのロールは適用されません。
 
    .. The default role can always be set within individual documents using the
-      standard reST :dir:`default-role` directive.
+      standard reST :rst:dir:`default-role` directive.
 
-   デフォルトのロールは、reST標準の :dir:`default-role` ディレクティブを使用することによっても個々のドキュメントに対して設定することができます。
+   デフォルトのロールは、reST標準の :rst:dir:`default-role` ディレクティブを使用することによっても個々のドキュメントに対して設定することができます。
 
    .. versionadded:: 0.4
 
@@ -434,6 +444,7 @@
       * ``pt_BR`` -- Brazilian Portuguese
       * ``ru`` -- Russian
       * ``sl`` -- Slovenian
+      * ``tr`` -- Turkish
       * ``uk_UA`` -- Ukrainian
       * ``zh_CN`` -- Simplified Chinese
       * ``zh_TW`` -- Traditional Chinese
@@ -451,6 +462,7 @@
    * ``pt_BR`` -- ブラジルのポーランド語
    * ``ru`` -- ロシア語
    * ``sl`` -- スロベニア語
+   * ``tr`` -- トルコ語
    * ``uk_UA`` -- ウクライナ語
    * ``zh_CN`` -- 簡体字中国語
    * ``zh_TW`` -- 繁体字中国語
@@ -519,17 +531,17 @@
 
    .. A boolean that decides whether module names are prepended to all
       :term:`object` names (for object types where a "module" of some kind is
-      defined), e.g. for :dir:`function` directives.  Default is ``True``.
+      defined), e.g. for :rst:dir:`function` directives.  Default is ``True``.
 
-   モジュール定義がされている場所にある、 :dir:`function` などの :term:`オブジェクト` 名のタイトルのすべてに、モジュール名を付けるかどうかを決めるブール値です。デフォルトは ``True`` です。
+   モジュール定義がされている場所にある、 :rst:dir:`function` などの :term:`オブジェクト` 名のタイトルのすべてに、モジュール名を付けるかどうかを決めるブール値です。デフォルトは ``True`` です。
 
 
 .. confval:: show_authors
 
-   .. A boolean that decides whether :dir:`moduleauthor` and :dir:`sectionauthor`
+   .. A boolean that decides whether :rst:dir:`moduleauthor` and :rst:dir:`sectionauthor`
       directives produce any output in the built files.
 
-   :dir:`moduleauthor` と :dir:`sectionauthor` ディレクティブの出力を、ビルドしたファイルに含めるかどうかのブール値です。
+   :rst:dir:`moduleauthor` と :rst:dir:`sectionauthor` ディレクティブの出力を、ビルドしたファイルに含めるかどうかのブール値です。
 
 
 .. confval:: modindex_common_prefix
@@ -1001,6 +1013,26 @@ HTML出力のオプション
    .. versionadded:: 1.0
 
 
+.. confval:: html_compact_lists
+
+   .. If true, list items containing only a single paragraph will not be rendered
+      with a ``<p>`` element.  This is standard docutils behavior.  Default:
+      ``True``.
+
+   もし真に設定されると、1つのパラグラフのみを含むリストのアイテムは ``<p>`` エレメントを使ってレンダリングされなくなります。これは標準のdocutilsの振る舞いと同じです。デフォルト値は ``True`` です。
+
+   .. versionadded:: 1.0
+
+.. confval:: html_secnumber_suffix
+
+   .. Suffix for section numbers.  Default: ``". "``.  Set to ``" "`` to suppress
+      the final dot on section numbers.
+
+   セクション番号のサフィックスです。デフォルトは ``". "`` です。 ``" "`` を指定すると、セクション番号の末尾のピリオドが表示されなくなります。
+
+   .. versionadded:: 1.0
+
+
 .. confval:: htmlhelp_basename
 
    .. Output file base name for HTML help builder.  Default is ``'pydoc'``.
@@ -1154,7 +1186,6 @@ epub出力のオプション
       nested table of contents may be difficult to navigate.
 
    :file:`toc.ncx` という目次ファイルに含める、セクションタイトルの階層数を指定します。1以上の数値でなければなりません。デフォルト値は ``3`` です。あまり深いと、ユーザが見て辿るのが難しくなることに注意しましょう。
-
 
 
 .. _latex-options:

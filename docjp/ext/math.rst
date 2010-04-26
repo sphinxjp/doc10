@@ -44,7 +44,7 @@ HTMLでは、ネイティブでは数式の記法はサポートされていま�
 
 :mod:`mathbase` は以下の新しいマークアップの要素を定義しています:
 
-.. role:: math
+.. rst:role:: math
 
    .. Role for inline math.  Use like this::
 
@@ -54,7 +54,7 @@ HTMLでは、ネイティブでは数式の記法はサポートされていま�
 
       ピタゴラスによって、 :math:`a^2 + b^2 = c^2` という式が成り立つことが示されました。
 
-.. directive:: math
+.. rst:directive:: math
 
    数式を表示するディレクティブです。この数式は１行丸ごと使って表示されます。
 
@@ -79,7 +79,7 @@ HTMLでは、ネイティブでは数式の記法はサポートされていま�
 
       .. math:: (a + b)^2 = a^2 + 2ab + b^2
 
-   通常は数式には番号は付きません。もしも数式に対して番号をつけたくなった場合には、 ``label`` オプションを使用してください。これが指定されると、数式のラベルを選択できます。この数式のラベルを使ってクロスリファレンスを作成することができます。サンプルを見る場合には :role:`eqref` を参照してください。ナンバリングの形式は出力フォーマットに依存します。
+   通常は数式には番号は付きません。もしも数式に対して番号をつけたくなった場合には、 ``label`` オプションを使用してください。これが指定されると、数式のラベルを選択できます。この数式のラベルを使ってクロスリファレンスを作成することができます。サンプルを見る場合には :rst:role:`eqref` を参照してください。ナンバリングの形式は出力フォーマットに依存します。
 
    .. There is also an option ``nowrap`` that prevents any wrapping of the given
       math in a math environment.  When you give this option, you must make sure
@@ -137,7 +137,7 @@ HTMLでは、ネイティブでは数式の記法はサポートされていま�
                f(x) & = & x^2 + 2xy + y^2
             \end{eqnarray}
 
-.. role:: eq
+.. rst:role:: eq
 
    数式のラベルに対する、クロスリファレンスを行うためのロールです。この機能は、現在では同じドキュメント内でのみ動作します。
 
@@ -314,7 +314,6 @@ jsMath(と必要なフォント)はかなり巨大です。そのため、Sphinx
 
    .. For example, if you put JSMath into the static path of the Sphinx docs, this
       value would be ``jsMath/easy/load.js``.  If you host more than one
-      value would be ``_static/jsMath/easy/load.js``.  If you host more than one
       Sphinx documentation set on one server, it is advisable to install jsMath in
       a shared location.
 

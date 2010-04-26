@@ -24,126 +24,138 @@
 .. module:: sphinx.builders.html
 .. class:: StandaloneHTMLBuilder
 
+
+   .. This is the standard HTML builder.  Its output is a directory with HTML
+      files, complete with style sheets and optionally the reST sources.  There are
+      quite a few configuration values that customize the output of this builder,
+      see the chapter :ref:`html-options` for details.
+
    これは標準的なHTMLビルダーです。
    このビルダーはディレクトリにHTMLファイルと、スタイルシート、追加のreSTソースを出力します。
    このビルダーにはビルダーの出力を変更できる設定値をいくつか持っています。
    詳しくは :ref:`html-options` をご覧ください。
 
+   .. Its name is ``html``.
+
    このビルダーの名前は ``html`` です。
 
-.. This is the standard HTML builder.  Its output is a directory with HTML
-   files, complete with style sheets and optionally the reST sources.  There are
-   quite a few configuration values that customize the output of this builder,
-   see the chapter :ref:`html-options` for details.
-
-   Its name is ``html``.
 
 .. class:: DirectoryHTMLBuilder
 
+   .. This is a subclass of the standard HTML builder.  Its output is a directory
+      with HTML files, where each file is called ``index.html`` and placed in a
+      subdirectory named like its page name.  For example, the document
+      ``markup/rest.rst`` will not result in an output file ``markup/rest.html``,
+      but ``markup/rest/index.html``.  When generating links between pages, the
+      ``index.html`` is omitted, so that the URL would look like ``markup/rest/``.
+
   このクラスは、標準のHTMLビルダーのサブクラスです。これは\ ``index.html`` \という名前のHTMLファイルと一緒にディレクトリを出力します。そのときに、そのページ名がディレクトリの名前になります。例えば、\ ``markup/rest.rst``\ というファイルがあるとすると、\  ``markup/rest.html``\ というファイルが出力されるのではなく、\ ``markup/rest/index.html``\ というファイルが出力されます。ページ間のリンクが生成される場合には、末尾の\ ``index.html``\ を省いて、\  ``markup/rest/``\ というようなURLが生成されます。
+
+   .. Its name is ``dirhtml``.
 
    このビルダーの名前は\ ``dirhtml``\ になります。
 
    .. versionadded:: 0.6
 
-.. This is a subclass of the standard HTML builder.  Its output is a directory
-   with HTML files, where each file is called ``index.html`` and placed in a
-   subdirectory named like its page name.  For example, the document
-   ``markup/rest.rst`` will not result in an output file ``markup/rest.html``,
-   but ``markup/rest/index.html``.  When generating links between pages, the
-   ``index.html`` is omitted, so that the URL would look like ``markup/rest/``.
-
-   Its name is ``dirhtml``.
-
-   .. versionadded:: 0.6
 
 .. class:: SingleFileHTMLBuilder
+
+   .. This is an HTML builder that combines the whole project in one output file.
+      (Obviously this only works with smaller projects.)  The file is named like
+      the master document.  No indices will be generated.
 
    これは、プロジェクト全体のファイルを結合して、1ファイルにして出力するHTMLビルダーです。
    (これは小さなプロジェクトでうまく動作します。) このファイルは、マスタードキュメントに似た名前になります。
    また、索引は生成されません。
 
+   .. Its name is ``singlehtml``.
+
    このビルダーの名前は ``singlehtml`` になります。
 
    .. versionadded:: 1.0
 
-.. This is an HTML builder that combines the whole project in one output file.
-   (Obviously this only works with smaller projects.)  The file is named like
-   the master document.  No indices will be generated.
-
-   Its name is ``singlehtml``.
-
-   .. versionadded:: 1.0
 
 .. module:: sphinx.builders.htmlhelp
 .. class:: HTMLHelpBuilder
 
+   .. This builder produces the same output as the standalone HTML builder, but
+      also generates HTML Help support files that allow the Microsoft HTML Help
+      Workshop to compile them into a CHM file.
+
    このビルダーは標準のHTMLビルダーと同じものを出力しますが、MicrosoftのHTML Help Workshopで使用できる、HTMLヘルプのサポートファイルも生成します。これらの入力をHTML Help Workshop上でコンパイルすると、CHMファイルが生成されます。
+
+   .. Its name is ``htmlhelp``.
 
    このビルダーの名前は\ ``htmlhelp``\ になります。
 
-.. This builder produces the same output as the standalone HTML builder, but
-   also generates HTML Help support files that allow the Microsoft HTML Help
-   Workshop to compile them into a CHM file.
-
-   Its name is ``htmlhelp``.
 
 .. module:: sphinx.builders.qthelp
 .. class:: QtHelpBuilder
 
+   .. This builder produces the same output as the standalone HTML builder, but
+      also generates Qt help collection support files that allow
+      the Qt collection generator to compile them.
+
    このビルダーは標準のHTMLビルダーと同じものを出力しますが、 `Qt help`_ collectionを使ってコンパイルするのに必要なサポートファイル群も一緒に出力します。
+
+   .. Its name is ``qthelp``.
 
    このビルダーの名前は\ ``qthelp``\ になります。
 
    .. _Qt help: http://doc.trolltech.com/4.6/qthelp-framework.html
 
-.. This builder produces the same output as the standalone HTML builder, but
-   also generates Qt help collection support files that allow
-   the Qt collection generator to compile them.
-
-   Its name is ``qthelp``.
-
 .. module:: sphinx.builders.devhelp
 .. class:: DevhelpBuilder
 
+   .. This builder produces the same output as the standalone HTML builder, but
+      also generates `GNOME Devhelp <http://live.gnome.org/devhelp>`__ 
+      support file that allows the GNOME Devhelp reader to view them.
+
    このビルダーは標準のHTMLビルダーと同じものを出力しますが、 `GNOME Devhelp <http://live.gnome.org/devhelp>`__ を使ってコンパイルするのに必要なサポートファイル群も一緒に出力します。これらのファイルはGNOME Devhelp readerを使って見ることができます。
+
+   .. Its name is ``devhelp``.
 
    このビルダーの名前は\ ``devhelp``\ になります。
 
 
-.. This builder produces the same output as the standalone HTML builder, but
-   also generates `GNOME Devhelp <http://live.gnome.org/devhelp>`__ 
-   support file that allows the GNOME Devhelp reader to view them.
-
-   Its name is ``devhelp``.
-
 .. module:: sphinx.builders.epub
 .. class:: EpubBuilder
 
+   .. This builder produces the same output as the standalone HTML builder, but
+      also generates an *epub* file for ebook readers.  See :ref:`epub-faq` for
+      details about it.  For definition of the epub format, have a look at
+      `<http://www.idpf.org/specs.htm>`_ or `<http://en.wikipedia.org/wiki/EPUB>`_
+
    このビルダーはstandaloneのHTMLビルダーと同じものを出力しますが、電子ブックリーダーのための、 *epub* ファイルも一緒に生成します。詳しくは :ref:`epub-faq` を参照してください。epubフォーマットの定義については `<http://www.idpf.org/specs.htm>`_ もしくは `<http://en.wikipedia.org/wiki/EPUB>`_ を参照してください。
+
+   .. Some ebook readers do not show the link targets of references.  Therefore
+      this builder adds the targets after the link when necessary.  The display
+      of the URLs can be customized by adding CSS rules for the class
+      ``link-target``.
 
    電子ブックリーダーによっては、参照のリンクターゲットが表示されない場合があります。そのため、必要に応じて、このビルダーはリンクの後ろにターゲットを追加します。URLの表示は、 ``link-target`` クラスをCSSのルールに追加することで、カスタマイズすることができます。
 
+   .. Its name is ``epub``.
+
    このビルダーの名前は\ ``epub``\ になります。
 
-.. This builder produces the same output as the standalone HTML builder, but
-   also generates an *epub* file for ebook readers.  See :ref:`epub-faq` for
-   details about it.  For definition of the epub format, have a look at
-   `<http://www.idpf.org/specs.htm>`_ or `<http://en.wikipedia.org/wiki/EPUB>`_
-
-   Some ebook readers do not show the link targets of references.  Therefore
-   this builder adds the targets after the link when necessary.  The display
-   of the URLs can be customized by adding CSS rules for the class
-   ``link-target``.
-
-   Its name is ``epub``.
 
 .. module:: sphinx.builders.latex
 .. class:: LaTeXBuilder
 
+   .. This builder produces a bunch of LaTeX files in the output directory.  You
+      have to specify which documents are to be included in which LaTeX files via
+      the :confval:`latex_documents` configuration value.  There are a few
+      configuration values that customize the output of this builder, see the
+      chapter :ref:`latex-options` for details.
+
    このビルダーは出力フォルダ内に、LaTeXのファイル群を生成します。どのドキュメントを含むかを、 :confval:`latex_documents` の設定値を使って設定します。このビルダーの出力をカスタマイズするための設定値はいくつかあります。詳しくは :ref:`latex-options` の章を参照してください。
 
    .. note::
+
+      .. The produced LaTeX file uses several LaTeX packages that may not be
+         present in a "minimal" TeX distribution installation.  For TeXLive,
+         the following packages need to be installed:
 
       生成されるLaTeXファイルは、最低限のTeXディストリビューションいくつかのLaTeXパッケージを使用しています。例えば、TeXLiveでは以下のパッケージをインストールする必要があります。
 
@@ -151,81 +163,70 @@
       * latex-extra
       * fonts-recommended
 
+   .. Its name is ``latex``.   
+
    このビルダーの名前は\ ``latex``\ です。
 
+   .. Note that a direct PDF builder using ReportLab is available in `rst2pdf
+      <http://rst2pdf.googlecode.com>`_ version 0.12 or greater.  You need to add
+      ``'rst2pdf.pdfbuilder'`` to your :confval:`extensions` to enable it, its name is
+      ``pdf``.  Refer to the `rst2pdf manual
+      <http://lateral.netmanagers.com.ar/static/manual.pdf>`_ for details.
+
    `rst2pdf <http://rst2pdf.googlecode.com>`_ のバージョン 0.12以降を使うと、ReportLabを使用して、PDFを直接出力するビルダーが利用できます。これを使用するためには、 :confval:`extensions` に ``'rst2pdf.pdfbuilder'`` を追加して、ビルダー名 ``pdf`` を指定してビルドします。詳しくは、 `rst2pdfのマニュアル <http://lateral.netmanagers.com.ar/static/manual.pdf>`_ を参照してください。
-
-.. This builder produces a bunch of LaTeX files in the output directory.  You
-   have to specify which documents are to be included in which LaTeX files via
-   the :confval:`latex_documents` configuration value.  There are a few
-   configuration values that customize the output of this builder, see the
-   chapter :ref:`latex-options` for details.
-
-   .. note::
-
-      The produced LaTeX file uses several LaTeX packages that may not be
-      present in a "minimal" TeX distribution installation.  For TeXLive,
-      the following packages need to be installed:
-
-      * latex-recommended
-      * latex-extra
-      * fonts-recommended
-
-   Its name is ``latex``.
-
-   Note that a direct PDF builder using ReportLab is available in `rst2pdf
-   <http://rst2pdf.googlecode.com>`_ version 0.12 or greater.  You need to add
-   ``'rst2pdf.pdfbuilder'`` to your :confval:`extensions` to enable it, its name is
-   ``pdf``.  Refer to the `rst2pdf manual
-   <http://lateral.netmanagers.com.ar/static/manual.pdf>`_ for details.
 
 
 .. module:: sphinx.builders.text
 .. class:: TextBuilder
 
+   .. This builder produces a text file for each reST file -- this is almost the
+      same as the reST source, but with much of the markup stripped for better
+      readability.
+
    このビルダーはそれぞれのreSTファイルからテキストファイルを生成します。多くのマークアップが読みやすさのために落とされていますが、ほぼソースのreSTと同じです。
+
+   .. Its name is ``text``.
 
    このビルダーの名前は\ ``text``\ です。
 
    .. versionadded:: 0.4
 
-.. This builder produces a text file for each reST file -- this is almost the
-   same as the reST source, but with much of the markup stripped for better
-   readability.
-
-   Its name is ``text``.
 
 .. module:: sphinx.builders.manpage
 .. class:: ManualPageBuilder
 
+   .. This builder produces manual pages in the groff format.  You have to specify
+      which documents are to be included in which manual pages via the
+      :confval:`man_pages` configuration value.
+
    このビルダーは、groffフォーマットのmanページを作成します。manページに含めるドキュメントは、 :confval:`man_pages` 設定値を使って指定します。
+
+   .. Its name is ``man``.
 
    このビルダーの名前は ``man`` になります。
 
    .. note::
+
+      .. This builder requires the docutils manual page writer, which is only
+         available as of docutils 0.6.
 
       このビルダーを実行するには、docutilsのmanページライターが必要になるため、
       docutils 0.6以降が必要となります。
 
    .. versionadded:: 1.0
 
-.. This builder produces manual pages in the groff format.  You have to specify
-   which documents are to be included in which manual pages via the
-   :confval:`man_pages` configuration value.
-
-   Its name is ``man``.
-
-   .. note::
-
-      This builder requires the docutils manual page writer, which is only
-      available as of docutils 0.6.
-
-   .. versionadded:: 1.0
 
 .. currentmodule:: sphinx.builders.html
 .. class:: SerializingHTMLBuilder
 
+   .. This builder uses a module that implements the Python serialization API
+      (`pickle`, `simplejson`, `phpserialize`, and others) to dump the generated
+      HTML documentation.  The pickle builder is a subclass of it.
+
    このビルダーはPythonのシリアライズAPI(`pickle`, `simplejson`, `phpserialize` など)を利用して、実装されています。生成されたHTMLをダンプします。 pickleビルダーはこのクラスのサブクラスになります。
+
+   .. A concrete subclass of this builder serializing to the `PHP serialization`_
+      format could look like this:
 
    このビルダーのサブクラスを作成して `PHP シリアライズ`_ フォーマットでシリアライズするには、以下のようにします::
 
@@ -238,133 +239,121 @@
             globalcontext_filename = 'globalcontext.phpdump'
             searchindex_filename = 'searchindex.phpdump'
 
+   .. 
+      _PHP serialization: http://pypi.python.org/pypi/phpserialize
+
    .. _PHP シリアライズ: http://pypi.python.org/pypi/phpserialize
 
    .. attribute:: implementation
+
+      .. A module that implements `dump()`, `load()`, `dumps()` and `loads()`
+         functions that conform to the functions with the same names from the
+         pickle module.  Known modules implementing this interface are
+         `simplejson` (or `json` in Python 2.6), `phpserialize`, `plistlib`,
+         and others.
 
       pickleモジュールと同じ名前の `dump()`, `load()`, `dumps()`,  `loads()` 関数が実装されているモジュールです。このようなインタフェースを実装しているモジュールでよく知られているものには、 `simplejson` (Python2.6では `json`), `phpserialize`, `plistlib` などがあります。
 
    .. attribute:: out_suffix
 
+      .. The suffix for all regular files.
+
       すべての通常のファイルに付くサフィックスです。
 
    .. attribute:: globalcontext_filename
+
+      .. The filename for the file that contains the "global context".  This
+         is a dict with some general configuration values such as the name
+         of the project.
 
       "グローバルコンテキスト"を含むファイルのファイル名です。これは、プロジェクト名などの一般的な設定値を含む辞書です。
 
    .. attribute:: searchindex_filename
 
+      .. The filename for the search index Sphinx generates.
+
       Sphinxが作成する、検索インデックスのファイル名です。
+
+   .. See :ref:`serialization-details` for details about the output format.
 
    出力フォーマットの詳細については、 :ref:`serialization-details` を参照してください。
 
    .. versionadded:: 0.5
 
 
-.. This builder uses a module that implements the Python serialization API
-   (`pickle`, `simplejson`, `phpserialize`, and others) to dump the generated
-   HTML documentation.  The pickle builder is a subclass of it.
-
-   A concreate subclass of this builder serializing to the `PHP serialization`_
-   format could look like this:
-
-   .. _PHP serialization: http://pypi.python.org/pypi/phpserialize
-
-   .. attribute:: implementation
-
-      A module that implements `dump()`, `load()`, `dumps()` and `loads()`
-      functions that conform to the functions with the same names from the
-      pickle module.  Known modules implementing this interface are
-      `simplejson` (or `json` in Python 2.6), `phpserialize`, `plistlib`,
-      and others.
-
-   .. attribute:: out_suffix
-
-      The suffix for all regular files.
-
-   .. attribute:: globalcontext_filename
-
-      The filename for the file that contains the "global context".  This
-      is a dict with some general configuration values such as the name
-      of the project.
-
-   .. attribute:: searchindex_filename
-
-      The filename for the search index Sphinx generates.
-
-   See :ref:`serialization-details` for details about the output format.
-
-
 .. class:: PickleHTMLBuilder
+
+   .. This builder produces a directory with pickle files containing mostly HTML
+      fragments and TOC information, for use of a web application (or custom
+      postprocessing tool) that doesn't use the standard HTML templates.
 
    このビルダーは、pickleでシリアライズしたほとんどのHTML片と、目次情報を含むディレクトリを作成します。このビルダーで生成した結果は、標準のHTMLテンプレートを使用しない、ウェブアプリケーションや、カスタムの後処理ツールで使用することができます。
 
+   .. See :ref:`serialization-details` for details about the output format.
+
    出力フォーマットの詳細については、 :ref:`serialization-details` を参照してください。
+
+   .. Its name is ``pickle``.  (The old name ``web`` still works as well.)
 
    このビルダーの名前は ``pickle`` です。以前の名前である ``web`` もまだ使用できます。
 
+   .. The file suffix is ``.fpickle``.  The global context is called
+      ``globalcontext.pickle``, the search index ``searchindex.pickle``.
+
    ファイルのサフィックスは ``.fpickle`` になります。グローバルコンテキストは ``globalcontext.pickle`` に、検索インデックスは ``searchindex.pickle`` になります。
 
-.. This builder produces a directory with pickle files containing mostly HTML
-   fragments and TOC information, for use of a web application (or custom
-   postprocessing tool) that doesn't use the standard HTML templates.
-
-   See :ref:`serialization-details` for details about the output format.
-
-   Its name is ``pickle``.  (The old name ``web`` still works as well.)
-
-   The file suffix is ``.fpickle``.  The global context is called
-   ``globalcontext.pickle``, the search index ``searchindex.pickle``.
 
 .. class:: JSONHTMLBuilder
 
+   .. This builder produces a directory with JSON files containing mostly HTML
+      fragments and TOC information, for use of a web application (or custom
+      postprocessing tool) that doesn't use the standard HTML templates.
+
    このビルダーは、jsonでシリアライズしたほとんどのHTML片と、目次情報を含むディレクトリを作成します。このビルダーで生成した結果は、標準のHTMLテンプレートを使用しない、ウェブアプリケーションや、カスタムの後処理ツールで使用することができます。
+
+   .. See :ref:`serialization-details` for details about the output format.
 
    出力フォーマットの詳細については、 :ref:`serialization-details` を参照してください。
 
-   このビルダーの名前は ``json`` です。以前の名前である ``web`` もまだ使用できます。
+   .. Its name is ``json``.
+
+   このビルダーの名前は ``json`` です。
+
+   .. The file suffix is ``.fjson``.  The global context is called
+      ``globalcontext.json``, the search index ``searchindex.json``.
 
    ファイルのサフィックスは ``.fjson`` になります。グローバルコンテキストは ``globalcontext.json`` に、検索インデックスは ``searchindex.json`` になります。
 
    .. versionadded:: 0.5
 
-.. This builder produces a directory with JSON files containing mostly HTML
-   fragments and TOC information, for use of a web application (or custom
-   postprocessing tool) that doesn't use the standard HTML templates.
-
-   See :ref:`serialization-details` for details about the output format.
-
-   Its name is ``json``.
-
-   The file suffix is ``.fjson``.  The global context is called
-   ``globalcontext.json``, the search index ``searchindex.json``.
 
 .. module:: sphinx.builders.changes
 .. class:: ChangesBuilder
 
+   .. This builder produces an HTML overview of all :dir:`versionadded`,
+      :dir:`versionchanged` and :dir:`deprecated` directives for the current
+      :confval:`version`.  This is useful to generate a ChangeLog file, for
+      example.
+
    このビルダーは、現在の :confval:`version` の設定値と、 :dir:`versionadded`, :dir:`versionchanged`, :dir:`deprecated` の各ディレクティブの情報から、HTMLを生成します。このビルダーは、例えばChangeLogファイルを生成するのに便利です。
+
+   .. Its name is ``changes``.
 
    このビルダーの名前は ``changes`` です。
 
-.. This builder produces an HTML overview of all :dir:`versionadded`,
-   :dir:`versionchanged` and :dir:`deprecated` directives for the current
-   :confval:`version`.  This is useful to generate a ChangeLog file, for
-   example.
-
-   Its name is ``changes``.
 
 .. module:: sphinx.builders.linkcheck
 .. class:: CheckExternalLinksBuilder
 
+   .. This builder scans all documents for external links, tries to open them with
+      :mod:`urllib2`, and writes an overview which ones are broken and redirected
+      to standard output and to :file:`output.txt` in the output directory.
+
    このビルダーは、すべてのドキュメントの外部リンクをチェックして、 :mod:`urllib2` を使用してきちんと開けるかどうか確認を行います。壊れたリンク、および、リダイレクトされるリンクの情報を、標準出力と、出力ディレクトリの :file:`output.txt` というファイルに出力します。
 
+   .. Its name is ``linkcheck``.
+
    このビルダーの名前は ``linkcheck`` です。
-
-.. This builder scans all documents for external links, tries to open them with
-   :mod:`urllib2`, and writes an overview which ones are broken and redirected
-   to standard output and to :file:`output.txt` in the output directory.
-
-   Its name is ``linkcheck``.
 
 
 .. Built-in Sphinx extensions that offer more builders are:

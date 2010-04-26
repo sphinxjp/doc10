@@ -67,7 +67,7 @@ doctest拡張は4つのディレクティブを提供します。 **グループ
 * もしも何も指定されなかった場合には、\ ``default``\ というグループ名が指定されたとみなします
 * もしも\ ``*``\ が指定されると、そのブロックは\ ``default``\ を含む、すべてのグループに対して割り当てられたものとみなします。そうでなければ、これ以外の場合はグループ名は、カンマ区切りのリストでなければなりません。
 
-.. directive:: .. testsetup:: [グループ]
+.. rst:directive:: .. testsetup:: [グループ]
 
    セットアップのためのコードブロックです。このコードは他のビルダーを使用したときには出力されませんが、それが所属するグループのdoctestが実行される前に実行されます。
 
@@ -75,7 +75,7 @@ doctest拡張は4つのディレクティブを提供します。 **グループ
    but executed before the doctests of the group(s) it belongs to.
 
 
-.. directive:: .. doctest:: [グループ]
+.. rst:directive:: .. doctest:: [グループ]
 
    doctestスタイルのコードブロックです。標準の :mod:`docteset` のフラグを使用すると、ユーザが指定した理想の出力と、実際に出力したものをどのように比較するのか、というのを制御することができます。以下のオプションが使用できます:
 
@@ -137,7 +137,7 @@ doctest拡張は4つのディレクティブを提供します。 **グループ
    output.
 
 
-.. directive:: .. testcode:: [グループ]
+.. rst:directive:: .. testcode:: [グループ]
 
    コード-出力タイプのテストのコードブロックです。
 
@@ -186,9 +186,9 @@ doctest拡張は4つのディレクティブを提供します。 **グループ
       mixing regular output and an exception message in the same snippet, this
       applies to testcode/testoutput as well.
 
-.. directive:: .. testoutput:: [グループ]
+.. rst:directive:: .. testoutput:: [グループ]
 
-   最後に定義された :dir:`testcode` ブロックに対応する出力, もしくは例外メッセージを定義します。
+   最後に定義された :rst:dir:`testcode` ブロックに対応する出力, もしくは例外メッセージを定義します。
 
    このディレクティブは以下の２つのオプションをサポートしています:
 
@@ -209,7 +209,7 @@ doctest拡張は4つのディレクティブを提供します。 **グループ
          出力テキスト.
 
 .. The corresponding output, or the exception message, for the last
-   :dir:`testcode` block.
+   :rst:dir:`testcode` block.
 
    This directive supports two options:
 
@@ -229,10 +229,10 @@ doctest拡張は4つのディレクティブを提供します。 **グループ
 
 
 .. The following is an example for the usage of the directives.  The test via
-   :dir:`doctest` and the test via :dir:`testcode` and :dir:`testoutput` are
+   :rst:dir:`doctest` and the test via :rst:dir:`testcode` and :rst:dir:`testoutput` are
    equivalent. 
 
-以下のコードはこれらのディレクティブの使用方法のサンプルです。 :dir:`doctest` を使用したテストと、 :dir:`testcode` および :dir:`testoutput` の二つで構成されたテストは等価です. ::
+以下のコードはこれらのディレクティブの使用方法のサンプルです。 :rst:dir:`doctest` を使用したテストと、 :rst:dir:`testcode` および :rst:dir:`testoutput` の二つで構成されたテストは等価です. ::
 
    オウムモジュール
    ================
@@ -285,7 +285,21 @@ doctest拡張の動作をカスタマイズする設定がいくつかありま�
 
 .. confval:: doctest_test_doctest_blocks
 
+   .. If this is a nonempty string (the default is ``'default'``), standard reST
+      doctest blocks will be tested too.  They will be assigned to the group name
+      given.
+
    この値に空でない文字列(デフォルトは\ ``'default'``)が設定されると、標準のreSTのdoctestブロックもテストされるようになります。それらのテストには、ここで与えられたグループ名が設定されます。
+
+   .. reST doctest blocks are simply doctests put into a paragraph of their own,
+      like so:
+
+         Some documentation text.
+  
+         >>> print 1
+         1
+  
+         Some more documentation text.
 
    reSTのdoctestブロックは、reSTの中のパラグラフとして単純にdoctestが置かれます::
 
@@ -296,7 +310,23 @@ doctest拡張の動作をカスタマイズする設定がいくつかありま�
 
       追加の何かドキュメント.
 
-   reSTの場合は、ブロックを表現するのに特別な\ ``::``\ は不要です。docutilsは\ ``>>>``\ から始まる行を識別します。そのため、doctestのために追加でインデントを設定する必要はありません。
+   .. (Note that no special ``::`` is used to introduce the doctest block; docutils
+      recognizes them from the leading ``>>>``.  Also, no additional indentation is
+      used, though it doesn't hurt.)
+
+   reSTの場合は、doctestブロックを表現するのに特別な\ ``::``\ は使用されません。docutilsは\ ``>>>``\ から始まる行を識別します。そのため、doctestのために追加でインデントを設定する必要はありません。
+
+   .. If this value is left at its default value, the above snippet is interpreted
+      by the doctest builder exactly like the following::
+
+         Some documentation text.
+
+         .. doctest::
+
+            >>> print 1
+            1
+
+         Some more documentation text.
 
    この設定値がデフォルトのままであったとすると、上記のコード片は、下記のように書いた場合と同じようにdoctestビルダーから解釈されます::
 
@@ -309,45 +339,19 @@ doctest拡張の動作をカスタマイズする設定がいくつかありま�
 
       追加の何かドキュメント.
 
+   .. This feature makes it easy for you to test doctests in docstrings included
+      with the :mod:`~sphinx.ext.autodoc` extension without marking them up with a
+      special directive.
+
    この機能があるおかげで :mod:`~sphinx.ext.autodoc` 拡張を使用して取り込んだdocstring中のdoctestを簡単に実行することができます。特別なディレクティブでマークアップする必要はありません。
 
-   reSTのdoctestブロックでは空白行はパラグラフの境界として使用されるため、そのままでは結果として空行を記述することはできません。削除された\ ``<BLANKLINE>``\ と\ ``# doctest:``\ は、 :dir:`doctest` ブロック内でのみ動作します。
+   .. Note though that you can't have blank lines in reST doctest blocks.  They
+      will be interpreted as one block ending and another one starting.  Also,
+      removal of ``<BLANKLINE>`` and ``# doctest:`` options only works in
+      :rst:dir:`doctest` blocks, though you may set :confval:`trim_doctest_flags` to
+      achieve the latter in all code blocks with Python console content.
 
-.. If this is a nonempty string (the default is ``'default'``), standard reST
-   doctest blocks will be tested too.  They will be assigned to the group name
-   given.
+   reSTのdoctestブロックでは空白行はパラグラフの境界として使用されるため、そのままでは結果として空行を記述することはできません。 :confval:`trim_doctest_flags` を設定して、すべてのコードブロックに対してPythonのコンソール出力を含めることができますが、削除された\ ``<BLANKLINE>``\ と\ ``# doctest:``\ は、 :rst:dir:`doctest` ブロック内でのみ動作します。
 
-   reST doctest blocks are simply doctests put into a paragraph of their own,
-   like so:
 
-      Some documentation text.
 
-      >>> print 1
-      1
-
-      Some more documentation text.
-
-   (Note that no special ``::`` is needed to introduce the block; docutils
-   recognizes it from the leading ``>>>``.  Also, no additional indentation is
-   necessary, though it doesn't hurt.)
-
-   If this value is left at its default value, the above snippet is interpreted
-   by the doctest builder exactly like the following::
-
-      Some documentation text.
-
-      .. doctest::
-
-         >>> print 1
-         1
-
-      Some more documentation text.
-
-   This feature makes it easy for you to test doctests in docstrings included
-   with the :mod:`~sphinx.ext.autodoc` extension without marking them up with a
-   special directive.
-
-   Note though that you can't have blank lines in reST doctest blocks.  They
-   will be interpreted as one block ending and another one starting.  Also,
-   removal of ``<BLANKLINE>`` and ``# doctest:`` options only works in
-   :dir:`doctest` blocks.

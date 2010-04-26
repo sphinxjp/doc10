@@ -17,9 +17,9 @@
 
 この拡張を使用すると、以下の二つのディレクティブが追加されます:
 
-.. directive:: todo
+.. rst:directive:: todo
 
-   このディレクティブは :dir:`note` と同じように使用できます。
+   このディレクティブは :rst:dir:`note` と同じように使用できます。
 
    このディレクティブの内容は :confval:`todo_include_todos` がtrueの場合だけ表示されます。
 
@@ -27,7 +27,7 @@
 
       It will only show up in the output if :confval:`todo_include_todos` is true.
 
-.. directive:: todolist
+.. rst:directive:: todolist
 
    このディレクティブは、全ドキュメントのすべてのtodoディレクティブを含むリストで置換されます。
    :confval:`todo_include_todos` がtrueになったときだけ表示されます。
@@ -44,5 +44,5 @@
 
    もしもこの設定値が\ ``True``\ に設定されると、\ :dir:`todo`\ と\ :dir:`todolist`\ のディレクティブが出力を出すようになります。\ ``False``\ が設定されると何も出力されなくなります。デフォルトは\ ``False``\ です。
 
-   .. If this is ``True``, :dir:`todo` and :dir:`todolist` produce output, else
+   .. If this is ``True``, :rst:dir:`todo` and :rst:dir:`todolist` produce output, else
       they produce nothing.  The default is ``False``.

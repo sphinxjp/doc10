@@ -52,21 +52,21 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 
   ここで設定された言語は、次に ``highlight`` ディレクティブが実行されるまで有効です。
 
-.. * For documents that have to show snippets in different languages, there's also a :dir:`code-block` directive that is given the highlighting language directly::
+.. * For documents that have to show snippets in different languages, there's also a :rst:dir:`code-block` directive that is given the highlighting language directly::
 
 ..     .. code-block:: ruby
 
 ..        Some Ruby code.
 
-..  The directive's alias name :dir:`sourcecode` works as well.
+..  The directive's alias name :rst:dir:`sourcecode` works as well.
 
-* 様々な言語のコード片がドキュメント中に登場する場合には、 :dir:`code-block` ディレクティブを使用すると、その場でハイライトしたい言語を与えることができます::
+* 様々な言語のコード片がドキュメント中に登場する場合には、 :rst:dir:`code-block` ディレクティブを使用すると、その場でハイライトしたい言語を与えることができます::
 
     .. code-block:: ruby
 
        Rubyのプログラム
 
-  このディレクティブのエイリアスの :dir:`sourcecode` も同じように動作します。
+  このディレクティブのエイリアスの :rst:dir:`sourcecode` も同じように動作します。
 
 .. * The valid values for the highlighting language are:
 
@@ -97,9 +97,9 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 行番号
 ^^^^^^
 
-.. If installed, Pygments can generate line numbers for code blocks.  For automatically-highlighted blocks (those started by ``::``), line numbers must be switched on in a :dir:`highlight` directive, with the ``linenothreshold`` option
+.. If installed, Pygments can generate line numbers for code blocks.  For automatically-highlighted blocks (those started by ``::``), line numbers must be switched on in a :rst:dir:`highlight` directive, with the ``linenothreshold`` option
 
-もしインストールされていれば、Pygmentsはコードブロックに対して行番号を発生させることができます。自動ハイライトブロック( ``::`` で開始されるもの)を使用している場合には、 :dir:`highlight` ディレクティブの中で、 ``linenothreshold`` オプションを使って機能を有効にする必要があります::
+もしインストールされていれば、Pygmentsはコードブロックに対して行番号を発生させることができます。自動ハイライトブロック( ``::`` で開始されるもの)を使用している場合には、 :rst:dir:`highlight` ディレクティブの中で、 ``linenothreshold`` オプションを使って機能を有効にする必要があります::
 
    .. highlight:: python
       :linenothreshold: 5
@@ -108,9 +108,9 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 
 この設定では5行以上あるコードブロックのすべてに対して、行番号が生成されるようになります。
 
-.. For :dir:`code-block` blocks, a ``linenos`` flag option can be given to switch on line numbers for the individual block::
+.. For :rst:dir:`code-block` blocks, a ``linenos`` flag option can be given to switch on line numbers for the individual block::
 
-:dir:`code-block` ブロックを使用している場合には、 ``linenos`` フラグオプションを使用すると、個別のブロックの行番号表示を有効にできます::
+:rst:dir:`code-block` ブロックを使用している場合には、 ``linenos`` フラグオプションを使用すると、個別のブロックの行番号表示を有効にできます::
 
    .. code-block:: ruby
       :linenos:
@@ -126,14 +126,30 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 インクルード
 ^^^^^^^^^^^^
 
-.. .. directive:: .. literalinclude:: filename
+..
+   .. rst:directive:: .. literalinclude:: filename
 
-..   Longer displays of verbatim text may be included by storing the example text in an external file containing only plain text.  The file may be included using the ``literalinclude`` directive. [1]_ For example, to include the Python source file
-..   :file:`example.py`, use::
+.. rst:directive:: .. literalinclude:: ファイル名
 
-..      .. literalinclude:: example.py
+   .. Longer displays of verbatim text may be included by storing the example text in 
+      an external file containing only plain text.  The file may be included using the 
+      ``literalinclude`` directive. [1]_ For example, to include the Python source file
+      :file:`example.py`, use::
 
-..   The file name is usually relative to the current file's path.  However, if it is absolute (starting with ``/``), it is relative to the top source directory.
+         .. literalinclude:: example.py
+
+   プレーンテキスト形式で外部ファイルとして保存指定あるサンプルのテキストを引用して表示することもできます。長いソースコードを正確にそのまま表示したい場合に便利です。ファイルをインクルードするには、 ``literalinclude`` ディレクティブを使用します。 [1]_ 例えば、 :file:`example.py` というPythonソースコードをインクルードするには以下のようにします::
+
+      .. literalinclude:: example.py
+
+   .. The file name is usually relative to the current file's path.  However, if it 
+      is absolute (starting with ``/``), it is relative to the top source 
+      directory.
+
+   Tabs in the input are expanded if you give a ``tab-width`` option with the
+   desired tab width.
+
+
 
 ..   The directive also supports the ``linenos`` flag option to switch on line numbers, and a ``language`` option to select a language different from the current file's standard language.  Example with options::
 
@@ -172,13 +188,9 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 ..      The ``pyobject``, ``lines``, ``start-after`` and ``end-before`` options,
 ..      as well as support for absolute filenames.
 
-.. directive:: .. literalinclude:: ファイル名
 
-   プレーンテキスト形式で外部ファイルとして保存指定あるサンプルのテキストを引用して表示することもできます。長いソースコードを正確にそのまま表示したい場合に便利です。ファイルをインクルードするには、 ``literalinclude`` ディレクティブを使用します。 [1]_ 例えば、Pythonソースコードをインクルードするには以下のようにします。
 
-   :file:`example.py`, を使用する::
 
-      .. literalinclude:: example.py
 
    ソースコードのファイルは通常、現在のパスからの相対パスで指定します。 ``/`` から開始されているときはトップのソースディレクトリからのパス指定をすることができます。
 
