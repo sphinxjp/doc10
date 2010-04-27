@@ -645,11 +645,15 @@ reSTは"置換"(:rstref:`ref <substitution-definitions>`)をサポートして�
 
    .. |name| replace:: リプレースされる *テキスト*
 
-+or this::
-+
-+   .. |caution| image:: warning.png
-+                :alt: Warning!
-+
+.. or this::
+
+   .. |caution| image:: warning.png
+                :alt: Warning!
+
+もしくはこのように書きます::
+
+   .. |caution| image:: warning.png
+                :alt: 警告!
 
 .. See the :rstref:`reST reference for substitutions <substitution-definitions>`
    for details.
