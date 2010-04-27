@@ -387,7 +387,7 @@
    just as the source files are.  They unserialize to a dictionary (or dictionary
    like structure) with these keys:
 
-ソースファイルごとに出力されるファイルは :attr:`~SerializingHTMLBuilder.out_suffix` で指定された拡張子を持ち、ソースファイルとおなじようなディレクトリ構成で書き出されます。これらのファイルは以下のようなキーを持つ辞書、あるいは辞書のようなオブジェクトとして復元することが可能です。
+ソースファイルごとに出力されるファイルは :attr:`~SerializingHTMLBuilder.out_suffix` で指定された拡張子を持ち、ソースファイルと同様のディレクトリ構成で書き出されます。これらのファイルは以下のようなキーを持つ辞書、あるいは辞書のようなオブジェクトとして復元することが可能です。
 
 ``body``
    HTMLの本体が格納されています。HTMLトランスレータを利用してレンダリングされたものになります。

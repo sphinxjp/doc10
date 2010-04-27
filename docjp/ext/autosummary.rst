@@ -20,7 +20,7 @@
    especially useful when your docstrings are long and detailed, and putting each
    one of them on a separate page makes them easier to read.
 
-この拡張機能は、Epydocや他のAPIドキュメント生成ツールような、関数、メソッド、属性のサマリーのリストを生成します。この機能は、作成中のシステムのdocstringが長く、詳細まで記述されていて、読みやすくするためにページを分けて出力されている場合に便利です。
+この拡張機能は、Epydocや他のAPIドキュメント生成ツールのような、関数、メソッド、属性のサマリーのリストを生成します。この機能は、作成中のシステムのdocstringが長く、詳細まで記述されていて、読みやすくするためにページを分けて出力されている場合に便利です。
 
 .. The :mod:`sphinx.ext.autosummary` extension does this in two parts:
 

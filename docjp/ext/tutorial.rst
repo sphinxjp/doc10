@@ -178,7 +178,7 @@ setup関数
 .. The calls in this function refer to classes and functions not yet written.  What
    the individual calls do is the following:
 
-この関数のなかで参照されているクラスと関数の中にはまだ説明していないものもあります。呼ばれているものが個々に何をしているか、というのを説明していきます:
+この関数の中で参照されているクラスと関数の中には、まだ説明していないものもあります。呼ばれているものが個々に何をしているか、というのを順番に説明していきます:
 
 .. * :meth:`~Sphinx.add_config_value` lets Sphinx know that it should recognize the
      new *config value* ``todo_include_todos``, whose default value should be
@@ -397,7 +397,7 @@ Admonition(勧告)は標準のdocutils関数(docutilsのバージョン間の互
    ``todo_all_todos`` list.  If there are todos left in the document, they will be
    added again during parsing.
 
-ソースファイルの中から情報を取り出し、環境の中に格納しましたが、これは永続化されます。そのため、ソースファイルが変更されると古い情報になってしまう可能性があります。そのため、それぞれのソースファイルを読み込む前に、環境の記録をクリアしています。 :event:`env-purge-doc` イベントは、拡張機能の中でそのような作業を行うのに適した場所になりｍさう。ここでは\ ``todo_all_todos``\ のリストの中の項目のうち、ドキュメントの名前(``docname``)がマッチしたものを削除しています。もしもドキュメント内のToDoが残っていたとしたら、パース時に重複して追加されてしまいます。
+ソースファイルの中から情報を取り出し、環境の中に格納しましたが、これは永続化されます。そのため、ソースファイルが変更されると古い情報になってしまう可能性があります。そのため、それぞれのソースファイルを読み込む前に、環境の記録をクリアしています。 :event:`env-purge-doc` イベントは、拡張機能の中でそのような作業を行うのに適した場所になります。ここでは\ ``todo_all_todos``\ のリストの中の項目のうち、ドキュメントの名前(``docname``)がマッチしたものを削除しています。もしもドキュメント内のToDoが残っていたとしたら、パース時に重複して追加されてしまいます。
 
 .. The other handler belongs to the :event:`doctree-resolved` event.  This event is
    emitted at the end of phase 3 and allows custom resolving to be done:

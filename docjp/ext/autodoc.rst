@@ -540,7 +540,7 @@ autodocでは以下のイベントを発行することで、指定されたメ�
       documentation.  The member is excluded if a handler returns ``True``.  It is
       included if the handler returns ``False``.
 
-   autodocがメンバーをドキュメントに含めるかどうかを決定するときに呼ばれます。もしもこのハンドラーが\ ``True``\ を返すとメンバーのドキュメントははずされます。\ ``False``\ を返すと含まれるようになります。
+   autodocがメンバーをドキュメントに含めるかどうかを決定するときに呼ばれます。もしもこのハンドラーが\ ``True``\ を返すとメンバーのドキュメントは外されます。\ ``False``\ を返すと含まれるようになります。
 
    .. :param app: the Sphinx application object
       :param what: the type of the object which the docstring belongs to (one of
