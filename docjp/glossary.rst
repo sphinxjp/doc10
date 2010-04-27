@@ -117,7 +117,7 @@
    .. configuration directory
        The directory containing :file:`conf.py`.  By default, this is the same as the :term:`source directory`, but can be set differently with the **-c** command-line option.
 
-   コンフィグレーションディレクトリ
+   設定ディレクトリ
       :file:`conf.py` を含むディレクトリ。デフォルトでは :term:`ソースディレクトリ` と同じですが、 **-c** コマンドラインオプションを使用することで変更することができます。
 
 
