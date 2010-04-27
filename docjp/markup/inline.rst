@@ -159,16 +159,16 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
 
 .. rst:role:: doc
 
-..   Link to the specified document; the document name can be specified in
-..   absolute or relative fashion.  For example, if the reference
-..   ``:doc:`parrot``` occurs in the document ``sketches/index``, then the link
-..   refers to ``sketches/parrot``.  If the reference is ``:doc:`/people``` or
-..   ``:doc:`../people```, the link refers to ``people``.
-
-..   If no explicit link text is given (like usual: ``:doc:`Monty Python members
-..   </people>```), the link caption will be the title of the given document.
+   .. Link to the specified document; the document name can be specified in
+      absolute or relative fashion.  For example, if the reference
+      ``:doc:`parrot``` occurs in the document ``sketches/index``, then the link
+      refers to ``sketches/parrot``.  If the reference is ``:doc:`/people``` or
+      ``:doc:`../people```, the link refers to ``people``.
 
    絶対/相対のどちらかの形式でドキュメント名を指定することで、特定のドキュメントに対してリンクを張ることができます。例えば、 ``:doc:`parrot``` という参照が ``sketches/index`` というファイルの中にあったとすると、 ``skethes/parrot`` に対するリンクとなります。もし参照が ``:doc:`/people``` もしくは ``:doc:`../people``` という形式で書かれている場合には ``people`` に対するリンクが作成されます。
+
+   .. If no explicit link text is given (like usual: ``:doc:`Monty Python members
+      </people>```), the link caption will be the title of the given document.
 
    ``:doc:`Monty Python members </people>``` という形式で、明示的にリンクテキストを指定することができますが、もし明示的なリンクテキストが与えられなかった場合には指定されたドキュメントのタイトルがリンクテキストとなります。
 
@@ -182,36 +182,35 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
 
 .. rst:role:: download
 
+   .. This role lets you link to files within your source tree that are not reST
+      documents that can be viewed, but files that can be downloaded.
+
    このロールは表示可能なreST形式ではなく、ソースツリーに存在するその他の形式のファイルへのリンクを張って、ファイルをダウンロードできるようにするときに使用します。
 
+   .. When you use this role, the referenced file is automatically marked for
+      inclusion in the output when building (obviously, for HTML output only).
+      All downloadable files are put into the ``_downloads`` subdirectory of the
+      output directory; duplicate filenames are handled.
+
    このロールを使用すると、HTML出力時に、参照されたファイルはビルド時に自動的に出力ディレクトリにコピーされることになります。すべてのダウンロード可能なファイルは出力ディレクトリ中の ``_downloads`` サブディレクトリ出力されます。重複した名前のファイルがあっても扱うことができます。
+
+   .. An example
+      See :download:`this example script <../example.py>`.
 
    サンプル::
    
       :download:`このサンプルスクリプト <../example.py>` を参照してください
 
+   .. The given filename is usually relative to the directory the current sourc
+      file is contained in, but if it absolute (starting with ``/``), it is taken
+      as relative to the top source directory.
+
    与えられたファイル名は通常、そのロールが書かれているソースファイルからの相対ディレクトリで指定されますが、もし絶対パス(``/`` で始まる)の場合には、トップのソースディレクトリからの相対パスとして見られます。
 
+   .. The ``example.py`` file will be copied to the output directory, and a
+      suitable link generated to it.
+
    ``example.py`` ファイルは出力ディレクトリにコピーされ、適切なリンクが生成されます。
-
-..   This role lets you link to files within your source tree that are not reST
-..   documents that can be viewed, but files that can be downloaded.
-
-..   When you use this role, the referenced file is automatically marked for
-..   inclusion in the output when building (obviously, for HTML output only).
-..   All downloadable files are put into the ``_downloads`` subdirectory of the
-..   output directory; duplicate filenames are handled.
-
-..   An example
-
-..      See :download:`this example script <../example.py>`.
-
-..   The given filename is usually relative to the directory the current sourc
-..   file is contained in, but if it absolute (starting with ``/``), it is taken
-..   as relative to the top source directory.
-
-..   The ``example.py`` file will be copied to the output directory, and a
-..   suitable link generated to it.
 
 
 .. Other semantic markup
@@ -384,8 +383,8 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
    .. An environment variable.  Index entries are generated.  Also generates a link 
       to the matching :rst:dir:`envvar` directive, if it exists.
 
-
    環境変数です。エントリーのインデックスが作成されます。もし :rst:dir:`envvar` ディレクティブがあれば、それへのリンクが作成されます。
+
 
 .. rst:role:: token
 

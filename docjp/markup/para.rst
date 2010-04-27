@@ -14,7 +14,7 @@
 
 これらのディレクティブは短いパラグラフ(段落)を作成します。通常のテキスト同様、情報の固まりに対して使用できます。
 
-.. directive:: .. note::
+.. rst:directive:: .. note::
 
    .. An especially important bit of information about an API that a user should be 
       aware of when using whatever bit of API the note pertains to.  The content of 
@@ -35,18 +35,18 @@
 
 
 
-.. directive:: .. warning::
+.. rst:directive:: .. warning::
 
    .. An important bit of information about an API that a user should be very aware 
       of when using whatever bit of API the warning pertains to.  The content of 
       the directive should be written in complete sentences and include all 
-      appropriate punctuation. This differs from :dir:`note` in that it is 
-      recommended over :dir:`note` for information regarding security.
+      appropriate punctuation. This differs from :rst:dir:`note` in that it is 
+      recommended over :rst:dir:`note` for information regarding security.
 
-   noteよりも重要な情報があり、APIを使用する際に、気をつけなければならない警告情報をユーザに伝えるために使用するのに適しています。このディレクティブの中身には、適切に句読点が付いた、完全な文章を書くべきです。 :dir:`note` との違いで言えば、セキュリティに関する情報は :dir:`note` よりもこのディレクティブを使用する方が良いでしょう。
+   noteよりも重要な情報があり、APIを使用する際に、気をつけなければならない警告情報をユーザに伝えるために使用するのに適しています。このディレクティブの中身には、適切に句読点が付いた、完全な文章を書くべきです。 :rst:dir:`note` との違いで言えば、セキュリティに関する情報は :rst:dir:`note` よりもこのディレクティブを使用する方が良いでしょう。
 
 
-.. .. directive:: .. versionadded:: version
+.. .. rst:directive:: .. versionadded:: version
 
 ..   This directive documents the version of the project which added the described feature to the library or C API. When this applies to an entire module, it should be placed at the top of the module section before any prose.
 
@@ -60,7 +60,7 @@
 
 ..   Note that there must be no blank line between the directive head and the explanation; this is to make these blocks visually continuous in the markup.
 
-.. directive:: .. versionadded:: バージョン
+.. rst:directive:: .. versionadded:: バージョン
 
    このディレクティブは説明している機能がライブラリ、もしくはC APIに追加された時のプロジェクトのバージョンについて記述するのに使用します。このディレクティブがモジュール全体に対して適用する場合には、モジュールセクションの先頭の、文章が始まる前の位置に置くべきです。
 
@@ -77,34 +77,34 @@
 
 
 .. 
-   .. directive:: .. versionchanged:: version
+   .. rst:directive:: .. versionchanged:: version
 
-.. directive:: .. versionchanged:: バージョン
+.. rst:directive:: .. versionchanged:: バージョン
 
-   .. Similar to :dir:`versionadded`, but describes when and what changed in the named 
+   .. Similar to :rst:dir:`versionadded`, but describes when and what changed in the named 
       feature in some way (new parameters, changed side effects, etc.).
 
-   :dir:`versionadded` と似ていますが、現在説明している機能がいつどのように変化したのか(新しい引数、副作用の変更など)を説明するのに使用します。
+   :rst:dir:`versionadded` と似ていますが、現在説明している機能がいつどのように変化したのか(新しい引数、副作用の変更など)を説明するのに使用します。
 
 --------------
 
-.. directive:: .. seealso::
+.. rst:directive:: .. seealso::
 
    .. Many sections include a list of references to module documentation or 
-      external documents.  These lists are created using the :dir:`seealso` 
+      external documents.  These lists are created using the :rst:dir:`seealso` 
       directive.
 
-   多くのセクションがモジュールのドキュメントへの参照やが、外部ドキュメントへの参照を含む場合、このようなリストは :dir:`seealso` ディレクティブを使用して作ることができます。
+   多くのセクションがモジュールのドキュメントへの参照やが、外部ドキュメントへの参照を含む場合、このようなリストは :rst:dir:`seealso` ディレクティブを使用して作ることができます。
 
-   .. The :dir:`seealso` directive is typically placed in a section just before any 
+   .. The :rst:dir:`seealso` directive is typically placed in a section just before any 
       sub-sections.  For the HTML output, it is shown boxed off from the main flow 
       of the text.
 
-   :dir:`seealso` ディレクティブはサブセクションの直前のセクションに置かれることが多いです。HTMLアウトプットにおいては、メインのテキストの流れから離されて、箱に囲まれて表示されます。
+   :rst:dir:`seealso` ディレクティブはサブセクションの直前のセクションに置かれることが多いです。HTMLアウトプットにおいては、メインのテキストの流れから離されて、箱に囲まれて表示されます。
 
-   .. The content of the :dir:`seealso` directive should be a reST definition list.
+   .. The content of the :rst:dir:`seealso` directive should be a reST definition list.
 
-   :dir:`seealso` の中身は、reSTの定義リストを使用しなければなりません。
+   :rst:dir:`seealso` の中身は、reSTの定義リストを使用しなければなりません。
 
    .. Example:
 
@@ -132,7 +132,7 @@
 
    "短縮形"の書き方もサポートされており、以下のように書くことができます::
 
-      .. seealso:: modules :mod:`zipfile`, :mod:`tarfile`
+      .. seealso:: modules :py:mod:`zipfile`, :py:mod:`tarfile`
 
    .. 
       .. versionadded:: 0.5
@@ -143,9 +143,9 @@
 
 
 .. 
-   .. directive:: .. rubric:: title
+   .. rst:directive:: .. rubric:: title
 
-.. directive:: .. rubric:: タイトル
+.. rst:directive:: .. rubric:: タイトル
 
    .. This directive creates a paragraph heading that is not used to create a
       table of contents node.
@@ -154,19 +154,18 @@
 
    .. note::
 
-      .. If the *title* of the rubric is "Footnotes", this rubric is ignored by
-         the LaTeX writer, since it is assumed to only contain footnote
-         definitions and therefore would create an empty heading.
+      .. If the *title* of the rubric is "Footnotes" (or the selected language's
+         equivalent), this rubric is ignored by the LaTeX writer, since it is 
+         assumed to only contain footnote definitions and therefore would create an 
+         empty heading.
 
-      もし rubricディレクティブの *タイトル* が"Footnotes"だった場合には、脚注の定義だけが含まれていると見なして、LaTeXライターでは無視されます。この場合は空の見出しだけが作成されます。
-
-
-
+      もし rubricディレクティブの *タイトル* が"Footnotes"(もしくは選択された言語で指定されている、同様の言葉)だった場合には、脚注の定義だけが含まれていると見なして、LaTeXライターでは無視されます。この場合は空の見出しだけが作成されます。
 
 
-.. directive:: centered
+.. rst:directive:: centered
 
-   .. This directive creates a centered boldfaced line of text.  Use it as follows:
+   .. This directive creates a centered boldfaced line of text.  Use it as 
+      follows:
 
       .. centered:: LICENSE AGREEMENT
 
@@ -175,7 +174,7 @@
       .. centered:: ラインセンス契約
 
 
-.. directive:: hlist
+.. rst:directive:: hlist
 
    このディレクティブは短い文章のリストを含みます。このディレクティブは、水平にも数カラム展開することで、よりコンパクトなリストに変換するか、アイテム間のスペースを小さくします。どちらになるかはビルダー次第です。
 
@@ -209,15 +208,15 @@
 目次のマークアップ
 ------------------
 
-.. The :dir:`toctree` directive, which generates tables of contents of 
+.. The :rst:dir:`toctree` directive, which generates tables of contents of 
    subdocuments, is described in :ref:`toctree-directive`.
 
-サブドキュメントの目次を作る :dir:`toctree` ディレクティブに関しては :ref:`toctree-directive` のドキュメントを読んでください。
+サブドキュメントの目次を作る :rst:dir:`toctree` ディレクティブに関しては :ref:`toctree-directive` のドキュメントを読んでください。
 
-.. For local tables of contents, use the standard reST :rstdir:`contents directive 
+.. For local tables of contents, use the standard reST :rst:dir:`contents directive 
    <contents>`.
 
-ローカルな目次を作成する場合には、標準reSTの :rstdir:`contentsディレクティブ <contents>` ディレクティブを使用してください。
+ローカルな目次を作成する場合には、標準reSTの :rst:dir:`contentsディレクティブ <contents>` ディレクティブを使用してください。
 
 .. Index-generating markup
 .. -----------------------
@@ -237,9 +236,9 @@ Sphinxはすべてのオブジェクトの説明(関数、クラス、属性)か
 しかし、これ以外に明示的に指定するディレクティブもあります。これを使用することで、言語のリファレンスのように、メインの情報のユニットが存在しない情報をドキュメントの中に書いてインデックスのエントリーを作ることができるようになります。より包括的なインデックスを作成することができるようになります。
 
 .. 
-   .. directive:: .. index:: <entries>
+   .. rst:directive:: .. index:: <entries>
 
-.. directive:: .. index:: <エントリー>
+.. rst:directive:: .. index:: <エントリー>
 
    .. This directive contains one or more index entries.  Each entry consists of a 
       type and a value, separated by a colon.
@@ -258,7 +257,6 @@ Sphinxはすべてのオブジェクトの説明(関数、クラス、属性)か
       ---------------------
 
       ...
-
 
    サンプル::
 
@@ -314,10 +312,7 @@ Sphinxはすべてのオブジェクトの説明(関数、クラス、属性)か
       pairと似ていますが ``triple: module; search; path`` は3つのエントリーを作成します。 ``module; search path``, ``search; path, module``, ``path; module search`` が作成されます。
 
    .. module, keyword, operator, object, exception, statement, builtin
-      These all create two index entries.  For example, ``module: hashlib`` 
-      creates the entries ``module; hashlib`` and ``hashlib; module``.
-
-   .. These all create two index entries.  For example, ``module: hashlib``
+      These all create two index entries.  For example, ``module: hashlib``
       creates the entries ``module; hashlib`` and ``hashlib; module``.  (These
       are Python-specific and therefore deprecated.)
 
@@ -340,13 +335,13 @@ Sphinxはすべてのオブジェクトの説明(関数、クラス、属性)か
 
 用語集
 
-.. directive:: .. glossary::
+.. rst:directive:: .. glossary::
 
    .. This directive must contain a reST definition list with terms and 
-      definitions.  The definitions will then be referencable with the :role:`term` 
+      definitions.  The definitions will then be referencable with the :rst:role:`term` 
       role.  
 
-   このディレクティブは用語と定義がリストになった、reST定義リストを含みます。定義は :role:`term` というロールを利用することで参照が可能になります。以下にサンプルを示します::
+   このディレクティブは用語と定義がリストになった、reST定義リストを含みます。定義は :rst:role:`term` というロールを利用することで参照が可能になります。以下にサンプルを示します::
 
    .. Example:
 
@@ -400,9 +395,9 @@ Sphinxはすべてのオブジェクトの説明(関数、クラス、属性)か
 形式がきちんとした文法の規則を表示するための特別なマークアップを利用することができます。マークアップはシンプルに作られています。その代わりに、BNFや、BNFの派生の記法をすべてのモデル化することは目標とされていませんが、文脈自由文法を表現するには十分な機能を持っていて、シンボルを書くと、定義にリンクが張られるようにレンダリングされます。以下のディレクティブがあります:
 
 ..
-   .. directive:: .. productionlist:: [name]
+   .. rst:directive:: .. productionlist:: [name]
 
-.. directive:: .. productionlist:: [名前]
+.. rst:directive:: .. productionlist:: [名前]
 
    .. This directive is used to enclose a group of productions.  Each production is 
       given on a single line and consists of a name, separated by a colon from the 
@@ -412,10 +407,10 @@ Sphinxはすべてのオブジェクトの説明(関数、クラス、属性)か
 
    このディレクティブは文法の規則を表現するためのものです。それぞれの規則は一行で表現され、コロン(:)の前が名前で、その後ろが定義になります。定義を複数行で書くこともできますが、この場合は、それぞれの定義の行の先頭に、最初の行と同じ高さにそろえてコロンを書く必要があります。
 
-   .. The argument to :dir:`productionlist` serves to distinguish different sets of
+   .. The argument to :rst:dir:`productionlist` serves to distinguish different sets of
       production lists that belong to different grammars.
 
-   :dir:`productionlist` に与える名前によって、異なる文法に属する、異なる規則セットのグループと区別することができるようになります。
+   :rst:dir:`productionlist` に与える名前によって、異なる文法に属する、異なる規則セットのグループと区別することができるようになります。
 
    .. Blank lines are not allowed within ``productionlist`` directive arguments.
 
@@ -424,9 +419,9 @@ Sphinxはすべてのオブジェクトの説明(関数、クラス、属性)か
    .. The definition can contain token names which are marked as interpreted text 
       (e.g. ``sum ::= `integer` "+" `integer```) -- this generates cross-references 
       to the productions of these tokens.  Outside of the production list, you can
-      reference to token productions using :role:`token`.
+      reference to token productions using :rst:role:`token`.
 
-   定義には解釈済みのテキストとしてマークされたトークン名を含むことができます。これらのトークンの規則との間にクロスリファレンスが生成されます。(例 ``sum ::= `integer` "+" `integer```) 文法規則のリストその外では、 :role:`token` ロールを使って、文法への参照を取ることができます。
+   定義には解釈済みのテキストとしてマークされたトークン名を含むことができます。これらのトークンの規則との間にクロスリファレンスが生成されます。(例 ``sum ::= `integer` "+" `integer```) 文法規則のリストその外では、 :rst:role:`token` ロールを使って、文法への参照を取ることができます。
 
    .. Note that no further reST parsing is done in the production, so that you 
       don't have to escape ``*`` or ``|`` characters.

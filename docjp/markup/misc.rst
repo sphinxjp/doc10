@@ -65,9 +65,9 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
 --------------------
 
 ..
-  .. directive:: .. sectionauthor:: 名前 <Eメール>
+  .. rst:directive:: .. sectionauthor:: 名前 <Eメール>
 
-.. directive:: .. sectionauthor:: name <email>
+.. rst:directive:: .. sectionauthor:: name <email>
 
    .. Identifies the author of the current section.  The argument should include
       the author's name such that it can be used for presentation and email
@@ -91,16 +91,16 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
       .. sectionauthor:: Guido van Rossum <guido@python.org>
 
 ..
-   .. directive:: .. codeauthor:: name <email>
+   .. rst:directive:: .. codeauthor:: name <email>
 
-.. directive:: .. codeauthor:: 名前 <Eメール>
+.. rst:directive:: .. codeauthor:: 名前 <Eメール>
 
-   .. The :dir:`codeauthor` directive, which can appear multiple times, names the
-      authors of the described code, just like :dir:`sectionauthor` names the
+   .. The :rst:dir:`codeauthor` directive, which can appear multiple times, names the
+      authors of the described code, just like :rst:dir:`sectionauthor` names the
       author(s) of a piece of documentation.  It too only produces output if the
       :confval:`show_authors` configuration value is True.
 
-   :dir:`codeauthor` ディレクティブは、 :dir:`sectionauthor` の名前と同じく、説明しているコードの作者名について、複数人書くことができます。 :confval:`show_authors` 設定値をTrueにしないかぎり、出力はされません。
+   :rst:dir:`codeauthor` ディレクティブは、 :rst:dir:`sectionauthor` の名前と同じく、説明しているコードの作者名について、複数人書くことができます。 :confval:`show_authors` 設定値をTrueにしないかぎり、出力はされません。
 
 
 .. _tags:
@@ -111,7 +111,7 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
 .. Including content based on tags
    -------------------------------
 
-.. .. directive:: .. only:: <expression>
+.. .. rst:directive:: .. only:: <expression>
 
    Include the content of the directive only if the *expression* is true.  The
    expression should consist of tags, like this::
@@ -125,7 +125,7 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
    The format of the current builder (``html``, ``latex`` or ``text``) is always
    set as a tag.
 
-.. directive:: .. only:: <式>
+.. rst:directive:: .. only:: <式>
 
    *<式>* が真のときだけ、ディレクティブの内容をインクルードします。式は以下のようにタグで構成されます。
 
@@ -151,7 +151,7 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
 
 :ref:`標準のreStructuredTextの表 <rst-tables>` を使用すると、HTML出力では非常にきれいな表を作成することができますが、LaTeXで出力すると、ちょっとがっかりしてしまうでしょう。現在の仕様ではカラムを自動で正しく決定するのは簡単ではありません。このような理由から、それをサポートするディレクティブがいくつか用意されています:
 
-.. .. directive:: .. tabularcolumns:: column spec
+.. .. rst:directive:: .. tabularcolumns:: column spec
 
    This directive gives a "column spec" for the next table occurring in the
    source file.  The spec is the second argument to the LaTeX ``tabulary``
@@ -181,7 +181,7 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
 
    .. versionadded:: 0.3
 
-.. directive:: .. tabularcolumns:: カラム 仕様
+.. rst:directive:: .. tabularcolumns:: カラム 仕様
 
    このディレクティブは次に作成するテーブルの "カラム仕様" を設定します。仕様はSphinxがテーブルの変換に使用している、LaTeXの ``tabulary`` パッケージ環境のためのものです。2番目の引数として設定します。以下のような値を設定します::
 
@@ -205,12 +205,12 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
 
 .. warning::
 
-   リテラルブロックを含むテーブルには ``tabulary`` は適用できません。このような場合には、LaTeX標準の ``tabular`` 環境がしようされます。また、 ``p{width}`` を設定しないと、同様な環境は使用することはできません。デフォルトでは、というのは、Sphinxはそのようなテーブルのためには、そのようなカラムを生成します。 :dir:`tabularcolums` ディレクティブを使用することで、テーブルに対して細かい制御ができるようになります。
+   リテラルブロックを含むテーブルには ``tabulary`` は適用できません。このような場合には、LaTeX標準の ``tabular`` 環境がしようされます。また、 ``p{width}`` を設定しないと、同様な環境は使用することはできません。デフォルトでは、というのは、Sphinxはそのようなテーブルのためには、そのようなカラムを生成します。 :rst:dir:`tabularcolums` ディレクティブを使用することで、テーブルに対して細かい制御ができるようになります。
 
 .. Tables that contain literal blocks cannot be set with ``tabulary``.  They are
    therefore set with the standard LaTeX ``tabular`` environment.  Also, the
    verbatim environment used for literal blocks only works in ``p{width}``
    columns, which means that by default, Sphinx generates such column specs for
-   such tables.  Use the :dir:`tabularcolumns` directive to get finer control
+   such tables.  Use the :rst:dir:`tabularcolumns` directive to get finer control
    over such tables.
 
