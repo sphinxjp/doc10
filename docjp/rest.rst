@@ -143,7 +143,7 @@ Sphinxによって追加されたロールに関しては :ref:`inline-markup` �
 .. Nested lists are possible, but be aware that they must be separated from the
    parent list items by blank lines::
 
-テストされたリストも使用することができますが、親のリストとは空白行で区切る必要があります::
+ネストされたリストも使用することができますが、親のリストとは空白行で区切る必要があります::
 
    * これは
    * リストです
@@ -294,7 +294,7 @@ Sphinxによって追加されたロールに関しては :ref:`inline-markup` �
    limited: they must contain more than one row, and the first column cannot
    contain multiple lines.  They look like this:
 
-**シンプルテーブル(:rstref:`ref <simple-tables>`)はより書くのが簡単な方法ですが、制限があります。1つ以上の列を含み、最初のカラムには複数行のテキストを書くことができません。次のように表現されます::
+**シンプルテーブル** (:rstref:`ref <simple-tables>`)はより書くのが簡単な方法ですが、制限があります。1つ以上の列を含み、最初のカラムには複数行のテキストを書くことができません。次のように表現されます::
 
    =====  =====  =======
    A      B      A and B
@@ -324,14 +324,18 @@ Sphinxによって追加されたロールに関しては :ref:`inline-markup` �
 
 ```リンクテキスト <http://ターゲットURL>`_`` という書くことで、外部のウェブサイトへのリンクを埋め込むことができます。もしリンクテキストがウェブのアドレスである場合には、特別なマークアップは必要ありません。パーサーが通常のテキスト中でリンクか、メールアドレスを見つけると、そのままそれにリンクを埋め込んでくれます。
 
-+You can also separate the link and the target definition (:rstref:`ref
-+<hyperlink-targets>`), like this::
-+
-+   This is a paragraph that contains `a link`_.
-+
-+   .. _a link: http://example.com/
-+
-+
+.. You can also separate the link and the target definition (:rstref:`ref
+   <hyperlink-targets>`), like this::
+
+      This is a paragraph that contains `a link`_.
+
+      .. _a link: http://example.com/
+
+次のようにして、ターゲット定義(:rstref:`ref <hyperlink-target>`)と、リンクを分割することもできます::
+
+   このパラグラフは `リンク`_ を含みます。
+
+   .. _リンク: http://example.com
 
 .. Internal links
    ^^^^^^^^^^^^^^
@@ -421,61 +425,112 @@ Sphinxによって追加されたロールに関しては :ref:`inline-markup` �
 
 ディレクティブ(:rstref:`ref <directives>`)は汎用の明示的マークアップです。reSTの拡張のためのメカニズムの一つで、ロールが指定されることがあります。Sphinxはこのディレクティブをかなり多用しています。
 
-+Docutils supports the following directives:
-+
-+* Admonitions: :rstdir:`attention`, :rstdir:`caution`, :rstdir:`danger`,
-+  :rstdir:`error`, :rstdir:`hint`, :rstdir:`important`, :rstdir:`note`,
-+  :rstdir:`tip`, :rstdir:`warning` and the generic :rstdir:`admonition`.
-+  (Most themes style only "note" and "warning" specially.)
-+
-+* Images:
-+
-+  - :rstdir:`image` (see also Images_ below)
-+  - :rstdir:`figure` (an image with caption and optional legend)
-+
-+* Additional body elements:
-+
-+  - :rstdir:`contents` (a local, i.e. for the current file only, table of
-+    contents)
-+  - :rstdir:`container` (a container with a custom class, useful to generate an
-+    outer ``<div>`` in HTML)
-+  - :rstdir:`rubric` (a heading without relation to the document sectioning)
-+  - :rstdir:`topic`, :rstdir:`sidebar` (special highlighted body elements)
-+  - :rstdir:`parsed-literal` (literal block that supports inline markup)
-+  - :rstdir:`epigraph` (a block quote with optional attribution line)
-+  - :rstdir:`highlights`, :rstdir:`pull-quote` (block quotes with their own
-+    class attribute)
-+  - :rstdir:`compound` (a compound paragraph)
-+
-+* Special tables:
-+
-+  - :rstdir:`table` (a table with title)
-+  - :rstdir:`csv-table` (a table generated from comma-separated values)
-+  - :rstdir:`list-table` (a table generated from a list of lists)
-+
-+* Special directives:
-+
-+  - :rstdir:`raw` (include raw target-format markup)
-+  - :rstdir:`include` (include reStructuredText from another file)
-+  - :rstdir:`class` (assign a class attribute to the next element) [1]_
-+
-+* HTML specifics:
-+
-+  - :rstdir:`meta` (generation of HTML ``<meta>`` tags)
-+  - :rstdir:`title` (override document title)
-+
-+* Influencing markup:
-+
-+  - :rstdir:`default-role` (set a new default role)
-+  - :rstdir:`role` (create a new role)
-+
-+  Since these are only per-file, better use Sphinx' facilities for setting the
-+  :confval:`default_role`.
-+
-+Do *not* use the directives :rstdir:`sectnum`, :rstdir:`header` and
-+:rstdir:`footer`.
-+
-+Directives added by Sphinx are described in :ref:`sphinxmarkup`.
+.. Docutils supports the following directives:
+
+Docutilsは次のようなディレクティブを含みます:
+
+.. * Admonitions: :rstdir:`attention`, :rstdir:`caution`, :rstdir:`danger`,
+  :rstdir:`error`, :rstdir:`hint`, :rstdir:`important`, :rstdir:`note`,
+  :rstdir:`tip`, :rstdir:`warning` and the generic :rstdir:`admonition`.
+  (Most themes style only "note" and "warning" specially.)
+
+* 忠告: :rstdir:`attention`, :rstdir:`caution`, :rstdir:`danger`,
+  :rstdir:`error`, :rstdir:`hint`, :rstdir:`important`, :rstdir:`note`,
+  :rstdir:`tip`, :rstdir:`warning` ,および、一般的な用途の :rstdir:`admonition`.
+  (ほとんどのテーマは、"note"と"warning"にだけスタイルを適用します)
+
+.. * Images:
+
+     - :rstdir:`image` (see also Images_ below)
+     - :rstdir:`figure` (an image with caption and optional legend)
+
+* イメージ:
+
+  - :rstdir:`image` (images_ も参照してください)
+  - :rstdir:`figure` (キャプション、反例を含むイメージ)
+
+.. * Additional body elements:
+
+  - :rstdir:`contents` (a local, i.e. for the current file only, table of
+    contents)
+  - :rstdir:`container` (a container with a custom class, useful to generate an
+    outer ``<div>`` in HTML)
+  - :rstdir:`rubric` (a heading without relation to the document sectioning)
+  - :rstdir:`topic`, :rstdir:`sidebar` (special highlighted body elements)
+  - :rstdir:`parsed-literal` (literal block that supports inline markup)
+  - :rstdir:`epigraph` (a block quote with optional attribution line)
+  - :rstdir:`highlights`, :rstdir:`pull-quote` (block quotes with their own
+    class attribute)
+  - :rstdir:`compound` (a compound paragraph)
+
+* 追加の本体要素:
+
+  - :rstdir:`contents` (現在のファイル内だけの目次)
+  - :rstdir:`container` (カスタムのクラスを付加できるコンテナ。HTMLで外部の ``<div>`` を生成するのに便利)
+  - :rstdir:`rubric` (ドキュメントのセクションと関係のない見出し)
+  - :rstdir:`topic`, :rstdir:`sidebar` (特別に強調されたなボディ要素)
+  - :rstdir:`parsed-literal` (インラインマークアップをサポートしたリテラルブロック)
+  - :rstdir:`epigraph` (追加の属性行を付加できるブロック引用)
+  - :rstdir:`highlights`, :rstdir:`pull-quote` (特有のクラス属性を持つブロック引用)
+  - :rstdir:`compound` (複合パラグラフ)
+
+.. * Special tables:
+
+  - :rstdir:`table` (a table with title)
+  - :rstdir:`csv-table` (a table generated from comma-separated values)
+  - :rstdir:`list-table` (a table generated from a list of lists)
+
+* 特別なテーブル:
+
+  - :rstdir:`table` (タイトル付きのテーブル)
+  - :rstdir:`csv-table` (カンマ区切りの値からテーブル生成)
+  - :rstdir:`list-table` (リストのリストからテーブル生成)
+
+.. * Special directives:
+
+  - :rstdir:`raw` (include raw target-format markup)
+  - :rstdir:`include` (include reStructuredText from another file)
+  - :rstdir:`class` (assign a class attribute to the next element) [1]_
+
+* 特別なディレクティブ:
+
+  - :rstdir:`raw` (ターゲットの書式のマークアップを挿入)
+  - :rstdir:`include` (他のファイルからreStructuredTextを取り込み)
+  - :rstdir:`class` (次の要素へのクラス属性の設定) [1]_
+
+.. * HTML specifics:
+
+  - :rstdir:`meta` (generation of HTML ``<meta>`` tags)
+  - :rstdir:`title` (override document title)
+
+* HTML定義
+
+  - :rstdir:`meta` (HTMLの ``<meta>`` タグの生成)
+  - :rstdir:`title` (ドキュメントのタイトルの上書き)
+
+.. * Influencing markup:
+
+  - :rstdir:`default-role` (set a new default role)
+  - :rstdir:`role` (create a new role)
+
+  Since these are only per-file, better use Sphinx' facilities for setting the
+  :confval:`default_role`.
+
+* 疑似命令マークアップ:
+
+  - :rstdir:`default-role` (デフォルトのロールをセット)
+  - :rstdir:`role` (新しいロールの作成)
+
+  これらのマークアップの影響範囲は、そのマークアップが書かれたファイルだけに限定されるため、Sphinxが提供する :confval:`default_role` を設定する方が良いでしょう。
+
+.. Do *not* use the directives :rstdir:`sectnum`, :rstdir:`header` and
+   :rstdir:`footer`.
+
+:rstdir:`sectnum`, :rstdir:`header`, :rstdir:`footer` の3つのディレクティブは使用 **しない** で下さい。
+
+.. Directives added by Sphinx are described in :ref:`sphinxmarkup`.
+
+Sphinxによって追加されたディレクティブに関しては :ref:`sphinxmarkup` を参照してください。
  
 .. Basically, a directive consists of a name, arguments, options and content. 
    (Keep this terminology in mind, it is used in the next chapter describing 
@@ -509,6 +564,8 @@ Sphinxによって追加されたロールに関しては :ref:`inline-markup` �
 
 .. Images
    ------
+
+.. _images:
 
 画像
 --------
@@ -725,21 +782,23 @@ Sphinxはデフォルトの置換をいくつか定義しています。詳し�
 reSTのドキュメントを書いていると、良く遭遇する問題がいくつかあります:
 
 .. * **Separation of inline markup:** As said above, inline markup spans must be
-     separated from the surrounding text by non-word characters, you have to use a
-+  backslash-escaped space to get around that.  See `the reference
-+  <http://docutils.sf.net/docs/ref/rst/restructuredtext.html#inline-markup>`_
-+  for the details.
+     backslash-escaped space to get around that.  See `the reference
+     <http://docutils.sf.net/docs/ref/rst/restructuredtext.html#inline-markup>`_
+     for the details.
 
-* **インラインマークアップの分離:** 上記の説明でも触れていますが、インラインマークアップを付ける領域の前後はテキスト以外の文字(スペース、カッコなど)や、バックスラッシュ(日本語フォントだと円記号)でエスケープしたスペースでくくる必要があります。
+* **インラインマークアップの分離:** 上記の説明でも触れていますが、インラインマークアップを付ける領域の前後はテキスト以外の文字(スペース、カッコなど)や、バックスラッシュ(日本語フォントだと円記号)でエスケープしたスペースでくくる必要があります。詳しくは、 `the reference <http://docutils.sf.net/docs/ref/rst/restructuredtext.html#inline-markup>`_ を参照してください。
 
 .. * **No nested inline markup:** Something like ``*see :func:`foo`*`` is not
      possible.
 
 * **インラインマークアップのネストはできない:** ``*:func:`foo`* 参照`` といった書き方はできません。
 
-+
-+.. rubric:: Footnotes
-+
-+.. [1] When the default domain contains a :rst:dir:`class` directive, this directive
-+       will be shadowed.  Therefore, Sphinx re-exports it as :rst:dir:`rst-class`.
+
+.. .. rubric:: Footnotes
+
+   .. [1] When the default domain contains a :rst:dir:`class` directive, this directive
+          will be shadowed.  Therefore, Sphinx re-exports it as :rst:dir:`rst-class`.
+
+.. rubric:: 脚注
+.. [1] デフォルトドメインに :rst:dir:`class` ディレクティブが存在するため、このディレクティブはそのままでは使用することができません。そのため、Sphinxでは、 :rst:dir:`rst-class` という名前で再定義しています。
 

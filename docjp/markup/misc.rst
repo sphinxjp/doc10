@@ -131,7 +131,7 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
 
       .. only:: html and draft
 
-   未定義のタグはflaseになります。コマンドラインの ``-t`` オプションもしくは :file:`conf.py` によって定義されたタグはtrueとして扱われます。カッコも含めて、ブール演算も使用することができます。 ``html and (latex or draft)`` というような表現がサポートされています。
+   未定義のタグはfalseになります。コマンドラインの ``-t`` オプションもしくは :file:`conf.py` によって定義されたタグはtrueとして扱われます。カッコも含めて、ブール演算も使用することができます。 ``html and (latex or draft)`` というような表現がサポートされています。
 
    現在のビルダーのフォーマットのタグ (``html``, ``latex``, ``text``) は常にタグとしてセットされます。
 
@@ -205,7 +205,7 @@ docutilsは、ファイルの先頭のフィールドリストを "docinfo" と�
 
 .. warning::
 
-   リテラルブロックを含むテーブルには ``tabulary`` は適用できません。このような場合には、LaTeX標準の ``tabular`` 環境がしようされます。また、 ``p{width}`` を設定しないと、同様な環境は使用することはできません。デフォルトでは、というのは、Sphinxはそのようなテーブルのためには、そのようなカラムを生成します。 :rst:dir:`tabularcolums` ディレクティブを使用することで、テーブルに対して細かい制御ができるようになります。
+   リテラルブロックを含むテーブルには ``tabulary`` は適用できません。このような場合には、LaTeX標準の ``tabular`` 環境が使用されます。また、 ``p{width}`` を設定しないと、同様な環境は使用することはできません。デフォルトでは、というのは、Sphinxはそのようなテーブルのためには、そのようなカラムを生成します。 :rst:dir:`tabularcolums` ディレクティブを使用することで、テーブルに対して細かい制御ができるようになります。
 
 .. Tables that contain literal blocks cannot be set with ``tabulary``.  They are
    therefore set with the standard LaTeX ``tabular`` environment.  Also, the

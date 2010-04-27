@@ -451,7 +451,7 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
 
 .. describe:: |version|
 
-   ドキュメントが参照しているプロジェクトのリリースと置き換えられます。これは、メジャーバージョン、マイナーバージョンのっぶんだけを含む文字列です。例えば、``2.5.1`` というのがあったとすると、 ``2.5`` になります。 :confval:`version` を使って設定します。 
+   ドキュメントが参照しているプロジェクトのリリースと置き換えられます。これは、メジャーバージョン、マイナーバージョンの定義部分のみを含む文字列です。例えば、``2.5.1`` というのがあったとすると、 ``2.5`` になります。 :confval:`version` を使って設定します。 
 
 ..   Replaced by the project version the documentation refers to. This is meant to consist only of the major and minor version parts, e.g. ``2.5``, even for version 2.5.1.  Set by :confval:`version`.
 
