@@ -136,13 +136,20 @@ Sphinxの最初の第一歩は :program:`sphinx-quickstart` と呼ばれるプ�
    cross-file references in a portable way (which works for all output types) using
    the :role:`ref` role.
 
+Sphinxのソースファイルの中では、標準のreStructuredTextの機能をほとんどそのまま利用することができます。また、Sphinxによっていくつかの機能が追加されています。例えば、 :rst:role:`ref` を使用した、移植可能（すべての出力形式で動作する)な相互ファイル参照を追加することもできます。
+
 
 .. For an example, if you are viewing the HTML version you can look at the source
    for this document -- use the "Show Source" link in the sidebar.
 
-.. |more| See :ref:`rst-primer` for a more in-depth introduction to
+例えば、HTMLバージョンの出力を見ているとすると、サイドバーにある"ソースを見る"というリンクを使用すると、ドキュメントのソースを見ることができます。
+
+..
+   |more| See :ref:`rst-primer` for a more in-depth introduction to
    reStructuredText and :ref:`sphinxmarkup` for a full list of markup added by
    Sphinx.
+
+|more| reStructuredTextのより詳しい説明については、 :ref:`rst-primer` をご覧下さい。また、Sphinxが追加したマークアップの完全なリストは :ref:`sphinxmarkup` を見ると書かれています。
 
 
 .. Running the build
@@ -157,21 +164,34 @@ Sphinxの最初の第一歩は :program:`sphinx-quickstart` と呼ばれるプ�
 
    $ sphinx-build -b html sourcedir builddir
 
+今、いくつかのファイルとコンテンツを追加したとしましょう。それではドキュメントをビルドしてみましょう。ビルドするには :program:`sphinx-build` プログラムを使用します。次のように実行します::
+
+   $ sphinx-build -b html ソースディレクトリ ビルドディレクトリ
+
 .. where *sourcedir* is the :term:`source directory`, and *builddir* is the
    directory in which you want to place the built documentation.  The :option:`-b`
    option selects a builder; in this example Sphinx will build HTML files.
+
+**ソースディレクトリ** は :term:`ソースディレクトリ` を、 **ビルドディレクトリ** はビルドされたドキュメントが置かれるディレクトリを意味します。 :option:`-b` オプションを使用すると、ビルダーを選択することができます。このサンプルではHTMLファイルを出力するビルダーを選択しています。
    
+.. 
    |more| See :ref:`invocation` for all options that :program:`sphinx-build`
    supports.
+
+|more| :program:`sphinx-build` がサポートする完全なオプションは、 :ref:`invocation` を参照してください。
 
 .. However, :program:`sphinx-quickstart` script creates a :file:`Makefile` and a
    :file:`make.bat` which make life even easier for you:  with them you only need
    to run :
 
+しかし、 :program:`sphinx-quickstart` スクリプトは :file:`Makefile` と :file:`make.bat` を生成するため、作業はもっと簡単です。次のように実行するだけで、選択したビルドディレクトリの中にHTMLをビルドすることができます::
+
    $ make html
 
 .. to build HTML docs in the build directory you chose.  Execute ``make`` without
    an argument to see which targets are available.
+
+選択できるターゲットを見るためには、オプションを指定しないで ``make`` を実行してみてください。
 
 
 .. Documenting objects
@@ -185,14 +205,22 @@ Sphinxの最初の第一歩は :program:`sphinx-quickstart` と呼ばれるプ�
    types that belong together, complete with markup to create and reference
    descriptions of these objects.
 
+Sphinxの主な目的にの一つが、簡単に :dfn:`ドメイン` に属する :dfn:`オブジェクト` (非常に一般的な意味です)のドキュメントを書けるようにする、というものです。ドメインというのはお互いに関連する、オブジェクトの型を集めた物です。オブジェクトの説明を作成したり、参照したりすることができます。
+
 .. The most prominent domain is the Python domain.  To e.g. document the Python
    built-in function ``enumerate()``, you would add this to one of your source
-   files::
+   files:
 
    .. py:function:: enumerate(sequence[, start=0])
 
       Return an iterator that yields tuples of an index and an item of the
       *sequence*. (And so on.)
+
+もっとも使用されるドメインは、Pythonドメインです。Pythonの組み込み関数の ``enumerate()`` のドキュメントを書く場合には、作成しているソースに次のように書き加えます::
+
+   .. py:function:: enumerate(sequence[, start=0])
+
+      *sequence* の要素と、そのインデックスのタプルを生成するイテレータを返します(....など)
 
 .. This is rendered like this:
 
@@ -201,12 +229,26 @@ Sphinxの最初の第一歩は :program:`sphinx-quickstart` と呼ばれるプ�
       Return an iterator that yields tuples of an index and an item of the
       *sequence*. (And so on.)
 
+これは次のようにレンダリングされます:
+
+   .. py:function:: enumerate(sequence[, start=0])
+
+      *sequence* の要素と、そのインデックスのタプルを生成するイテレータを返します(....など)
+
 .. The argument of the directive is the :dfn:`signature` of the object you
    describe, the content is the documentation for it.  Multiple signatures can be
    given, each in its own line.
 
+ディレクティブの引数は、説明したいオブジェクトの :dfn:`signature` です。コンテンツには、それに対するドキュメントそのものを書きます。複数のシグネチャを、1行ごとに書くこともできます。
+
 .. The Python domain also happens to be the default domain, so you don't need to
-   prefix the markup with the domain name::
+   prefix the markup with the domain name:
+
+   .. function:: enumerate(sequence[, start=0])
+
+      ...
+
+Pythonドメインはデフォルトのドメインとなるので、次のようにドメインを指定するプリフィックスを付けずに書くこともできます::
 
    .. function:: enumerate(sequence[, start=0])
 
@@ -289,7 +331,8 @@ Autodoc
    Therefore, you must add the appropriate path to :py:data:`sys.path` in your
    :file:`conf.py`.
 
-.. |more| See :mod:`sphinx.ext.autodoc` for the complete description of the
+.. 
+   |more| See :mod:`sphinx.ext.autodoc` for the complete description of the
    features of autodoc.
 
 
@@ -306,12 +349,22 @@ Autodoc
    - Using extensions
    - Writing extensions
 
+- 他の拡張機能(math, intersphinx, viewcode, doctest)
+- 静的ファイル
+- テーマの選択
+- テンプレート
+- 拡張機能の使用方法
+- 拡張機能の書き方
 
-.. rubric:: Footnotes
+.. 
+   .. rubric:: Footnotes
 
-.. [#] This is the usual lay-out.  However, :file:`conf.py` can also live in
-       another directory, the :term:`configuration directory`.  See
-       :ref:`invocation`.
+   .. [#] This is the usual lay-out.  However, :file:`conf.py` can also live in
+          another directory, the :term:`configuration directory`.  See
+          :ref:`invocation`.
+
+.. rubric:: 脚注
+.. [#] これは基本的なレイアウトです。しかし、 :file:`conf.py` を :term:`設定ディレクトリ` と呼ばれる他の場所に置くこともできます。詳しくは :ref:`invocation` をご覧下さい。
 
 .. 
    |more| image:: more.png
