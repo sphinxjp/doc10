@@ -52,13 +52,14 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 
   ここで設定された言語は、次に ``highlight`` ディレクティブが実行されるまで有効です。
 
-.. * For documents that have to show snippets in different languages, there's also a :rst:dir:`code-block` directive that is given the highlighting language directly::
+.. * For documents that have to show snippets in different languages, there's also 
+     a :rst:dir:`code-block` directive that is given the highlighting language directly::
 
-..     .. code-block:: ruby
+     .. code-block:: ruby
 
-..        Some Ruby code.
+        Some Ruby code.
 
-..  The directive's alias name :rst:dir:`sourcecode` works as well.
+     The directive's alias name :rst:dir:`sourcecode` works as well.
 
 * 様々な言語のコード片がドキュメント中に登場する場合には、 :rst:dir:`code-block` ディレクティブを使用すると、その場でハイライトしたい言語を与えることができます::
 
@@ -70,13 +71,13 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 
 .. * The valid values for the highlighting language are:
 
-..  * ``none`` (no highlighting)
-..  * ``python`` (the default when :confval:`highlight_language` isn't set)
-..  * ``guess`` (let Pygments guess the lexer based on contents, only works with
-..    certain well-recognizable languages)
-..  * ``rest``
-..  * ``c``
-..  * ... and any other lexer name that Pygments supports.
+    * ``none`` (no highlighting)
+    * ``python`` (the default when :confval:`highlight_language` isn't set)
+    * ``guess`` (let Pygments guess the lexer based on contents, only works with
+      certain well-recognizable languages)
+    * ``rest``
+    * ``c``
+    * ... and any other lexer name that Pygments supports.
 
 * ハイライトする言語として適切な値は以下の通りです:
 
@@ -97,7 +98,9 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 行番号
 ^^^^^^
 
-.. If installed, Pygments can generate line numbers for code blocks.  For automatically-highlighted blocks (those started by ``::``), line numbers must be switched on in a :rst:dir:`highlight` directive, with the ``linenothreshold`` option
+.. If installed, Pygments can generate line numbers for code blocks.  For 
+   automatically-highlighted blocks (those started by ``::``), line numbers must be 
+   switched on in a :rst:dir:`highlight` directive, with the ``linenothreshold`` option:
 
 もしインストールされていれば、Pygmentsはコードブロックに対して行番号を発生させることができます。自動ハイライトブロック( ``::`` で開始されるもの)を使用している場合には、 :rst:dir:`highlight` ディレクティブの中で、 ``linenothreshold`` オプションを使って機能を有効にする必要があります::
 
@@ -108,7 +111,8 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
 
 この設定では5行以上あるコードブロックのすべてに対して、行番号が生成されるようになります。
 
-.. For :rst:dir:`code-block` blocks, a ``linenos`` flag option can be given to switch on line numbers for the individual block::
+.. For :rst:dir:`code-block` blocks, a ``linenos`` flag option can be given to switch 
+   on line numbers for the individual block::
 
 :rst:dir:`code-block` ブロックを使用している場合には、 ``linenos`` フラグオプションを使用すると、個別のブロックの行番号表示を有効にできます::
 
@@ -146,53 +150,16 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
       is absolute (starting with ``/``), it is relative to the top source 
       directory.
 
-   Tabs in the input are expanded if you give a ``tab-width`` option with the
-   desired tab width.
-
-
-
-..   The directive also supports the ``linenos`` flag option to switch on line numbers, and a ``language`` option to select a language different from the current file's standard language.  Example with options::
-
-..      .. literalinclude:: example.rb
-           :language: ruby
-           :linenos:
-
-..   Include files are assumed to be encoded in the :confval:`source_encoding`. If the file has a different encoding, you can specify it with the ``encoding`` option::
-
-..      .. literalinclude:: example.py
-           :encoding: latin-1
-
-..   The directive also supports including only parts of the file.  If it is a
-     Python module, you can select a class, function or method to include using
-     the ``pyobject`` option::
-
-..      .. literalinclude:: example.py
-..         :pyobject: Timer.start
-
-..   This would only include the code lines belonging to the ``start()`` method in the ``Timer`` class within the file.
-
-..   Alternately, you can specify exactly which lines to include by giving a
-..   ``lines`` option::
-
-..      .. literalinclude:: example.py
-..         :lines: 1,3,5-10,20-
-..   This includes the lines 1, 3, 5 to 10 and lines 20 to the last line.
-
-..   Another way to control which part of the file is included is to use the
-..   ``start-after`` and ``end-before`` options (or only one of them).  If
-..   ``start-after`` is given as a string option, only lines that follow the first line containing that string are included.  If ``end-before`` is given as a string option, only lines that precede the first lines containing that string are included.
-
-..   .. versionadded:: 0.4.3
-..      The ``encoding`` option.
-..   .. versionadded:: 0.6
-..      The ``pyobject``, ``lines``, ``start-after`` and ``end-before`` options,
-..      as well as support for absolute filenames.
-
-
-
-
-
    ソースコードのファイルは通常、現在のパスからの相対パスで指定します。 ``/`` から開始されているときはトップのソースディレクトリからのパス指定をすることができます。
+
+   .. Tabs in the input are expanded if you give a ``tab-width`` option with the
+      desired tab width.
+
+   ``tab-width`` オプションを指定すると、入力ファイル中のタブを希望の幅に展開することができます。
+
+   .. The directive also supports the ``linenos`` flag option to switch on line 
+      numbers, and a ``language`` option to select a language different from the 
+      current file's standard language.  Example with options:
 
    このディレクティブでも、 ``linenos`` フラッグオプションを利用して、行番号表示を有効にすることができます。また、 ``language`` オプションを使うと、ファイルの標準の言語と違う言語を選択することができます。オプションのサンプルを示します::
 
@@ -200,46 +167,71 @@ Pythonのソースコードや、インタラクティブモードのセッシ�
          :language: ruby
          :linenos:
 
+   .. Include files are assumed to be encoded in the :confval:`source_encoding`. 
+      If the file has a different encoding, you can specify it with the 
+      ``encoding`` option::
+
    読み込むファイルは :confval:`source_incodeing` で設定されているエンコードで保存されているものとして処理されます。もし違うエンコーディングのファイルを読み込む場合には ``encoding`` オプションで設定することができます::
 
       .. literalinclude:: example.py
          :encoding: latin-1
+
+   .. The directive also supports including only parts of the file.  If it is a
+      Python module, you can select a class, function or method to include using
+      the ``pyobject`` option::
 
    このディレクティブは、ファイル全体ではなく、一部分だけを読み込むこともサポートしています。もしPythonモジュールの場合には、 ``pyobject`` オプションを使用してクラス、関数、メソッドの単位でインクルードすることもできます::
 
       .. literalinclude:: example.py
          :pyobject: Timer.start
 
+   .. This would only include the code lines belonging to the ``start()`` method in 
+      the ``Timer`` class within the file.
+
    上記のサンプルを書くと、指定されたファイルに含まれる、 ``Timer`` クラスの ``start()`` メソッドに属するコード行だけがドキュメントに挿入されます。
+
+   .. Alternately, you can specify exactly which lines to include by giving a
+      ``lines`` option::
 
    これとは別に、 ``lines`` オプションを使って行番号を正確に指定することでも部分的なインクルードを行うことができます::
 
       .. literalinclude:: example.py
          :lines: 1,3,5-10,20-
 
+   .. This includes the lines 1, 3, 5 to 10 and lines 20 to the last line.
+
    このサンプルはでは、指定されたファイルの 1行目, 3行目, 5〜10行目, そして20行目から最終行までのコードがインクルードされます。
 
    .. Another way to control which part of the file is included is to use the
       ``start-after`` and ``end-before`` options (or only one of them).  If
-      ``start-after`` is given as a string option, only lines that follow the 
-      first
-      line containing that string are included.  If ``end-before`` is given as a
-      string option, only lines that precede the first lines containing that 
-      string
+      ``start-after`` is given as a string option, only lines that follow the first 
+      line containing that string are included.  If ``end-before`` is given as a 
+      string option, only lines that precede the first lines containing that string 
       are included.
 
    どのパートをインクルードするか、というのを制御する別の方法としては、 ``start-after``, ``end-before`` オプションの両方、もしくはどちらか一方を使うものがあります。 もしスタートのオプションとして ``start-after`` にオプションとして文字列が指定されると、その文字列を含む行から始まるコードがインクルードされます。 ``end-before`` にオプションとして文字列が指定されると、指定された文字列が含まれる行の前の部分がインクルードされます。
 
-   .. .. versionadded:: 0.4.3
+   .. You can prepend and/or append a line to the included code, using the
+      ``prepend`` and ``append`` option, respectively.  This is useful e.g. for
+      highlighting PHP code that doesn't include the ``<?php``/``?>`` markers.
+
+   ``prepend``, ``append`` オプションを使用すると、読み込まれた行の前後にコード行を追加することができます。例えば、 ``<?php``/``?>`` マーカーを含まないPHPコードをハイライトする際などに役立ちます。
+
+   .. 
+      .. versionadded:: 0.4.3
          The ``encoding`` option.
       .. versionadded:: 0.6
          The ``pyobject``, ``lines``, ``start-after`` and ``end-before`` options,
          as well as support for absolute filenames.
+      .. versionadded:: 1.0
+         The ``prepend`` and ``append`` options, as well as ``tab-width``.
 
    .. versionadded:: 0.4.3
       ``encoding`` オプション
    .. versionadded:: 0.6
       ``pyobject``, ``lines``, ``start-after``, ``end-before`` オプションと、プロジェクトのルートからの絶対パス指定
+   .. versionadded:: 1.0
+      ``prepend``, ``append``, ``tab-width``
 
 
 .. .. rubric:: Footnotes

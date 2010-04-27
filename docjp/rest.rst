@@ -3,6 +3,8 @@
 .. reStructuredText Primer
    =======================
 
+.. _rst-primer:
+
 reStructuredText入門
 ====================
 
@@ -12,10 +14,14 @@ reStructuredText入門
 
 .. seealso::
     
-    本家 `reStructuredTextユーザドキュメント <http://docutils.sourceforge.net/rst.html>`_
+    .. The authoritative `reStructuredText User Documentation
+       <http://docutils.sourceforge.net/rst.html>`_. The "ref" links in this
+       document link to the description of the individual constructs in the reST
+       reference.
 
-..    The authoritative `reStructuredText User
-      Documentation <http://docutils.sourceforge.net/rst.html>`_.
+    本家 `reStructuredTextユーザドキュメント <http://docutils.sourceforge.net/rst.html>`_
+    このドキュメント中の参照リンクは、reSTのリファレンスの個々の要素の説明にリンクしています。
+
 
 .. Paragraphs
    ----------
@@ -23,12 +29,17 @@ reStructuredText入門
 段落(パラグラフ)
 ----------------
 
-.. The paragraph is the most basic block in a reST document.  Paragraphs are simply chunks of text separated by one or more blank lines.  As in Python, indentation is significant in reST, so all lines of the same paragraph must be left-aligned to the same level of indentation.
+.. The paragraph (:rstref:`ref <paragraphs>`) is the most basic block in a reST 
+   document.  Paragraphs are simply chunks of text separated by one or more blank 
+   lines.  As in Python, indentation is significant in reST, so all lines of the 
+   same paragraph must be left-aligned to the same level of indentation.
 
-段落はreSTドキュメントにおける、もっとも基本的な要素です。段落は1行以上の空行で区切られた、シンプルなテキストの固まりです。 Pythonにおいてインデントが重要な意味を持つのと同様、reSTでもインデントは重要です。同じ段落のすべての行は、インデントを同じ高さにそろえて、左揃えにしなければなりません。
+段落(:rstref:`ref <paragraphs>`)はreSTドキュメントにおける、もっとも基本的な要素です。段落は1行以上の空行で区切られた、シンプルなテキストの固まりです。 Pythonにおいてインデントが重要な意味を持つのと同様、reSTでもインデントは重要です。同じ段落のすべての行は、インデントを同じ高さにそろえて、左揃えにしなければなりません。
 
 .. Inline markup
    -------------
+
+.. _inlinemarkup:
 
 インラインマークアップ
 --------------------------------
@@ -74,18 +85,40 @@ reStructuredText入門
 
 reSTには、"解釈済みテキストロール"というものが許されています。これは、 ``:ロール名:`解釈済みテキスト``` という文法になります。これは、囲まれているテキストは特別な方法で解釈させることができる、というものです。Sphinxはこれをつかって、意味のマークアップと、識別子のマークアップを行っています。これに関しては別のセクションで説明します。
 
+.. Standard reST provides the following roles:
 
-.. Lists and Quotes
-   ----------------
+標準のreSTは次のようなロールを提供しています:
 
-リストと引用
-------------
+.. * :rstrole:`emphasis` -- alternate spelling for ``*emphasis*``
+   * :rstrole:`strong` -- alternate spelling for ``**strong**``
+   * :rstrole:`literal` -- alternate spelling for ````literal````
+   * :rstrole:`subscript` -- subscript text
+   * :rstrole:`superscript` -- superscript text
+   * :rstrole:`title-reference` -- for titles of books, periodicals, and other
+     materials
 
-.. List markup is natural: just place an asterisk at the start of a paragraph 
-   and indent properly.  The same goes for numbered lists; they can also be
-   autonumbered using a ``#`` sign::
+* :rstrole:`emphasis` -- ``*emphasis*`` の代替表現
+* :rstrole:`strong` -- ``**strong**`` の代替表現
+* :rstrole:`literal` -- ````literal```` の代替表現
+* :rstrole:`subscript` -- 下付き文字
+* :rstrole:`superscript` -- 上付き文字
+* :rstrole:`title-reference` -- 書籍、定期刊行物などのタイトル
 
-リストを表現するマークアップはほぼ結果の見た目通りです。パラグラフの最初をアスタリスクで開始して、適切にインデントをしてやるだけです。ナンバー付きのリストも同様です。 ``#`` を使うことで、ナンバリングを自動で行うこともできます::
+.. See :ref:`inline-markup` for roles added by Sphinx.
+
+Sphinxによって追加されたロールに関しては :ref:`inline-markup` を参照してください。
+
+.. Lists and Quotes-like blocks
+   ----------------------------
+
+リストと引用のようなブロック
+----------------------------
+
+.. List markup (:rstref:`ref <bullet-lists>`) is natural: just place an asterisk at 
+   the start of a paragraph and indent properly.  The same goes for numbered lists; 
+   they can also be autonumbered using a ``#`` sign::
+
+リストを表現するマークアップ (:rstref:`ref <bullet-lists>`) はほぼ結果の見た目通りです。パラグラフの最初をアスタリスクで開始して、適切にインデントをしてやるだけです。ナンバー付きのリストも同様です。 ``#`` を使うことで、ナンバリングを自動で行うこともできます::
 
    * これは丸が行頭に付くリストです
    * このリストには2つの項目があります。2つめの
@@ -128,9 +161,17 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 
    * and here the parent list continues
 
-.. Definition lists are created as follows::
+.. Definition (:rstref:`ref <definition-lists>`) lists are created as follows::
 
-定義リストは以下のようにして作成します::
+      term (up to a line of text)
+         Definition of the term, which must be indented
+
+         and can even consist of multiple paragraphs
+
+      next term
+         Description.
+
+定義リスト(:rstref:`ref <definition-lists>`)は以下のようにして作成します::
 
    用語 (行末までが用語です)
       用語の定義です。定義はインデントする必要があります。
@@ -140,30 +181,54 @@ reSTには、"解釈済みテキストロール"というものが許されて�
    次の用語
       説明
 
-.. term (up to a line of text)
-      Definition of the term, which must be indented
 
-      and can even consist of multiple paragraphs
+.. Note that the term cannot have more than one line of text.
 
-   next term
-      Description.
+用語のテキストは複数行書くことができないことに注意してください。
+ 
+.. Quoted paragraphs (:rstref:`ref <block-quotes>`) are created by just indenting
+   them more than the surrounding paragraphs.
 
+引用パラグラフ(:rstref:`ref <block-quotes>`)は周囲のパラグラフよりもインデントすることで作成できます。
 
-.. Paragraphs are quoted by just indenting them more than the surrounding
-   paragraphs.
+.. Line blocks (:rstref:`ref <line-blocks>`) are a way of preserving line breaks::
 
-パラグラフは周囲のパラグラフよりも深いインデントにしてやる必要があります。
+   | These lines are
+   | broken exactly like in
+   | the source file.
 
+ラインブロック(:rstref:`ref <line-blocks>`)を利用すると、改行状態をそのまま維持したまま出力できます::
 
+   | これらの行は、
+   | ソースファイルと同じように
+   | 改行されます。
+
+.. There are also several more special blocks available:
+
+次のような特別なブロックも利用できます:
+
+.. * field lists (:rstref:`ref <field-lists>`)
+   * option lists (:rstref:`ref <option-lists>`)
+   * quoted literal blocks (:rstref:`ref <quoted-literal-blocks>`)
+   * doctest blocks (:rstref:`ref <doctest-blocks>`)
+
+* フィールドリスト (:rstref:`ref <field-lists>`)
+* オプションリスト (:rstref:`ref <option-lists>`)
+* 引用リテラルブロック (:rstref:`ref <quoted-literal-blocks>`)
+* doctestブロック (:rstref:`ref <doctest-blocks>`)
+ 
 .. Source Code
    -----------
 
 ソースコード
 ------------
 
-.. Literal code blocks are introduced by ending a paragraph with the special marker ``::``.  The literal block must be indented (and, like all paragraphs, separated from the surrounding ones by blank lines)::
+.. Literal code blocks (:rstref:`ref <literal-blocks>`) are introduced by ending a
+   paragraph with the special marker ``::``.  The literal block must be indented
+   (and, like all paragraphs, separated from the surrounding ones by blank lines)::
 
-リテラルコードブロックは、前の段落の行末を特別な記号 ``::`` にすることで開始することができます。リテラルコードブロックはインデントする必要があります。また、他のパラグラフ同様、空白行で前後をかこう必要があります::
+
+リテラルコードブロック(:rstref:`ref <literal-blocks>`)は、前の段落の行末を特別な記号 ``::`` にすることで開始することができます。リテラルコードブロックはインデントする必要があります。また、他のパラグラフ同様、空白行で前後をかこう必要があります::
 
    これは通常のテキストのパラグラフです。次のパラグラフはコードサンプルです::
 
@@ -202,6 +267,44 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 
 3つ目のルールが適用されるため、上記のサンプルの最初の段落中の２つめの文をレンダリングすると、 "次のパラグラフはコードサンプルです:" という表記になります。
 
+.. _rst-tables:
+
+.. Tables
+   ------
+
+テーブル
+--------
+
+.. Two forms of tables are supported.  For *grid tables* (:rstref:`ref
+   <grid-tables>`), you have to "paint" the cell grid yourself.  They look like
+   this:
+
+テーブルの表現方法には2通りあります。 **グリッドテーブル** (:rstref:`ref <grid-tables>`)は、セルのグリッドを自分で線描する必要があります。これは次のようになります::
+
+   +------------------------+------------+----------+----------+
+   | Header row, column 1   | Header 2   | Header 3 | Header 4 |
+   | (header rows optional) |            |          |          |
+   +========================+============+==========+==========+
+   | body row 1, column 1   | column 2   | column 3 | column 4 |
+   +------------------------+------------+----------+----------+
+   | body row 2             | ...        | ...      |          |
+   +------------------------+------------+----------+----------+
+
+.. *Simple tables* (:rstref:`ref <simple-tables>`) are easier to write, but
+   limited: they must contain more than one row, and the first column cannot
+   contain multiple lines.  They look like this:
+
+**シンプルテーブル(:rstref:`ref <simple-tables>`)はより書くのが簡単な方法ですが、制限があります。1つ以上の列を含み、最初のカラムには複数行のテキストを書くことができません。次のように表現されます::
+
+   =====  =====  =======
+   A      B      A and B
+   =====  =====  =======
+   False  False  False
+   True   False  False
+   False  True   False
+   True   True   True
+   =====  =====  =======
+
 
 .. Hyperlinks
    ----------
@@ -215,11 +318,20 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 外部リンク
 ^^^^^^^^^^
 
-.. Use ```Link text <http://target>`_`` for inline web links.  If the link text
-   should be the web address, you don't need special markup at all, the parser
+.. Use ```Link text <http://example.com>`_`` for inline web links.  If the link 
+   text should be the web address, you don't need special markup at all, the parser
    finds links and mail addresses in ordinary text.
 
 ```リンクテキスト <http://ターゲットURL>`_`` という書くことで、外部のウェブサイトへのリンクを埋め込むことができます。もしリンクテキストがウェブのアドレスである場合には、特別なマークアップは必要ありません。パーサーが通常のテキスト中でリンクか、メールアドレスを見つけると、そのままそれにリンクを埋め込んでくれます。
+
++You can also separate the link and the target definition (:rstref:`ref
++<hyperlink-targets>`), like this::
++
++   This is a paragraph that contains `a link`_.
++
++   .. _a link: http://example.com/
++
++
 
 .. Internal links
    ^^^^^^^^^^^^^^
@@ -227,11 +339,10 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 内部リンク
 ^^^^^^^^^^
 
-.. Internal linking is done via a special reST role, see the section on specific
-   markup, :ref:`ref-role`.
+.. Internal linking is done via a special reST role provided by Sphinx, see the
+   section on specific markup, :ref:`ref-role`.
 
-内部リンクは特別なreSTのロールを通じて行われます。詳しくは、特別なマークアップ :ref:`ref-role` のセクションを見てください。
-
+内部リンクはSphinxの提供する、特別なreSTのロールを通じて行われます。詳しくは、特別なマークアップ :ref:`ref-role` のセクションを見てください。
 
 .. Sections
    --------
@@ -239,10 +350,11 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 セクション
 ----------
 
-.. Section headers are created by underlining (and optionally overlining) the
-   section title with a punctuation character, at least as long as the text::
+.. Section headers (:rstref:`ref <sections>`) are created by underlining (and 
+   optionally overlining) the section title with a punctuation character, at least 
+   as long as the text::
 
-セクションのヘッダは、セクションのタイトルを句読点などの記号の文字でアンダーラインを引くことで設定します。必要に応じてでオーバーラインも併用することができます。アンダーラインはテキストと同じか、それ以上の長さにする必要があります::
+セクションのヘッダ(:rstref:`ref <sections>`)は、セクションのタイトルを句読点などの記号の文字でアンダーラインを引くことで設定します。必要に応じてでオーバーラインも併用することができます。アンダーラインはテキストと同じか、それ以上の長さにする必要があります::
 
    ================
    これは見出しです
@@ -281,11 +393,11 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 明示的なマークアップ
 --------------------
 
-.. "Explicit markup" is used in reST for most constructs that need special
-   handling, such as footnotes, specially-highlighted paragraphs, comments, and
-   generic directives.
+.. "Explicit markup" (:rstref:`ref <explicit-markup-blocks>`) is used in reST for 
+   most constructs that need special handling, such as footnotes, 
+   specially-highlighted paragraphs, comments, and generic directives.
 
-"明示的なマークアップ"というのは、reSTの中では特別な操作の必要な多くの構成要素のために使用されます。例えば脚注や、言語別のハイライトをする特別な段落、コメントや処理系(Sphinx)に対する指示などです。
+"明示的なマークアップ"(:rstref:`ref <explicit-markup-blocks>`)というのは、reSTの中では特別な操作の必要な多くの構成要素のために使用されます。例えば脚注や、言語別のハイライトをする特別な段落、コメントや処理系(Sphinx)に対する指示などです。
 
 .. An explicit markup block begins with a line starting with ``..`` followed by
    whitespace and is terminated by the next paragraph at the same level of
@@ -298,14 +410,73 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 .. Directives
    ----------
 
+.. _directives:
+
 ディレクティブ
 --------------
 
-.. A directive is a generic block of explicit markup.  Besides roles, it is 
-   one of the extension mechanisms of reST, and Sphinx makes heavy use of it.
+.. A directive (:rstref:`ref <directives>`) is a generic block of explicit markup.
+   Besides roles, it is one of the extension mechanisms of reST, and Sphinx makes 
+   heavy use of it.
 
-ディレクティブは汎用の明示的マークアップです。reSTの拡張のためのメカニズムの一つで、ロールが指定されることがあります。Sphinxはこのディレクティブをかなり多用しています。
+ディレクティブ(:rstref:`ref <directives>`)は汎用の明示的マークアップです。reSTの拡張のためのメカニズムの一つで、ロールが指定されることがあります。Sphinxはこのディレクティブをかなり多用しています。
 
++Docutils supports the following directives:
++
++* Admonitions: :rstdir:`attention`, :rstdir:`caution`, :rstdir:`danger`,
++  :rstdir:`error`, :rstdir:`hint`, :rstdir:`important`, :rstdir:`note`,
++  :rstdir:`tip`, :rstdir:`warning` and the generic :rstdir:`admonition`.
++  (Most themes style only "note" and "warning" specially.)
++
++* Images:
++
++  - :rstdir:`image` (see also Images_ below)
++  - :rstdir:`figure` (an image with caption and optional legend)
++
++* Additional body elements:
++
++  - :rstdir:`contents` (a local, i.e. for the current file only, table of
++    contents)
++  - :rstdir:`container` (a container with a custom class, useful to generate an
++    outer ``<div>`` in HTML)
++  - :rstdir:`rubric` (a heading without relation to the document sectioning)
++  - :rstdir:`topic`, :rstdir:`sidebar` (special highlighted body elements)
++  - :rstdir:`parsed-literal` (literal block that supports inline markup)
++  - :rstdir:`epigraph` (a block quote with optional attribution line)
++  - :rstdir:`highlights`, :rstdir:`pull-quote` (block quotes with their own
++    class attribute)
++  - :rstdir:`compound` (a compound paragraph)
++
++* Special tables:
++
++  - :rstdir:`table` (a table with title)
++  - :rstdir:`csv-table` (a table generated from comma-separated values)
++  - :rstdir:`list-table` (a table generated from a list of lists)
++
++* Special directives:
++
++  - :rstdir:`raw` (include raw target-format markup)
++  - :rstdir:`include` (include reStructuredText from another file)
++  - :rstdir:`class` (assign a class attribute to the next element) [1]_
++
++* HTML specifics:
++
++  - :rstdir:`meta` (generation of HTML ``<meta>`` tags)
++  - :rstdir:`title` (override document title)
++
++* Influencing markup:
++
++  - :rstdir:`default-role` (set a new default role)
++  - :rstdir:`role` (create a new role)
++
++  Since these are only per-file, better use Sphinx' facilities for setting the
++  :confval:`default_role`.
++
++Do *not* use the directives :rstdir:`sectnum`, :rstdir:`header` and
++:rstdir:`footer`.
++
++Directives added by Sphinx are described in :ref:`sphinxmarkup`.
+ 
 .. Basically, a directive consists of a name, arguments, options and content. 
    (Keep this terminology in mind, it is used in the next chapter describing 
    custom directives.)  Looking at this example, ::
@@ -342,13 +513,13 @@ reSTには、"解釈済みテキストロール"というものが許されて�
 画像
 --------
 
-.. reST supports an image directive, used like so
+.. reST supports an image directive(:rstdir:`ref <image>`), used like so
 
    .. image:: gnu.png
       (options)
 
 
-reSTは画像に関するディレクティブもサポートしています。以下のように使用します。::
+reSTは画像に関するディレクティブ(:rstdir:`ref <image>`)もサポートしています。以下のように使用します。::
 
    .. image:: gnu.png
       (オプション)
@@ -406,9 +577,9 @@ Sphinxは標準のdocutilsを拡張していて、拡張子としてアスタリ
 脚注
 ----
 
-.. For footnotes, use ``[#name]_`` to mark the footnote location, and add the
-   footnote body at the bottom of the document after a "Footnotes" rubric heading,
-   like so::
+.. For footnotes(:rstref:`ref <footnotes>`), use ``[#name]_`` to mark the footnote 
+   location, and add the footnote body at the bottom of the document after a 
+   "Footnotes" rubric heading, like so::
 
    Lorem ipsum [#f1]_ dolor sit amet ... [#f2]_
 
@@ -417,7 +588,7 @@ Sphinxは標準のdocutilsを拡張していて、拡張子としてアスタリ
    .. [#f1] Text of the first footnote.
    .. [#f2] Text of the second footnote.
 
-脚注を作成するためには、脚注を書きたい場所で ``[#name]_`` というマークアップを書きます。そして、脚注の本体をドキュメントの下の方の "脚注" のためのrubric見出しの中に書きます::
+脚注(:rstref:`ref <footnotes>`)を作成するためには、脚注を書きたい場所で ``[#name]_`` というマークアップを書きます。そして、脚注の本体をドキュメントの下の方の "脚注" のためのrubric見出しの中に書きます::
 
    Lorem ipsum [#f1]_ dolor sit amet	      ... [#f2]_
 
@@ -438,15 +609,15 @@ Sphinxは標準のdocutilsを拡張していて、拡張子としてアスタリ
 引用
 ----
 
-.. Standard reST citations are supported, with the additional feature that 
-   they are "global", i.e. all citations can be referenced from all files.  
-   Use them like so
+.. Standard reST citations (:rstref:`ref <citations>`) are supported, with the 
+   additional feature that they are "global", i.e. all citations can be referenced 
+   from all files. Use them like so:
 
    Lorem ipsum [Ref]_ dolor sit amet.
 
    .. [Ref] Book or article reference, URL or whatever.
 
-標準のreSTでも引用はサポートしていますが、Sphinx独自の追加の機能としては、引用が"グローバル"ということです。そのため、全ての引用はすべてのファイルから参照することができます。以下のように使用します::
+標準のreSTでも引用(:rstref:`ref <citations>`)はサポートしていますが、Sphinx独自の追加の機能としては、引用が"グローバル"ということです。そのため、全ての引用はすべてのファイルから参照することができます。以下のように使用します::
 
    Lorem ipsum [Ref]_ dolor sit amet.
 
@@ -464,30 +635,34 @@ Sphinxは標準のdocutilsを拡張していて、拡張子としてアスタリ
 置換
 ----
 
-.. reST supports "substitutions", which are pieces of text and/or markup referred
-   to in the text by ``|name|``.  They are defined like footnotes with explicit
-   markup blocks, like this::
+.. reST supports "substitutions" (:rstref:`ref <substitution-definitions>`), which 
+   are pieces of text and/or markup referred to in the text by ``|name|``.  They 
+   are defined like footnotes with explicit markup blocks, like this::
 
    .. |name| replace:: replacement *text*
 
-
-reSTは"置換"をサポートしています。これは、テキスト中の ``|名前|`` で指定された箇所に、テキストや、マークアップを挿入します。脚注と同じように明示的なマークアップブロックを使って定義します::
+reSTは"置換"(:rstref:`ref <substitution-definitions>`)をサポートしています。これは、テキスト中の ``|名前|`` で指定された箇所に、テキストや、マークアップを挿入します。脚注と同じように明示的なマークアップブロックを使って定義します::
 
    .. |name| replace:: リプレースされる *テキスト*
 
-.. See the `reST reference for substitutions
-   <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_
++or this::
++
++   .. |caution| image:: warning.png
++                :alt: Warning!
++
+
+.. See the :rstref:`reST reference for substitutions <substitution-definitions>`
    for details.
 
-詳しくは `reSTリファレンスの置換の説明 <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_ を参照してください。
+詳しくは `reSTリファレンスの置換の説明 <substitution-definitions>`_ を参照してください。
 
 .. If you want to use some substitutions for all documents, put them into a
    separate file and include it into all documents you want to use them in, using
-   the :dir:`include` directive.  Be sure to give the include file a file name
+   the :rst:dir:`include` directive.  Be sure to give the include file a file name
    extension differing from that of other source files, to avoid Sphinx finding it
    as a standalone document.
 
-いくつかの置換をすべてのドキュメントで使用したい場合には、置換の宣言を別のファイルに切り出して、その置換を行いたいすべてのドキュメントの冒頭で :dir:`include` ディレクティブを使用してインクルードする方法があります。この場合は、他のソースファイルとは別の拡張子を付けるようにしましょう。同じ拡張子にすると、Sphinxはリンクされていないドキュメントとして警告を出力してしまいます。
+いくつかの置換をすべてのドキュメントで使用したい場合には、置換の宣言を別のファイルに切り出して、その置換を行いたいすべてのドキュメントの冒頭で :rst:dir:`include` ディレクティブを使用してインクルードする方法があります。この場合は、他のソースファイルとは別の拡張子を付けるようにしましょう。同じ拡張子にすると、Sphinxはリンクされていないドキュメントとして警告を出力してしまいます。
 
 .. Sphinx defines some default substitutions, see :ref:`default-substitutions`.
 
@@ -498,11 +673,11 @@ Sphinxはデフォルトの置換をいくつか定義しています。詳し�
 .. --------
 
 .. Every explicit markup block which isn't a valid markup construct (like the
-   footnotes above) is regarded as a comment.  For example::
+   footnotes above) is regarded as a comment (:rstref:`ref <comments>`). For example::
 
    .. This is a comment.
 
-上記の脚注のような適切な構造をしていない明示的マークアップのブロックはすべてコメントとみなされます::
+上記の脚注のような適切な構造をしていない明示的マークアップのブロックはすべてコメント(:rstref:`ref <comments>`)とみなされます::
 
    .. これはコメントです。
 
@@ -546,8 +721,10 @@ Sphinxはデフォルトの置換をいくつか定義しています。詳し�
 reSTのドキュメントを書いていると、良く遭遇する問題がいくつかあります:
 
 .. * **Separation of inline markup:** As said above, inline markup spans must be
-     separated from the surrounding text by non-word characters, you have to use
-     a backslash-escaped space to get around that.
+     separated from the surrounding text by non-word characters, you have to use a
++  backslash-escaped space to get around that.  See `the reference
++  <http://docutils.sf.net/docs/ref/rst/restructuredtext.html#inline-markup>`_
++  for the details.
 
 * **インラインマークアップの分離:** 上記の説明でも触れていますが、インラインマークアップを付ける領域の前後はテキスト以外の文字(スペース、カッコなど)や、バックスラッシュ(日本語フォントだと円記号)でエスケープしたスペースでくくる必要があります。
 
@@ -556,4 +733,9 @@ reSTのドキュメントを書いていると、良く遭遇する問題がい�
 
 * **インラインマークアップのネストはできない:** ``*:func:`foo`* 参照`` といった書き方はできません。
 
-.. XXX more?
++
++.. rubric:: Footnotes
++
++.. [1] When the default domain contains a :rst:dir:`class` directive, this directive
++       will be shadowed.  Therefore, Sphinx re-exports it as :rst:dir:`rst-class`.
+

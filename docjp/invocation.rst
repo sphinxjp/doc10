@@ -4,7 +4,7 @@
    ==========================
 
 sphinx-buildの起動
-------------------
+==================
 
 .. The :program:`sphinx-build` script builds a Sphinx documentation set.  It is
    called like this::
@@ -212,32 +212,47 @@ Sphinxのドキュメント群を生成するのは、 :program:`sphinx-build` �
 
    (Sphinx自体のデバッグをする人用) キャッチされない例外がビルド中に発生したら、Pythonデバッガの :mod:`pdb` を実行します。
 
-You can also give one or more filenames on the command line after the source and
-build directories.  Sphinx will then try to build only these output files (and
-their dependencies).
+.. You can also give one or more filenames on the command line after the source and
+   build directories.  Sphinx will then try to build only these output files (and
+   their dependencies).
+
+ソースディレクトリやビルドディレクトリの後ろにファイル名を1つ以上追加することができます。追加すると、指定されたファイルと、その依存ファイルだけをビルドしようとします。
 
 
-Makefile options
-----------------
+.. Makefile options
+   ----------------
 
-The :file:`Makefile` and :file:`make.bat` files created by
-:program:`sphinx-quickstart` usually run :program:`sphinx-build` only with the
-:option:`-b` and :option:`-d` options.  However, they support the following
-variables to customize behavior:
+Makefileオプション
+------------------
+
+.. The :file:`Makefile` and :file:`make.bat` files created by
+   :program:`sphinx-quickstart` usually run :program:`sphinx-build` only with the
+   :option:`-b` and :option:`-d` options.  However, they support the following
+   variables to customize behavior:
+
+:program:`sphinx-quickstart` を実行すると、 :file:`Makefile` と :file:`make.bat` が作成されますが、通常は :option:`-b` オプションと :option:`-d` オプションだけが設定されています。しかし、次のような変数を設定することで、動作をカスタマイズすることができます。
 
 .. describe:: PAPER
 
-   The value for :confval:`latex_paper_size`.
+   .. The value for :confval:`latex_paper_size`.
+
+   :confval:`latex_paper_size` です。
 
 .. describe:: SPHINXBUILD
 
-   The command to use instead of ``sphinx-build``.
+   .. The command to use instead of ``sphinx-build``.
+
+   ``sphinx-build`` の代わりに用いるコマンドです。
 
 .. describe:: BUILDDIR
 
-   The build directory to use instead of the one chosen in
-   :program:`sphinx-quickstart`.
+   .. The build directory to use instead of the one chosen in
+      :program:`sphinx-quickstart`.
+
+   :program:`sphinx-quickstart` で選択した以外のビルドディレクトリを使用します。
 
 .. describe:: SPHINXOPTS
 
-   Additional options for :program:`sphinx-build`.
+   .. Additional options for :program:`sphinx-build`.
+
+   :program:`sphinx-build` に設定する追加オプションです。	
