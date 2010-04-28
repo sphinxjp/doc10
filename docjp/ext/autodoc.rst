@@ -44,12 +44,12 @@
 この機能がうまく働くためには、docstringは正しいreStructuredTextのフォーマットに従って記述されている必要があります。また、すべてのSphinxのマークアップをdocstringの中に書くことができ、最終的に正しくドキュメンテーションされます。手書きのドキュメントと一緒にモジュールのドキュメントを作成する場合には、純粋なAPIのドキュメントを同時に自動生成できるため、この機能を使うと両方を同時に管理しなければならないという痛みを和らげることができます。
 
 .. :mod:`autodoc` provides several directives that are versions of the usual
-   :dir:`module`, :dir:`class` and so forth.  On parsing time, they import the
+   :rst:dir:`module`, :rst:dir:`class` and so forth.  On parsing time, they import the
    corresponding module and extract the docstring of the given objects, inserting
-   them into the page source under a suitable :dir:`module`, :dir:`class` etc.
+   them into the page source under a suitable :rst:dir:`module`, :rst:dir:`class` etc.
    directive.
 
-:mod:`autodoc`は通常の\ :rst:dir:`module`, :rst:dir:`class`\ などのディレクティブに似た別バージョンのディレクティブを提供します。ドキュメントのパース時に指定されたモジュールを読み込んで、docstringを抽出して、その内容を通常の\ :dir:`module`, :dir:`class`\ ディレクティブと一緒に差込みます。
+:mod:`autodoc`は通常の\ :rst:dir:`module`, :rst:dir:`class`\ などのディレクティブに似た別バージョンのディレクティブを提供します。ドキュメントのパース時に指定されたモジュールを読み込んで、docstringを抽出して、その内容を通常の\ :rst:dir:`module`, :rst:dir:`class`\ ディレクティブと一緒に差込みます。
 
 .. note
    Just as :rst:dir:`class` respects the current :rst:dir:`module`, :rst:dir:`autoclass`
@@ -237,30 +237,30 @@
 
      .. versionadded:: 0.5
 
-   * :dir:`automodule` and :dir:`autoclass` also has an ``member-order`` option
+   .. * :rst:dir:`automodule` and :rst:dir:`autoclass` also has an ``member-order`` option
      that can be used to override the global value of
      :confval:`autodoc_member_order` for one directive.
 
-  * :dir:`automodule`\ と\ :dir:`autoclass`\ は\ ``member-order``\ というオプションを持っています。これを設定すると、このディレクティブの中でのみグローバルな\ :confval:`autodoc_member_order`\ という設定をオーバーライドすることができます。
+   * :rst:dir:`automodule`\ と\ :rst:dir:`autoclass`\ は\ ``member-order``\ というオプションを持っています。これを設定すると、このディレクティブの中でのみグローバルな\ :confval:`autodoc_member_order`\ という設定をオーバーライドすることができます。
 
      .. versionadded:: 0.6
 
-  .. * The directives supporting member documentation also have a
-       ``exclude-members`` option that can be used to exclude single member names
-       from documentation, if all members are to be documented.
+   .. * The directives supporting member documentation also have a
+        ``exclude-members`` option that can be used to exclude single member names
+        from documentation, if all members are to be documented.
 
-       .. versionadded:: 0.6
+        .. versionadded:: 0.6
 
-      .. note::
+        .. note::
   
-         In an :rst:dir:`automodule` directive with the ``members`` option set, only
-         module members whose ``__module__`` attribute is equal to the module name
-         as given to ``automodule`` will be documented.  This is to prevent
-         documentation of imported classes or functions.
+           In an :rst:dir:`automodule` directive with the ``members`` option set, only
+           module members whose ``__module__`` attribute is equal to the module name
+           as given to ``automodule`` will be documented.  This is to prevent
+           documentation of imported classes or functions.
 
-  * メンバーのドキュメント生成をサポートしているディレクティブは\ ``exclude-members``\ というオプションも持っています。これはすべてのドキュメントを生成する場合に、除外したいメンバーの名前をひとつだけ追加するのに使用します。
+   * メンバーのドキュメント生成をサポートしているディレクティブは\ ``exclude-members``\ というオプションも持っています。これはすべてのドキュメントを生成する場合に、除外したいメンバーの名前をひとつだけ追加するのに使用します。
 
-    .. versionadded:: 0.6
+      .. versionadded:: 0.6
 
    .. note::
 
@@ -342,8 +342,8 @@ autodoc拡張には、新しい設定値がいくつかあります。
 
    .. ``"class"``
          Only the class' docstring is inserted.  This is the default.  You can
-         still document ``__init__`` as a separate method using :dir:`automethod`
-         or the ``members`` option to :dir:`autoclass`.
+         still document ``__init__`` as a separate method using :rst:dir:`automethod`
+         or the ``members`` option to :rst:dir:`autoclass`.
       ``"both"``
          Both the class' and the ``__init__`` method's docstring are concatenated
          and inserted.
@@ -351,7 +351,7 @@ autodoc拡張には、新しい設定値がいくつかあります。
          Only the ``__init__`` method's docstring is inserted.
 
    ``"class"``
-      クラスのdocstringだけが挿入されます。これがデフォルトの動作になります。\ :dir:`automethod`\ を使用するか、\ :dir:`autoclass`\ に対して\ ``members``\ オプションを設定することで、\ ``__init__``\ の内容は別のメソッドとしてドキュメント化することができます。
+      クラスのdocstringだけが挿入されます。これがデフォルトの動作になります。\ :rst:dir:`automethod`\ を使用するか、\ :rst:dir:`autoclass`\ に対して\ ``members``\ オプションを設定することで、\ ``__init__``\ の内容は別のメソッドとしてドキュメント化することができます。
    ``"both"``
       クラスのdocstringと、\ ``__init__``\ メソッドのdocstringの両方が結合されて挿入されます。
    ``"init"``

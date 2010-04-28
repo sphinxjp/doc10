@@ -36,12 +36,12 @@
       These by default contain only the corresponding :mod:`sphinx.ext.autodoc`
       directive.
 
-1. ドキュメントが書かれた要素へのリンクと、docstringから抽出した短い概要の文を含んだサマリーのリストを生成する、 :dir:`autosummary` ディレクティブがあります。 
+1. ドキュメントが書かれた要素へのリンクと、docstringから抽出した短い概要の文を含んだサマリーのリストを生成する、 :rst:dir:`autosummary` ディレクティブがあります。 
 
-2. 便利なスクリプト :program:`sphinx-autogen` あるいは、新しい設定値の :confval:`autosummary_generate` を使用して、短い"スタブ"ファイルを生成することができます。このファイルは :dir:`autosummary` ディレクティブ内に書かれているエントリーが記述されます。デフォルトでは、関連する :mod:`sphinx.ext.autodoc` ディレクティブだけが含まれます。
+2. 便利なスクリプト :program:`sphinx-autogen` あるいは、新しい設定値の :confval:`autosummary_generate` を使用して、短い"スタブ"ファイルを生成することができます。このファイルは :rst:dir:`autosummary` ディレクティブ内に書かれているエントリーが記述されます。デフォルトでは、関連する :mod:`sphinx.ext.autodoc` ディレクティブだけが含まれます。
 
 
-.. directive:: autosummary
+.. rst:directive:: autosummary
 
    .. Insert a table that contains links to documented items, and a short summary
       blurb (the first sentence of the docstring) for each of them.  The

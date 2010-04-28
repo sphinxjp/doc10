@@ -42,7 +42,7 @@
 
 .. confval:: todo_include_todos
 
-   もしもこの設定値が\ ``True``\ に設定されると、\ :dir:`todo`\ と\ :dir:`todolist`\ のディレクティブが出力を出すようになります。\ ``False``\ が設定されると何も出力されなくなります。デフォルトは\ ``False``\ です。
+   もしもこの設定値が\ ``True``\ に設定されると、\ :rst:dir:`todo`\ と\ :rst:dir:`todolist`\ のディレクティブが出力を出すようになります。\ ``False``\ が設定されると何も出力されなくなります。デフォルトは\ ``False``\ です。
 
    .. If this is ``True``, :rst:dir:`todo` and :rst:dir:`todolist` produce output, else
       they produce nothing.  The default is ``False``.

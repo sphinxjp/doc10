@@ -1,9 +1,9 @@
 .. highlight:: rest
 
-.. _code-examples:
-
 .. Showing code examples
-.. ---------------------
+   ---------------------
+
+.. _code-examples:
 
 コードサンプルの表示
 --------------------

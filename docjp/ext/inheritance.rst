@@ -71,7 +71,7 @@
 
    .. For example:
 
-   .. サンプル::
+   サンプル::
 
       inheritance_node_attrs = dict(shape='ellipse', fontsize=14, height=0.75,
                                     color='dodgerblue1', style='filled')

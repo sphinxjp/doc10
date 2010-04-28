@@ -113,7 +113,8 @@ Sphinxの最初の第一歩は :program:`sphinx-quickstart` と呼ばれるプ�
 
 これは、このドキュメントの目次がどのように見えるのか、というのとまったく同じです。ここに含めるドキュメントは、 :term:`ドキュメント名` を使って追加します。簡単に説明すると、拡張子を取り、ディレクトリの記号にスラッシュ(/)を利用した物です。
 
-.. |more| Read more about :ref:`the toctree directive <toctree-directive>`.
+.. 
+   |more| Read more about :ref:`the toctree directive <toctree-directive>`.
 
 |more| さらに詳しい情報については、 :ref:`toctreeディレクティブ <toctree-directive>` をご覧下さい。
 
@@ -248,7 +249,7 @@ Sphinxの主な目的にの一つが、簡単に :dfn:`ドメイン` に属す�
 
       ...
 
-Pythonドメインはデフォルトのドメインとなるので、次のようにドメインを指定するプリフィックスを付けずに書くこともできます::
+Pythonドメインはデフォルトのドメインとなるので、それに関する設定を変更していない限りは、次のようにドメインを指定するプリフィックスを付けずに書いても、同じ結果となります::
 
    .. function:: enumerate(sequence[, start=0])
 
@@ -256,25 +257,38 @@ Pythonドメインはデフォルトのドメインとなるので、次のよ�
 
 .. does the same job if you keep the default setting for the default domain.
 
-   There are several more directives for documenting other types of Python objects,
+.. There are several more directives for documenting other types of Python objects,
    for example :dir:`py:class` or :dir:`py:method`.  There is also a
    cross-referencing :dfn:`role` for each of these object types.  This markup will
-   create a link to the documentation of ``enumerate()``::
+   create a link to the documentation of ``enumerate()``:
 
       The :py:func:`enumerate` function can be used for ...
 
+これ以外にも、 :rst:dir:`py:class`, :rst:dir:`py:method` など、Pythonの他のオブジェクトの種類のドキュメントを書くためのディレクティブがいくつも定義されています。また、これらのオブジェクトの型ごとに、相互参照を行うための :dfn:`role` も定義されています。このマークアップを記述すると、 ``enumerate()`` のドキュメントへのリンクが作成されます::
+
+      この :py:func:`enumerate` 関数は、・・・という目的で使用することができ・・・
+
 .. And here is the proof: A link to :func:`enumerate`.
+
+実際に試してみたのがこれです: :func:`enumerate`
 
 .. Again, the ``py:`` can be left out if the Python domain is the default one.  It
    doesn't matter which file contains the actual documentation for ``enumerate()``;
    Sphinx will find it and create a link to it.
 
+繰り返しになりますが、Pythonのドメインがデフォルトで設定されている場合には ``py:`` という接頭辞を外して書くこともできます。また、その ``enumerate()`` の実際のドキュメントが、どのファイルに書かれているのか、ということを気にする必要はありません。Sphinxが自動で見つけてリンクを張ってくれます。
+
 .. Each domain will have special rules for how the signatures can look like, and
    make the formatted output look pretty, or add specific features like links to
    parameter types, e.g. in the C/C++ domains.
 
-.. |more| See :ref:`domains` for all the available domains and their
+ドメインごとに、シグニチャをどのように見せることができるのか、というルールは変わってくるでしょう。フォーマットをどのようにきれいに整えたり、C/C++ドメインのように引数の型にリンクを張るなどの言語ごとの特別な機能が追加されることもあります。
+
+.. 
+   |more| See :ref:`domains` for all the available domains and their
    directives/roles.
+
+|more| 使用できるすべてのドメインと、それらのディレクティブ/ロールについて知りたい場合には、 :ref:`domains` を参照してください。
 
 .. Basic configuration
    -------------------
@@ -288,6 +302,8 @@ Pythonドメインはデフォルトのドメインとなるので、次のよ�
    Sphinx, you can do non-trivial tasks in it, like extending :data:`sys.path` or
    importing a module to find out the version your are documenting.
 
+最初の法で、Sphinxがドキュメントをどのように処理するのかを制御する、 :file:`conf.py` というファイルがあるということについては軽く紹介しました。このファイルはPythonのソースファイルとして実行され、中に設定値を記述することができます。上級のユーザは、Sphinxが処理をする際に、 :data:`sys.path` を拡張したり、ドキュメントの記述するバージョン番号を取得してくるために、製品コードをインポートして情報を得るような、いくつかの処理を実装するでしょう。
+
 .. The config values that you probably want to change are already put into the
    :file:`conf.py` by :program:`sphinx-quickstart` and initially commented out
    (with standard Python syntax: a ``#`` comments the rest of the line).  To change
@@ -295,12 +311,19 @@ Pythonドメインはデフォルトのドメインとなるので、次のよ�
    config value that is not automatically added by :program:`sphinx-quickstart`,
    just add an additional assignment.
 
+おそらく多くのユーザが変更したがると思われるような設定値については、 :program:`sphinx-quickstart` を通じて、 :file:`conf.py` に既に書き込まれ、最初はコメントアウトされた状態になっています(Pythonの標準的な文法で、 ``#`` を書くと行の残りの内容がコメントになる)。デフォルト値を変更する場合には、 ``#`` 記号を削除して、値を変更してください。 :program:`sphinx-quickstart` が自動的に追加しない設定値については、設定行を追加してください。
+
 .. Keep in mind that the file uses Python syntax for strings, numbers, lists and so
    on.  The file is saved in UTF-8 by default, as indicated by the encoding
    declaration in the first line.  If you use non-ASCII characters in any string
    value, you need to use Python Unicode strings (like ``project = u'Expos辿'``).
 
-.. |more| See :ref:`build-config` for documentation of all available config values.
+Pythonの文字列、数値、リストなどの文法を利用して設定ファイルを書く必要があります。設定ファイルは、最初の行のエンコーディング宣言の通り、デフォルトではUTF-8形式で保存されます。文字列の値として、非アスキー文字をしようしたい場合には、Pythonのユニコード文字列(例: ``project = u'日本語版Expose'``)を使用する必要があります。
+
+.. 
+   |more| See :ref:`build-config` for documentation of all available config values.
+
+|more| :すべての使用可能な設定値については、 ref:`build-config` のドキュメントを参照してください。
 
 
 Autodoc
@@ -311,18 +334,26 @@ Autodoc
    docstrings from your modules with an :dfn:`extension` (an extension is a Python
    module that provides additional features for Sphinx projects) called "autodoc".
 
+もしもPythonで書かれたコードのドキュメントを書こうとしている場合には、docstring形式でソースファイル中に既に多くのドキュメントを書いているでしょう。Sphinxは "autodoc" という :dfn:`拡張機能` を利用することでソースファイルからdocstringを抽出してくて文章に取り込むというのをサポートしています。拡張伊能はPythonで書かれたモジュールで、Sphinxのプロジェクトに様々な機能を付加します。
+
 .. In order to use autodoc, you need to activate it in :file:`conf.py` by putting
    the string ``'sphinx.ext.autodoc'`` into the list assigned to the
    :confval:`extensions` config value.  Then, you have a few additional directives
    at your disposal.
 
+autodocを使用するためには、 :file:`conf.py` の :confval:`extensions` という設定値に ``'sphinx.ext.autodoc'`` という文字列を追加して、この機能を有効化する必要があります。追加すると、いくつかのディレクティブがプロジェクトに追加されます。
+
 .. For example, to document the function ``io.open()``, reading its
-   signature and docstring from the source file, you'd write this::
+   signature and docstring from the source file, you'd write this:
+
+例えば、 ``io.open()`` という関数に関するドキュメントであれば、次のように記述すると、シグネチャやdocstring情報はソースファイルから読み取ります::
 
    .. autofunction:: io.open
 
 .. You can also document whole classes or even modules automatically, using member
-   options for the auto directives, like ::
+   options for the auto directives, like :
+
+autodoc関連のディレクティブのmembersオプションを利用すると、クラスやモジュールの要素のドキュメントを自動的に作成することもできます::
 
    .. automodule:: io
       :members:
@@ -331,9 +362,13 @@ Autodoc
    Therefore, you must add the appropriate path to :py:data:`sys.path` in your
    :file:`conf.py`.
 
+autodocはモジュールをインポートしてdocstringの情報を収集する必要があります。そのため、ドキュメント対象のモジュールを読み込むために、 :file:`conf.py` の中で、適切なパスを :py:data:`sys.path` に追加する必要があります。
+
 .. 
    |more| See :mod:`sphinx.ext.autodoc` for the complete description of the
    features of autodoc.
+
+|more| autodoc機能の完全な説明は、 :mod:`sphinx.ext.autodoc` の説明を参照してください。
 
 
 .. More topics to be covered
