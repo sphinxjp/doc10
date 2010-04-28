@@ -72,7 +72,7 @@
    .. Make the given *domain* (which must be a class; more precisely, a subclass of
       :class:`~sphinx.domains.Domain`) known to Sphinx.
 
-   与えられた *domain*(クラスです。おそらく :class:`~sphinx.domains.Domain` のサブクラスになるでしょう)をSphinxに知らせます。
+   与えられた *domain* (クラスです。おそらく :class:`~sphinx.domains.Domain` のサブクラスになるでしょう)をSphinxに知らせます。
 
    .. versionadded:: 1.0
 
@@ -171,7 +171,7 @@
         instead which does the right thing even on docutils 0.4 (which doesn't
         support directive classes otherwise).
 
-   * docutils 0.5スタイル: *has_content*, *required_arguments*, *optional_arguments*, *final_argument_whitespace*, *option_spec* という、必要な属性を初めから持った、 **directiveclass** という、ディレクティブのためのクラスで定義します。これらの属性は、関数で登録する方法と同じ役割を持っています。詳しくは、 `Docutilsのドキュメント <http://docutils.sourceforge.net/docs/howto/rst-directives.html>`_ をご覧ください。
+   * docutils 0.5スタイル: *has_content*, *required_arguments*, *optional_arguments*, *final_argument_whitespace*, *option_spec* という、必要な属性を初めから持った、 **directiveclass** という、ディレクティブのためのクラスで定義します。これらの属性は、関数で登録する方法と同じ役割を持っています。詳しくは、 `Docutilsの資料 <http://docutils.sourceforge.net/docs/howto/rst-directives.html>`_ をご覧ください。
 
      ディレクティブクラスは通常、\ ``docutils.parsers.rst.Directive``\ クラスを継承しなければなりません。Sphinxの拡張機能を作成するために、ディレクティブを書く場合は、\ ``sphinx.util.compat.Directive``\ クラスを継承してください。こちらのクラスであれば、ディレクティブクラスをサポートしていない、Docutils 0.4でも正しく動作します。
 
@@ -703,10 +703,10 @@ Sphinxコアイベント
       指定された **context** (Python辞書)を使用して、 **template** で指定された文字列形式のテンプレートのレンダリングを行います。ビルダーから呼ばれます。
 
 
-.. _domain-api:
-
 .. Domain API
    ----------
+
+.. _domain-api:
 
 ドメインAPI
 -----------
@@ -945,14 +945,14 @@ Sphinxコアイベント
 
       - `name` -- 索引のエントリーの、表示される名前
       - `subtype` -- サブエントリーの種類
-           0 -- 通常のエントリー
-           1 -- サブエントリー付きのエントリーentry with sub-entries
-           2 -- サブエントリー
-         - `docname` -- エントリーが置かれているドキュメント名
-         - `anchor` -- `docname` 内の、エントリーへのアンカー
-         - `extra` -- エントリーに関する追加情報extra info for the entry
-         - `qualifier` -- 説明の修飾子qualifier for the description
-         - `descr` -- エントリーの説明
+        0 -- 通常のエントリー
+        1 -- サブエントリー付きのエントリーentry with sub-entries
+        2 -- サブエントリー
+      - `docname` -- エントリーが置かれているドキュメント名
+      - `anchor` -- `docname` 内の、エントリーへのアンカー
+      - `extra` -- エントリーに関する追加情報extra info for the entry
+      - `qualifier` -- 説明の修飾子qualifier for the description
+      - `descr` -- エントリーの説明
 
       .. Qualifier and description are not rendered e.g. in LaTeX output.
 

@@ -330,12 +330,12 @@
 .. module:: sphinx.builders.changes
 .. class:: ChangesBuilder
 
-   .. This builder produces an HTML overview of all :dir:`versionadded`,
-      :dir:`versionchanged` and :dir:`deprecated` directives for the current
+   .. This builder produces an HTML overview of all :rst:dir:`versionadded`,
+      :rst:dir:`versionchanged` and :rst:dir:`deprecated` directives for the current
       :confval:`version`.  This is useful to generate a ChangeLog file, for
       example.
 
-   このビルダーは、現在の :confval:`version` の設定値と、 :dir:`versionadded`, :dir:`versionchanged`, :dir:`deprecated` の各ディレクティブの情報から、HTMLを生成します。このビルダーは、例えばChangeLogファイルを生成するのに便利です。
+   このビルダーは、現在の :confval:`version` の設定値と、 :rst:dir:`versionadded`, :rst:dir:`versionchanged`, :rst:dir:`deprecated` の各ディレクティブの情報から、HTMLを生成します。このビルダーは、例えばChangeLogファイルを生成するのに便利です。
 
    .. Its name is ``changes``.
 

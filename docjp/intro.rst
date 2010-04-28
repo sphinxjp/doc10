@@ -59,6 +59,7 @@
 Sphinxの実行には **Python 2.4** よりも新しいバージョンのPythonが必要です。もしもソースコードハイライトのサポートが必要であれば、 Pygments_ ライブラリも一緒にインストールする必要がありますが、 setuptoolsのeasy_installを使用すれば一緒にインストールできます。Sphinxが依存しているコンポーネントとしては、docutilsのバージョン 0.4、もしくはSVNリポジトリのTrunkのスナップショット(壊れていないものに限定)があります。
 
 .. _Pygments: http://pygments.org
+.. _reStructuredText: http://docutils.sf.net/rst.html
 
 .. Usage
    -----

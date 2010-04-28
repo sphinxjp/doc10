@@ -35,7 +35,7 @@ HTMLを生成するのにSphinxのテンプレートを使用する必要があ�
      :class:`~sphinx.builders.StandaloneHTMLBuilder` and calls your template engine
      of choice.
 
-* :class:`~sphinx.builders.StandaloneHTMLBuilder` を継承して :ref:`カスタムビルダーを書いて <wrting-builders>` 好きなテンプレートエンジンを呼ぶようにします。
+* :class:`~sphinx.builders.StandaloneHTMLBuilder` を継承して :ref:`カスタムビルダーを書いて <writing-builders>` 好きなテンプレートエンジンを呼ぶようにします。
 
 .. * You can use the :class:`~sphinx.builders.PickleHTMLBuilder` that produces
      pickle files with the page contents, and postprocess them using a custom tool,

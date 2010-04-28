@@ -27,7 +27,7 @@ Sphinx FAQ
        the :dir:`toctree` directive where you want to start numbering.
 
 ... セクション番号を設定できますか？
-   LaTeX出力では自動的に設定されます。HTML出力では、 :dir:`toctree` ディレクティブに対して、ナンバリングをしたい位置に対して ``:numbered:`` オプションを付けると、設定することができます。
+   LaTeX出力では自動的に設定されます。HTML出力では、 :rst:dir:`toctree` ディレクティブに対して、ナンバリングをしたい位置に対して ``:numbered:`` オプションを付けると、設定することができます。
 
 .. ... customize the look of the built HTML files?
        Use themes, see :doc:`theming`.
@@ -178,10 +178,10 @@ Google Analytics
    .. _api role: http://git.savannah.gnu.org/cgit/kenozooid.git/tree/doc/extapi.py
    .. _xhtml to reST: http://docutils.sourceforge.net/sandbox/xhtml2rest/xhtml2rest.py
 
-.. _epub-faq:
-
 .. Epub info
    ---------
+
+.. _epub-faq:
 
 Epub情報
 --------

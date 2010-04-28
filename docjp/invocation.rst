@@ -1,7 +1,7 @@
-.. _invocation:
-
 .. Invocation of sphinx-build
    ==========================
+
+.. _invocation:
 
 sphinx-buildの起動
 ==================

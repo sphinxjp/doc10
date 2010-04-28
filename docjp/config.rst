@@ -18,7 +18,7 @@
    This file (containing Python code) is called the "build configuration file" and
    contains all configuration needed to customize Sphinx input and output behavior.
 
-:term:`コンフィグレーションディレクトリ` には必ず :file:`conf.py` が含まれています。このファイルは
+:term:`設定ディレクトリ` には必ず :file:`conf.py` が含まれています。このファイルは
 "ビルド設定ファイル" と呼ばれていて、Sphinxの入出力の動作をカスタマイズするのに必要な
 設定はこのファイルに含まれています。この設定ファイルはPythonのプログラムとして書かれています。
 
@@ -93,7 +93,7 @@
       If your extension path is relative to the :term:`configuration directory`,
       use :func:`os.path.abspath` like so:
 
-   もし拡張機能が他のディレクトリにある場合には、confファイルの中で :data:`sys.path` にパスを追加することで、使用できるようになります。注意すべき点としては、絶対パスを指定しなければならない点です。もし、 :term:`コンフィグレーションディレクトリ` からの相対パスが分かっている場合には、以下のように :func:`os.path.abspath` を以下のように使用します::
+   もし拡張機能が他のディレクトリにある場合には、confファイルの中で :data:`sys.path` にパスを追加することで、使用できるようになります。注意すべき点としては、絶対パスを指定しなければならない点です。もし、 :term:`設定ディレクトリ` からの相対パスが分かっている場合には、以下のように :func:`os.path.abspath` を以下のように使用します::
 
       import sys, os
 
