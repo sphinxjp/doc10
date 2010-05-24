@@ -662,8 +662,8 @@ C言語ドメイン(**c**)はC言語のAPIのドキュメントを書くのに�
 
 .. rst:directive:: .. c:type:: 型名
 
-   Describes a C type (whether defined by a typedef or struct). The signature
-   should just be the type name.
+   .. Describes a C type (whether defined by a typedef or struct). The signature
+      should just be the type name.
 
    C言語の型名を説明します。型というのは、typedefかstructで定義されるものです。シグニチャには型名を指定します。
 
