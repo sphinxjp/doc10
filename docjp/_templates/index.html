@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% set title = 'Overview' %}
+{% block body %}
+  <h1>ようこそ!</h1>
+
+  <div class="quotebar">
+    <p><em>ユーザの声:</em></p>
+    <p>&ldquo;このような、プログラマーがドキュメントを<b>書きたくなってしまう</b>すばらしいツールに乾杯！&rdquo;</p>
+  </div>
+
+  <p>
+    Sphinxは知的で美しいドキュメントを簡単に作れるようにするツールです。Georg Brandlによって開発され、BSDライセンスのもとで公開されています。</p>
+  <p>このツールはもともと、<a href="http://docs.python.org/dev/">新しいPythonのドキュメント</a>の変換のために作られました。Pythonのプロジェクトのためのすばらしい機能を提供してきましたが、現在ではC/C++も既にサポートしています。また、他の言語に対するサポート機能も現在計画中です。もちろん、このホームページもまた、reStructuredTextのソースで作成され、Sphinxを使って作られています!</p>
+  <p>
+    Sphinxは開発途上です。現在提供されている機能は次の通りです。これらはきちんと動作していて、&#8220;実際に&#8221;Pythonのドキュメントサイトで見ることができます:
+  </p>
+  <ul>
+    <li><b>出力フォーマット:</b> HTML(Windows HTMLヘルプも含む)、LaTeX(印刷可能なPDF)、manページ、プレーンテキスト</li>
+    <li><b>広範囲にわたるクロスリファレンス:</b> 意味のマークアップと、関数、クラス、引用、用語解説、似たような情報に対する自動リンク</li>
+    <li><b>階層構造:</b> 簡単にドキュメントツリーを定義でき、兄弟、親、子供のドキュメントに対して、リンクを貼れる</li>
+    <li><b>自動インデックス作成:</b> 全体インデックスと、モジュールインデックス</li>
+    <li><b>ソースコードの対応:</b> <a href="http://pygments.org">Pygments</a>を使った自動ハイライト</li>
+    <li><b>拡張:</b> コードスニペットを使った自動テスト, Pythonモジュールのdocstringのインクルード(APIドキュメント作成)など</li>
+  </ul>
+  <p>
+    Sphinxは<a href="http://docutils.sf.net/rst.html">reStructuredText</a>をマークアップ言語として使用しています。Sphinxの強さの多くの部分はreStructuredTextと、そのパース、変換プログラム群である、<a href="http://docutils.sf.net">Docutils</a>からきています。
+  </p>
+
+  <h2>ドキュメント</h2>
+  <table class="contentstable" align="center" style="margin-left: 30px"><tr>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("tutorial") }}">Sphinx最初の一歩</a><br/>
+         <span class="linkdescr">基本的なタスクの概要紹介</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("contents") }}">目次</a><br/>
+         <span class="linkdescr">すべてのドキュメントはこちら</span></p>
+    </td><td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("search") }}">検索ページ</a><br/>
+         <span class="linkdescr">ドキュメントの検索</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("genindex") }}">全体インデックス</a><br/>
+         <span class="linkdescr">すべての関数、クラス、用語</span></p>
+    </td></tr>
+  </table>
+<!--
+  <p>
+    Sphinxドキュメントの<a href="">LaTeX出力経由で作成したバージョン</a>と、
+    <a href="">rs2pdfで生成したバージョン</a>のPDF版をダウンロードすることもできます。
+  </p>
+-->
+  <h2>サンプル</h2>
+  <p>
+    <a href="{{ pathto("examples") }}">Sphinxを使用しているプロジェクト</a>のページから、
+    Sphinxを使って生成されたドキュメントを見に行くことができます。
+  </p>
+  <p>
+    サンプルのドキュメントのソースを見たければ、このトップページ以外のすべてのドキュメントのページにある、
+    &#8220;Show source(ソースを表示)&#8221;のリンクをクリックしてみてください。
+  </p>
+
+  <p>
+    また、matplotlibの開発者によって書かれた、Sphinxを使ったカスタマイズされたドキュメントの作り方に関する
+    <a href="http://matplotlib.sourceforge.net/sampledoc/">チュートリアル</a>にも興味を持つでしょう。
+  </p>
+
+  <h2>Sphinxのインストール</h2>
+  <p>
+    Sphinxは<a href="http://pypi.python.org/pypi/Sphinx">Python Package Index</a>にて、<a href="http://peak.telecommunity.com/DevCenter/EasyInstall">easy-install</a>を使用してインストール可能なパッケージで提供されています。
+  </p>
+  <p>ソースコードは<tt>http://bitbucket.org/birkenfeld/sphinx/</tt>にて、Mercurialのリポジトリで見ることができます。</p>
+
+  <h2>翻訳</h2>
+  <p>このドキュメントの翻訳は渋川よしきが行っています。日本語上のバグを発見した方は、本家ではなく、 <a href="mailto:yoshiki@shibu.jp">yoshiki@shibu.jp</a>までご連絡ください。</p>
+
+{% endblock %}

@@ -8,19 +8,19 @@ import sphinx
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo',
               'sphinx.ext.autosummary', 'sphinx.ext.extlinks']
 
-language='ja'
-
 master_doc = 'contents'
 templates_path = ['_templates']
 exclude_patterns = ['_build']
 
 project = 'Sphinx'
-copyright = '2007-2010, Georg Brandl'
+copyright = '2007-2010, Georg Brandl, Shibukawa Yoshiki(Japanese)'
 version = sphinx.__released__
 release = version
 show_authors = True
+language = 'ja'
 
-html_theme = 'sphinxdoc'
+html_theme = 'default'
+html_theme_options = {'collapsiblesidebar': True, 'stickysidebar': False}
 modindex_common_prefix = ['sphinx.']
 html_static_path = ['_static']
 html_index = 'index.html'
