@@ -19,8 +19,7 @@ release = version
 show_authors = True
 language = 'ja'
 
-html_theme = 'default'
-html_theme_options = {'collapsiblesidebar': True, 'stickysidebar': False}
+html_theme = 'sphinxdoc'
 modindex_common_prefix = ['sphinx.']
 html_static_path = ['_static']
 html_index = 'index.html'
