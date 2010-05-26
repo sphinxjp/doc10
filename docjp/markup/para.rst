@@ -213,10 +213,10 @@
 
 サブドキュメントの目次を作る :rst:dir:`toctree` ディレクティブに関しては :ref:`toctree-directive` のドキュメントを読んでください。
 
-.. For local tables of contents, use the standard reST :rst:dir:`contents directive 
+.. For local tables of contents, use the standard reST :dudir:`contents directive 
    <contents>`.
 
-ローカルな目次を作成する場合には、標準reSTの :rst:dir:`contentsディレクティブ <contents>` ディレクティブを使用してください。
+ローカルな目次を作成する場合には、標準reSTの :dudir:`contentsディレクティブ <contents>` ディレクティブを使用してください。
 
 .. Index-generating markup
 .. -----------------------

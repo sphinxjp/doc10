@@ -19,7 +19,8 @@ release = version
 show_authors = True
 language = 'ja'
 
-html_theme = 'sphinxdoc'
+html_theme = 'default'
+html_theme_options = {'collapsiblesidebar': True, 'stickysidebar': False}
 modindex_common_prefix = ['sphinx.']
 html_static_path = ['_static']
 html_index = 'index.html'
@@ -49,12 +50,12 @@ latex_elements = {
 
 autodoc_member_order = 'groupwise'
 todo_include_todos = True
-extlinks = {'rstref': ('http://docutils.sourceforge.net/docs/ref/rst/'
-                       'restructuredtext.html#%s', ''),
-            'rstrole': ('http://docutils.sourceforge.net/docs/ref/rst/'
-                        'roles.html#%s', ''),
-            'rstdir': ('http://docutils.sourceforge.net/docs/ref/rst/'
-                       'directives.html#%s', '')}
+extlinks = {'duref': ('http://docutils.sourceforge.net/docs/ref/rst/'
+                      'restructuredtext.html#%s', ''),
+            'durole': ('http://docutils.sourceforge.net/docs/ref/rst/'
+                       'roles.html#%s', ''),
+            'dudir': ('http://docutils.sourceforge.net/docs/ref/rst/'
+                      'directives.html#%s', '')}
 
 man_pages = [
     ('contents', 'sphinx-all', 'Sphinx documentation generator system manual',

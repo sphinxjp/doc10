@@ -263,9 +263,24 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
 
 .. rst:role:: guilabel
 
+   .. Labels presented as part of an interactive user interface should be marked 
+      using ``guilabel``.  This includes labels from text-based interfaces such as 
+      those created using :mod:`curses` or other text-based libraries.  Any label 
+      used in the interface should be marked with this role, including button 
+      labels, window titles, field names, menu and menu selection names, and even 
+      values in selection lists.
+
    インタラクティブなユーザインタフェースの一部のラベルとして表示あれる文字に対しては ``guilabel`` を使用します。これは、 :mod:`curses` やその他のコンソール用ライブラリを使用したテキストベースのインタフェースにも使用します。ボタンやウィンドウのタイトル、フィールド名、メニュー、やメニューの項目名、リスト中の選択された値など、インタフェース上に表示されるラベルには、このロールを使用すべきです。
 
-..   Labels presented as part of an interactive user interface should be marked using ``guilabel``.  This includes labels from text-based interfaces such as those created using :mod:`curses` or other text-based libraries.  Any label used in the interface should be marked with this role, including button labels, window titles, field names, menu and menu selection names, and even values in selection lists.
+   .. 
+      .. versionchanged:: 1.0
+      An accelerator key for the GUI label can be included using an ampersand;
+      this will be stripped and displayed underlined in the output (example:
+      ``:guilabel:`&Cancel```).  To include a literal ampersand, double it.
+
+   .. versionchanged:: 1.0
+
+      アンパサンド(``&``)を利用して、GUIラベルのアクセラレートキーを含めることができるようになりました。 ``:guilabel:`&Cancel`` のように使用します。出力テキストでは、アンパサンドは削除され、直後の文字にアンダースコアが付きます。アンパサンドの文字そのものを入れたい場合には、この文字を2回書きます。
 
 .. rst:role:: kbd
 
@@ -294,23 +309,33 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
 
 .. rst:role:: menuselection
 
+   .. Menu selections should be marked using the ``menuselection`` role.  This is 
+      used to mark a complete sequence of menu selections, including selecting 
+      submenus and choosing a specific operation, or any subsequence of such a 
+      sequence.  The names of individual selections should be separated by 
+      ``-->``.
+
    メニュー選択は ``menuselection`` ロールを使用すべきです。これはメニュー操作の手順をマークアップするのに使用します。メニューにはメニュー選択、サブメニュー選択、特定の操作での選択や、さらに細かいサブ操作などを含みます。それぞれの選択要素の名前は ``-->`` を使用して分割すべきです。
+
+   .. For example, to mark the selection "Start > Programs", use this markup:
+
+      :menuselection:`Start --> Programs`
 
    例えば、"スタート > プログラム"という順番でメニューを選択する動作は以下のように記述します::
 
       :menuselection:`スタート --> プログラム`
 
-   
-
-..   Menu selections should be marked using the ``menuselection`` role.  This is used to mark a complete sequence of menu selections, including selecting submenus and choosing a specific operation, or any subsequence of such a sequence.  The names of individual selections should be separated by ``-->``.
-
-..   For example, to mark the selection "Start > Programs", use this markup::
-
-..      :menuselection:`Start --> Programs`
+   .. When including a selection that includes some trailing indicator, such as the 
+      ellipsis some operating systems use to indicate that the command opens a 
+      dialog, the indicator should be omitted from the selection name.
 
    もし、選択したメニューにはオペレーティングシステム固有のコマンドの指示などが含まれていた場合には、これは省略すべきです。例えば、ダイアログを開くコマンドなどです。このようなコマンドの指示は選択名からは省きます。
 
-..   When including a selection that includes some trailing indicator, such as the ellipsis some operating systems use to indicate that the command opens a dialog, the indicator should be omitted from the selection name.
+   .. ``menuselection`` also supports ampersand accelerators just like
+      :rst:role:`guilabel`.
+
+   ``menuselection`` は :rst:role:`guilabel` と同じく、アンパサンドを利用したアクセラレータの表示に対応しています。
+
 
 .. rst:role:: mimetype
 
@@ -338,13 +363,19 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
 
 .. rst:role:: samp
 
-   リテラルのテキストの一部です。マークアップの内容の中には、 ``:file:`` と同様に波括弧を使った"変数"を書くことができます。
+   .. A piece of literal text, such as code.  Within the contents, you can use 
+      curly braces to indicate a "variable" part, as in :rst:dir:`file` For
+      example, in ``:samp:`print 1+{variable}```, the part ``variable`` would be
+      emphasized.
+
+   リテラルのテキストの一部です。マークアップの内容の中には、 :rst:dir:`file` と同様に波括弧を使った"変数"を書くことができます。たとえば、 ``:samp:`print 1+{variable}``` というテキストがあると、 ``variable`` の部分が強調されます。
+
+   .. If you don't need the "variable part" indication, use the standard 
+      ````code```` instead.
 
    もし"変数部分"が不要であれば、標準の ````コード```` という形式を代わりに使用してください。
 
-..   A piece of literal text, such as code.  Within the contents, you can use curly braces to indicate a "variable" part, as in ``:file:``.
 
-..   If you don't need the "variable part" indication, use the standard ````code```` instead.
 
 .. The following roles generate external links:
 
