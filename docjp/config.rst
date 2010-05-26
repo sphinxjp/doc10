@@ -302,16 +302,20 @@
    .. versionadded:: 1.0
 
 
-.. confval:: default_domain
+.. confval:: primary_domain
 
-   .. .. index:: default; domain
+   .. .. index:: primary; domain
 
-   .. index:: デフォルト; ドメイン
+   .. index:: 主要; ドメイン
 
    .. The name of the default :ref:`domain <domains>`.  Can also be ``None`` to
-      disable a default domain.  The default is ``'py'``.
+      disable a default domain.  The default is ``'py'``. Those objects in other
+      domains (whether the domain name is given explicitly, or selected by a
+      :rst:dir:`default-domain` directive) will have the domain name explicitly
+      prepended when named (e.g., when the default domain is C, Python functions
+      will be named "Python function", not just "function").
 
-   デフォルトの :ref:`ドメイン <domains>` を指定します。 ``None`` を設定すると、デフォルトドメインを無効にします。デフォルトは ``'py'`` です。
+   デフォルトの :ref:`ドメイン <domains>` を指定します。 ``None`` を設定すると、デフォルトドメインを無効にします。デフォルトは ``'py'`` です。ドメイン名が明示的に与えられるか、 :rst:dir:`default-domain` ディレクティブで指定するかに関わらず、他のドメインのオブジェクトにはドメイン名が明示的に付加されるでしょう。たとえば、デフォルトのドメインがCであれば、Pythonの関数は単なる"関数"ではなく、"Python関数"という名前になります。
 
    .. versionadded:: 1.0
 
@@ -438,6 +442,7 @@
       * ``es`` -- Spanish
       * ``fi`` -- Finnish
       * ``fr`` -- French
+      * ``hr`` -- Croation
       * ``it`` -- Italian
       * ``nl`` -- Dutch
       * ``pl`` -- Polish
@@ -456,6 +461,7 @@
    * ``es`` -- スペイン語
    * ``fi`` -- フィンランド語
    * ``fr`` -- フランス語
+   * ``hr`` -- クロアチア語
    * ``it`` -- イタリア語
    * ``nl`` -- オランダ語
    * ``pl`` -- ポーランド語
@@ -1293,6 +1299,25 @@ LaTeX出力のオプション
 
    .. deprecated:: 1.0
       :confval:`latex_domain_indices` を使用して下さい。
+
+
+.. confval:: latex_show_pagerefs
+
+   .. If true, add page references after internal references.  This is very useful
+      for printed copies of the manual.  Default is ``False``.
+
+   Trueに設定されると内部参照の後ろにページ参照が追加されます。これはマニュアルを紙に印刷して利用する場合に大変便利です。デフォルトは ``False`` です。
+
+   .. versionadded:: 1.0
+
+.. confval:: latex_show_urls
+
+   .. If true, add URL addresses after links.  This is very useful for printed
+      copies of the manual.  Default is ``False``.
+
+   Trueに設定されると、リンクの後ろにURLのアドレスが追加されます。これはマニュアルを紙に印刷して利用する場合に大変便利です。デフォルトは ``False`` です。
+
+   .. versionadded:: 1.0
 
 
 .. confval:: latex_elements

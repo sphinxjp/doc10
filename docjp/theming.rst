@@ -151,6 +151,14 @@ Sphinxではテーマを選択することができます。
        doesn't scroll out of view for long body content.  This may not work well
        with all browsers.  Defaults to false.
 
+     - **collapsiblesidebar** (true or false): Add an *experimental* JavaScript
+       snippet that makes the sidebar collapsible via a button on its side.
+       *Doesn't work together with "rightsidebar" or "stickysidebar".* Defaults to
+       false.
+
+     - **externalrefs** (true or false): Display external links differently from
+       internal links.  Defaults to false.
+
      There are also various color and font options that can change the color scheme
      without having to write a custom stylesheet:
 
@@ -180,6 +188,10 @@ Sphinxではテーマを選択することができます。
   - **rightsidebar** (true / false): サイドバーを右側に表示します。デフォルトは false です。
 
   - **stickysidebar** (true / false): サイドバーを画面上に "固定" し、本体の長いコンテンツを見ているときでもスクロールしなくなります。この機能はすべてのブラウザでうまく動作するわけではありません。デフォルトは false です。
+
+  - **collapsiblesidebar** (true / false): サイドバーの横に、サイドバーを折りたためるようにする、 **実験的な** JavaScriptを追加します。 **これは"rightsidebar"や"stickysidebar"と一緒には動作しません。** デフォルトはfalseです。
+
+  - **externalrefs** (true / false): 外部リンクを、内部リンクと異なる表示にします。デフォルトはflaseです。
 
   カスタムのスタイルシートを作成しなくても、カラースキームを変更できるように、数多くの色、フォントに関するオプションを持っています。
 

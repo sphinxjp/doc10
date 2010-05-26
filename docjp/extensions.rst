@@ -67,6 +67,7 @@ Sphinx拡張はシンプルなPythonモジュールです。拡張機能がロ�
    ext/todo
    ext/extlinks
    ext/viewcode
+   ext/oldcmarkup
 
 
 .. Third-party extensions

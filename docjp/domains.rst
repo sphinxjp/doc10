@@ -98,16 +98,16 @@ Sphinxドメイン
 
 .. To avoid having to writing the domain name all the time when you e.g. only
    describe Python objects, a default domain can be selected with either the config
-   value :confval:`default_domain` or this directive:
+   value :confval:`primary_domain` or this directive:
 
-もし、Pythonしか登場しないプロジェクトで、Pythonオブジェクトの説明しか書かない場合に、ドメイン名を毎回書かなくても良いようにする機能が提供されています。 :confval:`default_domain` 設定値と、専用のディレクティブの2つの方法で、デフォルトのドメインを指定できるようになっています。
+もし、Pythonしか登場しないプロジェクトで、Pythonオブジェクトの説明しか書かない場合に、ドメイン名を毎回書かなくても良いようにする機能が提供されています。 :confval:`primary_domain` 設定値と、専用のディレクティブの2つの方法で、デフォルトのドメインを指定できるようになっています。
 
 .. rst:directive:: .. default-domain:: name
 
-   .. Select a new default domain.  While the :confval:`default_domain` selects a
+   .. Select a new default domain.  While the :confval:`primary_domain` selects a
       global default, this only has an effect within the same file.
 
-   新しいデフォルトのドメインを設定します。 :confval:`default_domain` はプロジェクト全体のデフォルトを決定しますが、このディレクティブは同じファイル内にのみ影響を与えます。n
+   新しいデフォルトのドメインを設定します。 :confval:`primary_domain` はプロジェクト全体のデフォルトを決定しますが、このディレクティブは同じファイル内にのみ影響を与えます。n
 
 .. If no other default is selected, the Python domain (named ``py``) is the default
    one, mostly for compatibility with documentation written for older versions of
@@ -596,6 +596,8 @@ Pythonオブジェクトのクロススリファンレス
 
 .. The C Domain
    ------------
+
+.. _c-domain:
 
 C言語ドメイン
 ---------------
@@ -1113,3 +1115,18 @@ reStructuredTextドメイン(**rst**)は、次のようなディレクティブ�
 
 .. rst:role:: rst:dir
               rst:role
+
+.. More domains
+   ------------
+
+追加のドメイン
+--------------
+
+.. The sphinx-contrib_ repository contains more domains available as extensions;
+   currently a Ruby and an Erlang domain.
+
+sphinx-contrib_ リポジトリに、拡張機能として利用可能なドメインがいくつかあります。現在はRubyとErlangのドメインがあります。
+
+.. _sphinx-contrib: http://bitbucket.org/birkenfeld/sphinx-contrib/
+
+
