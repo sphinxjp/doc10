@@ -753,9 +753,9 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 
    C++オブジェクトの説明をします。完全なシグニチャ定義をサポートしています。C++の宣言部で使用するようにシグニチャを書くことができます::
 
-      .. cpp:function:: const int IntArray::operator[]
+      .. cpp:function:: const T &Array<T>::operator[]() const
 
-         IntArrayクラスの配列演算子の説明・・・
+         テンプレートの配列クラスのconstのインデックスアクセスの演算子の説明・・・
 
 .. 
    .. rst:directive:: .. cpp:namespace:: namespace
@@ -934,11 +934,11 @@ JavaScriptドメイン(**js**)は次のようなディレクティブを提供�
 
 .. rst:directive:: .. js:function:: 名前(シグニチャ)
 
-   .. Describes a JavaScript function, method or constructor.  If you want to
-      describe arguments as optional use square brackets as :ref:`documented
+   .. Describes a JavaScript function or method.  If you want to describe 
+      arguments as optional use square brackets as :ref:`documented
       <signatures>` for Python signatures.
 
-   JavaScriptの関数、メソッド、コンストラクタの説明をします。オプショナルな引数を説明したい場合には、Pythonシグニチャのために :ref:`説明したように <signatures>` 角カッコを使用します。
+   JavaScriptの関数やメソッドの説明をします。オプショナルな引数を説明したい場合には、Pythonシグニチャのために :ref:`説明したように <signatures>` 角カッコを使用します。
 
    .. You can use fields to give more details about arguments and their expected
       types, errors which may be thrown by the function, and the value being
@@ -990,6 +990,39 @@ JavaScriptドメイン(**js**)は次のようなディレクティブを提供�
         :throws SomeError: エラーが発生する理由
         :returns: 何か
 
+..
+   .. rst:directive:: .. js:class:: name
+
+.. rst:directive:: .. js:class:: 名前
+
+   .. Describes a constructor that creates an object.  This is basically like
+      a function but will show up with a `class` prefix::
+
+      .. js:class:: MyAnimal(name[, age])
+
+         :param string name: The name of the animal
+         :param number age: an optional age for the animal
+
+   オブジェクトを作るコンストラクタの説明をします。基本的には関数と似ていますが、 `class` という文字が表示されます::
+
+     .. js:class:: MyAnimal(name[, age])
+
+        :param string name: 動物の名前
+        :param number age: 動物の年齢(オプション)
+
+   .. This is rendered as:
+
+      .. js:class:: MyAnimal(name[, age])
+
+         :param string name: The name of the animal
+         :param number age: an optional age for the animal
+
+   これは次のようにレンダリングされます:
+
+     .. js:class:: MyAnimal(name[, age])
+
+        :param string name: 動物の名前
+        :param number age: 動物の年齢(オプション)
 
 ..
    .. rst:directive:: .. js:data:: name
