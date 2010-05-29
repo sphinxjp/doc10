@@ -745,17 +745,94 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
                .. cpp:type:: シグニチャ
 
    .. Describe a C++ object.  Full signature specification is supported -- give the
-      signature as you would in the declaration.  Example:
+      signature as you would in the declaration.  Here some examples:
 
-      .. cpp:function:: const int IntArray::operator[]
+      .. cpp:function:: bool namespaced::theclass::method(int arg1, std::string arg2)
 
-         Describes the indexing operator of IntArrays.
+         Describes a method with parameters and types.
 
-   C++オブジェクトの説明をします。完全なシグニチャ定義をサポートしています。C++の宣言部で使用するようにシグニチャを書くことができます::
+      .. cpp:function:: bool namespaced::theclass::method(arg1, arg2)
 
-      .. cpp:function:: const T &Array<T>::operator[]() const
+         Describes a method without types.
 
-         テンプレートの配列クラスのconstのインデックスアクセスの演算子の説明・・・
+      .. cpp:function:: const T &array<T>::operator[]() const
+ 
+         Describes the constant indexing operator of a templated array.
+ 
+      .. cpp:function:: operator bool() const
+
+         Describe a casting operator here.
+
+      .. cpp:member:: std::string theclass::name
+
+      .. cpp:type:: theclass::const_iterator
+
+   C++オブジェクトの説明をします。完全なシグニチャ定義をサポートしています。C++の宣言部で使用するようにシグニチャを書くことができます。いくつかサンプルを提示します::
+
+      .. cpp:function:: bool namespaced::theclass::method(int arg1, std::string arg2)
+
+         パラメータと型情報付きのメソッドの説明です。
+
+      .. cpp:function:: bool namespaced::theclass::method(arg1, arg2)
+
+         型情報なしのメソッドの説明です。
+
+      .. cpp:function:: const T &array<T>::operator[]() const
+
+         テンプレート配列のconstのインデックス操作メソッドの説明です。
+
+      .. cpp:function:: operator bool() const
+
+         これはキャスト演算子の説明です。
+
+      .. cpp:member:: std::string theclass::name
+
+      .. cpp:type:: theclass::const_iterator
+
+   .. Will be rendered like this:
+
+      .. cpp:function:: bool namespaced::theclass::method(int arg1, std::string arg2)
+
+         Describes a method with parameters and types.
+
+      .. cpp:function:: bool namespaced::theclass::method(arg1, arg2)
+
+         Describes a method without types.
+
+      .. cpp:function:: const T &array<T>::operator[]() const
+
+         Describes the constant indexing operator of a templated array.
+
+      .. cpp:function:: operator bool() const
+
+         Describe a casting operator here.
+
+      .. cpp:member:: std::string theclass::name
+
+      .. cpp:type:: theclass::const_iterator
+
+   これらのディレクティブは、次のようにレンダリングされます:
+
+      .. cpp:function:: bool namespaced::theclass::method(int arg1, std::string arg2)
+
+         パラメータと型情報付きのメソッドの説明です。
+
+      .. cpp:function:: bool namespaced::theclass::method(arg1, arg2)
+
+         型情報なしのメソッドの説明です。
+
+      .. cpp:function:: const T &array<T>::operator[]() const
+
+         テンプレート配列のconstのインデックス操作メソッドの説明です。
+
+      .. cpp:function:: operator bool() const
+
+         これはキャスト演算子の説明です。
+
+      .. cpp:member:: std::string theclass::name
+
+      .. cpp:type:: theclass::const_iterator
+
 
 .. 
    .. rst:directive:: .. cpp:namespace:: namespace
@@ -1047,6 +1124,7 @@ JavaScriptドメイン(**js**)は次のようなディレクティブを提供�
 このドメインでは、オブジェクトの説明を参照する、次のようなロールが提供されています:
 
 .. rst:role:: js:func
+              js:class
               js:data
               js:attr
 
