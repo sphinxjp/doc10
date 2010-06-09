@@ -108,6 +108,9 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
         a reference ``:ref:`my-figure``` would insert a reference to the figure 
         with link text "Figure caption".
 
+        The same works for tables that are given an explicit caption using the
+        :dudir:`table` directive.
+
    * セクションのタイトルの直前にラベルを置くと、 ``:ref:`label-name``` と書くことで参照できるようになります::
 
         .. _my-reference-label:
@@ -131,6 +134,8 @@ Sphinxは解釈済みのテキストのロールというものを使用して�
            図のキャプション
 
      ``:ref:`my-figure``` 参照を書くと、 "図のキャプション" というテキストを持つ、図への参照が生成されます。
+
+     :dudir:`table` ディレクティブを使用して、キャプションを明示しているテーブルに対しても、同様の働きをします。
 
    .. * Labels that aren't placed before a section title can still be referenced 
         to, but you must give the link an explicit title, using this syntax: 

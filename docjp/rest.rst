@@ -490,12 +490,15 @@ Docutilsは次のようなディレクティブを含みます:
 
   - :dudir:`raw` (include raw target-format markup)
   - :dudir:`include` (include reStructuredText from another file)
+    -- in Sphinx, when given an absolute include file path, this directive takes
+    it as relative to the source directory
   - :dudir:`class` (assign a class attribute to the next element) [1]_
 
 * 特別なディレクティブ:
 
   - :dudir:`raw` (ターゲットの書式のマークアップを挿入)
   - :dudir:`include` (他のファイルからreStructuredTextを取り込み)
+    -- Sphinxでは、絶対パスが指定されると、ソースディレクトリからの相対パスが利用されます。
   - :dudir:`class` (次の要素へのクラス属性の設定) [1]_
 
 .. * HTML specifics:
@@ -717,13 +720,13 @@ reSTは"置換"(:duref:`ref <substitution-definitions>`)をサポートしてい
 
 詳しくは `reSTリファレンスの置換の説明 <substitution-definitions>`_ を参照してください。
 
-.. If you want to use some substitutions for all documents, put them into a
-   separate file and include it into all documents you want to use them in, using
-   the :rst:dir:`include` directive.  Be sure to give the include file a file name
-   extension differing from that of other source files, to avoid Sphinx finding it
-   as a standalone document.
+.. If you want to use some substitutions for all documents, put them into
+   :confval:`rst_prolog` or put them into a separate file and include it into all 
+   documents you want to use them in, using the :rst:dir:`include` directive.  (Be 
+   sure to give the include file a file name extension differing from that of other 
+   source files, to avoid Sphinx finding it as a standalone document.)
 
-いくつかの置換をすべてのドキュメントで使用したい場合には、置換の宣言を別のファイルに切り出して、その置換を行いたいすべてのドキュメントの冒頭で :rst:dir:`include` ディレクティブを使用してインクルードする方法があります。この場合は、他のソースファイルとは別の拡張子を付けるようにしましょう。同じ拡張子にすると、Sphinxはリンクされていないドキュメントとして警告を出力してしまいます。
+いくつかの置換をすべてのドキュメントで使用したい場合には、置換の宣言を別のファイルに切り出して、 :confval:`rst_prolog` に書くか、その置換を行いたいすべてのドキュメントの冒頭で :rst:dir:`include` ディレクティブを使用してインクルードする方法があります。この場合は、他のソースファイルとは別の拡張子を付けるようにしましょう。同じ拡張子にすると、Sphinxはリンクされていないドキュメントとして警告を出力してしまいます。
 
 .. Sphinx defines some default substitutions, see :ref:`default-substitutions`.
 

@@ -23,11 +23,12 @@ ReSTにはドキュメント間の連携をサポートする機能はありま�
 
    .. This directive inserts a "TOC tree" at the current location, using the
       individual TOCs (including "sub-TOC trees") of the documents given in the
-      directive body (whose path is relative to the document the directive occurs
-      in).  A numeric ``maxdepth`` option may be given to indicate the depth of the
-      tree; by default, all levels are included. [#]_
+      directive body. Relative document names (not beginning with slash) are 
+      relative to the document the directive occurs in, absolute names are relative
+      to the source directory.  A numeric ``maxdepth`` option may be given to 
+      indicate the depth of the tree; by default, all levels are included. [#]_
 
-   このディレクティブは"目次のツリー"を現在の場所に挿入します。目次の生成には、ディレクティブ本体で指定された関連ドキュメントの中の個別の目次("サブ目次ツリー"も含む)も使用されます。 ``maxdepth`` オプションの数値を設定すると、ツリーの深さを設定することができます。デフォルトではすべての階層を含むツリーが作成されます。 [#]_
+   このディレクティブは"目次のツリー"を現在の場所に挿入します。目次の生成には、ディレクティブ本体で指定された関連ドキュメントの中の個別の目次("サブ目次ツリー"も含む)も使用されます。相対的なドキュメント名(``/`` で始まらない)が指定されると、。 ``maxdepth`` オプションの数値を設定すると、ツリーの深さを設定することができます。デフォルトではすべての階層を含むツリーが作成されます。 [#]_
 
    .. Consider this example (taken from the Python docs' library reference index):
 
