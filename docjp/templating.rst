@@ -256,34 +256,35 @@ Sphinxの *basic* テーマでは2つのブロックを持つ基本となるテ�
 
 .. data:: reldelim1
 
-   リレーションバーの左側アイテムの区切り文字です。デフォルトは ``' &raquo;'`` です。リレーションバーに含まれるアイテムはすべて、ここで指定した変数の値で区切られます。
+   .. The delimiter for the items on the left side of the related bar.  This
+      defaults to ``' &raquo;'`` Each item in the related bar ends with the value
+      of this variable.
 
-.. The delimiter for the items on the left side of the related bar.  This
-   defaults to ``' &raquo;'`` Each item in the related bar ends with the value
-   of this variable.
+   リレーションバーの左側アイテムの区切り文字です。デフォルトは ``' &raquo;'`` です。リレーションバーに含まれるアイテムはすべて、ここで指定した変数の値で区切られます。
 
 .. data:: reldelim2
 
+   .. The delimiter for the items on the right side of the related bar.  This
+      defaults to ``' |'``.  Each item except of the last one in the related bar
+      ends with the value of this variable.
+
    リレーションバーの右側のアイテムの区切り文字になります。デフォルトは ``' |'`` です。最後の要素を除くすべてのリレーションバーのアイテムは、ここで指定された変数の値で区切られます。
+
+   .. Overriding works like this
 
    以下のようにオーバーライドします::
 
        {% extends "!layout.html" %}
        {% set reldelim1 = ' &gt;' %}
 
-.. The delimiter for the items on the right side of the related bar.  This
-   defaults to ``' |'``.  Each item except of the last one in the related bar
-   ends with the value of this variable.
-
-.. Overriding works like this
 
 .. data:: script_files
 
-   以下のように記述すると、追加のスクリプトファイルをここで追加することができます。
+   .. Add additional script files here, like this
+
+   以下のように記述すると、追加のスクリプトファイルをここで追加することができます::
 
       {% set script_files = script_files + [pathto("_static/myscript.js", 1)] %}
-
-.. Add additional script files here, like this
 
 .. Helper Functions
    ~~~~~~~~~~~~~~~~
@@ -298,35 +299,35 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
 
 .. function:: pathto(ドキュメント)
 
-   SphinxドキュメントへのURLを返します。これは組み込みのドキュメントを参照する場合に使用します。
+   .. Return the path to a Sphinx document as a URL.  Use this to refer to built
+      documents.
 
-.. Return the path to a Sphinx document as a URL.  Use this to refer to built
-   documents.
+   SphinxドキュメントへのURLを返します。これは組み込みのドキュメントを参照する場合に使用します。
 
 .. function:: pathto(ファイル, 1)
 
-   *ファイル* に対する、生成されたドキュメントのルートからの相対パスによるリンクを返します。静的なファイルを参照するのに使用します。
+   .. Return the path to a *file* which is a filename relative to the root of the
+      generated output.  Use this to refer to static files.
 
-.. Return the path to a *file* which is a filename relative to the root of the
-   generated output.  Use this to refer to static files.
+   *ファイル* に対する、生成されたドキュメントのルートからの相対パスによるリンクを返します。静的なファイルを参照するのに使用します。
 
 .. function:: hasdoc(ドキュメント)
 
-   *ドキュメント* で指定された名前のドキュメントが存在するかどうかチェックします。
+   .. Check if a document with the name *document* exists.
 
-.. Check if a document with the name *document* exists.
+   *ドキュメント* で指定された名前のドキュメントが存在するかどうかチェックします。
 
 .. function:: sidebar()
 
-   レンダリングされたサイドバーを返します。
+   .. Return the rendered sidebar.
 
-.. Return the rendered sidebar.
+   レンダリングされたサイドバーを返します。
 
 .. function:: relbar()
 
-   レンダリングリレーションバーを返します。
+   .. Return the rendered relation bar.
 
-.. Return the rendered relation bar.
+   レンダリングリレーションバーを返します。
 
 
 .. Global Variables
@@ -343,70 +344,85 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
 
 .. data:: builder
 
+   .. The name of the builder (e.g. ``html`` or ``htmlhelp``).
+
    ビルダーの名前が格納されている変数です。 ``html``, ``htmlhelp`` などの値が入ります。
 
-.. The name of the builder (e.g. ``html`` or ``htmlhelp``).
 
 .. data:: copyright
 
+   .. The value of :confval:`copyright`.
+
    :confval:`copyright` の値が入ります。
 
-.. The value of :confval:`copyright`.
 
 .. data:: docstitle
 
+   .. The title of the documentation (the value of :confval:`html_title`).
+
    ドキュメントのタイトルです。 :confval:`html_title` で設定した値が入ります。
    
-.. The title of the documentation (the value of :confval:`html_title`).
 
 .. data:: embedded
 
+   .. True if the built HTML is meant to be embedded in some viewing application
+      that handles navigation, not the web browser, such as for HTML help or Qt
+      help formats.  In this case, the sidebar is not included.
+
    ウェブブラウザではなく、HTMLヘルプや、Qtヘルプフォーマットなどの、専用のビューアーアプリケーション内で使用される組み込みのHTMLの場合にTrueとなります。これがTrueの場合には、サイドバーが含まれなくなります。
 
-.. True if the built HTML is meant to be embedded in some viewing application
-   that handles navigation, not the web browser, such as for HTML help or Qt
-   help formats.  In this case, the sidebar is not included.
 
 .. data:: favicon
 
+   .. The path to the HTML favicon in the static path, or ``''``.
+
    HTMLのfaviconを表す静的パスです。設定されない場合には ``''`` となります。
 
-.. The path to the HTML favicon in the static path, or ``''``.
 
 .. data:: file_suffix
 
+   .. The value of the builder's :attr:`out_suffix` attribute, i.e. the file name
+      extension that the output files will get.  For a standard HTML builder, this
+      is usually ``.html``.
+
    ビルダーの :attr:`out_suffix` アトリビュートの値です。出力ファイル名に付く拡張子などです。標準のHTMLビルダーの場合には、通常は ``.html`` になります。
 
-.. The value of the builder's :attr:`out_suffix` attribute, i.e. the file name
-   extension that the output files will get.  For a standard HTML builder, this
-   is usually ``.html``.
+
 
 .. data:: has_source
 
+   .. True if the reST document sources are copied (if :confval:`html_copy_source`
+      is true).
+
    もしreSTドキュメントソースがコピーされている場合にTrueになります。 :confval:`html_copy_source` がtrueに設定されるとコピーされます。
 
-.. True if the reST document sources are copied (if :confval:`html_copy_source`
-   is true).
 
 .. data:: last_updated
 
+   .. The build date.
+
    ビルドされた日時です。
 
-.. The build date.
 
 .. data:: logo
 
+   .. The path to the HTML logo image in the static path, or ``''``.
+
    HTMLに貼り付けられるロゴ画像の静的なパスです。指定されていない場合には ``''`` になります。
 
-.. The path to the HTML logo image in the static path, or ``''``.
 
 .. data:: master_doc
 
+   .. The value of :confval:`master_doc`, for usage with :func:`pathto`.
+
    :confval:`master_doc` の値が入ります。 :func:`pathto` と一緒に使用します。
 
-.. The value of :confval:`master_doc`, for usage with :func:`pathto`.
 
 .. data:: next
+
+   .. The next document for the navigation.  This variable is either false or has
+      two attributes `link` and `title`.  The title contains HTML markup.  For
+      example, to generate a link to the next page, you can use this snippet
 
    ナビゲーションで「次のトピック」にあたるドキュメントです。この変数はflaseか、 `link` と `title` の二つの属性を持つオブジェクトのどちらかになります。タイトルにはHTMLのマークアップが含まれます。例えば、次のページへのリンクを生成するには、以下のようなコードを利用します::
 
@@ -414,95 +430,105 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
       <a href="{{ next.link|e }}">{{ next.title }}</a>
       {% endif %}
 
-.. The next document for the navigation.  This variable is either false or has
-   two attributes `link` and `title`.  The title contains HTML markup.  For
-   example, to generate a link to the next page, you can use this snippet
-
 
 .. data:: pagename
 
+   .. The "page name" of the current file, i.e. either the document name if the
+      file is generated from a reST source, or the equivalent hierarchical name
+      relative to the output directory (``[directory/]filename_without_extension``).
+
    現在のファイルの "ページ名" です。reSTのソースから生成されていたらドキュメント名になります。あるいは出力ディレクトリからの相対パス名から拡張子を抜いた名前 (``[ディレクトリ/]拡張子なしのファイル名``) となる、階層名付きの名前になります。
 
-.. The "page name" of the current file, i.e. either the document name if the
-   file is generated from a reST source, or the equivalent hierarchical name
-   relative to the output directory (``[directory/]filename_without_extension``).
+
 
 .. data:: parents
 
+   .. A list of parent documents for navigation, structured like the :data:`next`
+      item.
+
    ナビゲーションのための、親のドキュメントのリストです。それぞれの要素は :data:`next` と同じような構造体になっています。
 
-.. A list of parent documents for navigation, structured like the :data:`next`
-   item.
+
 
 .. data:: prev
 
+   .. Like :data:`next`, but for the previous page.
+
    「前のトピック」にあたるページの情報です。 :data`next` と似ています。
 
-.. Like :data:`next`, but for the previous page.
 
 .. data:: project
 
+   .. The value of :confval:`project`.
+
    :confval:`project` の値になります。
 
-.. The value of :confval:`project`.
 
 .. data:: release
 
+   .. The value of :confval:`release`.
+
    :confval:`release` の値になります。
 
-.. The value of :confval:`release`.
 
 .. data:: rellinks
 
+   .. A list of links to put at the left side of the relbar, next to "next" and
+      "prev".  This usually contains links to the index and the modindex.  If you
+      add something yourself, it must be a tuple ``(pagename, link title,
+      accesskey, link text)``.
+
    リレーションバーの左側(?)、 "次", "前" のとなりに置かれるリンクのリストです。通常では、索引とモジュール索引へのリンクが含まれています。もしここに何かを追加する場合には、 ``(ページ名, リンクタイトル, アクセスキー, リンクテキスト)`` というタプルを追加します。
 
-.. A list of links to put at the left side of the relbar, next to "next" and
-   "prev".  This usually contains links to the index and the modindex.  If you
-   add something yourself, it must be a tuple ``(pagename, link title,
-   accesskey, link text)``.
 
 .. data:: shorttitle
 
+   .. The value of :confval:`html_short_title`.
+
    :confval:`html_short_title` の値になります。
 
-.. The value of :confval:`html_short_title`.
 
 .. data:: show_source
 
+   .. True if :confval:`html_show_sourcelink` is true.
+
    :confval:`html_show_sourcelink` がtrueの場合にTrueになります。
 
-.. True if :confval:`html_show_sourcelink` is true.
 
 .. data:: sphinx_version
 
+   .. The version of Sphinx used to build.
+
    ビルドに使用されたSphinxのバージョンです。
 
-.. The version of Sphinx used to build.
 
 .. data:: style
 
+   .. The name of the main stylesheet, as given by the theme or
+      :confval:`html_style`.
+
    メインのスタイルシートの名前です。テーマで設定されたものか、あるいは :confval:`html_style` で設定されてる値になります。
 
-.. The name of the main stylesheet, as given by the theme or
-   :confval:`html_style`.
 
 .. data:: title
 
+   .. The title of the current document, as used in the ``<title>`` tag.
+
    現在のドキュメントのタイトルです。これは ``<title>`` タグで使用されます。
 
-.. The title of the current document, as used in the ``<title>`` tag.
 
 .. data:: use_opensearch
 
+   .. The value of :confval:`html_use_opensearch`... The value of :confval:`html_use_opensearch`.
+
    :confval:`html_use_opensearch` の値が入ります。
 
-.. The value of :confval:`html_use_opensearch`.
 
 .. data:: version
 
-   :confval:`version` の値が入ります。
+   .. The value of :confval:`version`.
 
-.. The value of :confval:`version`.
+   :confval:`version` の値が入ります。
 
 
 .. In addition to these values, there are also all **theme options** available
@@ -519,28 +545,54 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
 
 .. data:: meta
 
+   .. Document metadata, see :ref:`metadata`.
+
    ドキュメントのメタデータです。 :ref:`metadata` を参照してください。
 
-.. Document metadata, see :ref:`metadata`.
 
 .. data:: sourcename
 
+   .. The name of the copied source file for the current document.  This is only
+      nonempty if the :confval:`html_copy_source` value is true.
+
    現在のドキュメントのコピーされたソースファイル名です。 :confval:`html_copy_source` の値がtrueでない場合には 空になります。
 
-.. The name of the copied source file for the current document.  This is only
-   nonempty if the :confval:`html_copy_source` value is true.
 
 .. data:: toc
 
+   .. The local table of contents for the current page, rendered as HTML bullet
+      lists.
+
    現在のページのためのローカルの目次です。HTMLのリストとしてレンダリングされています。
 
-.. The local table of contents for the current page, rendered as HTML bullet
-   lists.
 
 .. data:: toctree
 
-   現在のページを含むグローバルな目次ツリーを生成する、呼び出し可能オブジェクトです。HTMLリストとしてレンダリングされています。もしオプションのキーワード引数の ``collapse`` がtrueの場合には、現在のページの祖先にあたる目次のエントリー以外は折りたたまれます。
+   .. A callable yielding the global TOC tree containing the current page, rendered
+      as HTML bullet lists.  If the optional keyword argument ``collapse`` is true,
+      all TOC entries that are not ancestors of the current page are collapsed.
 
-.. A callable yielding the global TOC tree containing the current page, rendered
-   as HTML bullet lists.  If the optional keyword argument ``collapse`` is true,
-   all TOC entries that are not ancestors of the current page are collapsed.
+
+
+   .. A callable yielding the global TOC tree containing the current page, rendered
+      as HTML bullet lists.  Optional keyword arguments:
+
+      * ``collapse`` (true by default): if true, all TOC entries that are not
+        ancestors of the current page are collapsed
+
+      * ``maxdepth`` (defaults to the max depth selected in the toctree directive):
+        the maximum depth of the tree; set it to ``-1`` to allow unlimited depth
+
+      * ``titles_only`` (false by default): if true, put only toplevel document
+        titles in the tree
+
+   現在のページを含むグローバルな目次ツリーを生成する、呼び出し可能オブジェクトです。HTMLリストとしてレンダリングされています。次のようなオプションのキーワード引数があります:
+
+      * ``collapse`` (デフォルトはtrue): trueの場合には、現在のページの祖先にあたる目次のエントリー以外は折りたたまれます。
+
+      * ``maxdepth`` (デフォルトではそのtoctreeディレクティブの最大値): 表示されるツリーの深さの最大値を設定します。 ``-1`` を設定すると深さの制限がなくなります。
+
+      * ``titles_only`` (デフォルトはfalse): もしtrueが設定されると、ドキュメント内のトップレベルのタイトルだけがツリーに置かれます。
+
+
+

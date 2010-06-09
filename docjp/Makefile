@@ -11,18 +11,26 @@ PAPEROPT_letter  = -D latex_paper_size=letter
 ALLSPHINXOPTS = -d _build/doctrees $(PAPEROPT_$(PAPER)) \
                 $(SPHINXOPTS) $(O) .
 
-.PHONY: help clean html dirhtml pickle htmlhelp qthelp latex changes linkcheck doctest man
+.PHONY: help clean html dirhtml singlehtml text man pickle json htmlhelp \
+	qthelp devhelp epub latex latexpdf changes linkcheck doctest
+
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html      to make standalone HTML files"
 	@echo "  dirhtml   to make HTML files called index.html in directories"
+	@echo "  singlehtml to make one big HTML file"
+	@echo "  text      to make text files"
+	@echo "  man       to make manual pages"
 	@echo "  pickle    to make pickle files"
 	@echo "  json      to make json files"
 	@echo "  htmlhelp  to make HTML files and a HTML help project"
+	@echo "  qthelp    to make Qt help files and project"
+	@echo "  devhelp   to make Devhelp files and project"
 	@echo "  epub      to make an epub file"
 	@echo "  latex     to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
-	@echo "  man       to make manual pages"
+	@echo "  latexpdf  to make LaTeX files and run pdflatex"
+	@echo "  changes   to make an overview over all changed/added/deprecated items"
 	@echo "  changes   to make an overview over all changed/added/deprecated items"
 	@echo "  linkcheck to check all external links for integrity"
 
@@ -70,6 +78,15 @@ qthelp:
 	@echo "To view the help collection:"
 	@echo "# assistant -collectionFile _build/qthelp/Sphinx.qhc"
 
+devhelp:
+	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) _build/devhelp
+	@echo
+	@echo "Build finished."
+	@echo "To view the help file:"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/sphinx"
+	@echo "# ln -s _build/devhelp $$HOME/.local/share/devhelp/sphinx"
+	@echo "# devhelp"
+
 epub:
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) _build/epub
 	@echo
@@ -82,6 +99,12 @@ latex:
 	@echo "Build finished; the LaTeX files are in _build/latex."
 	@echo "Run \`make all-pdf' or \`make all-ps' in that directory to" \
 	      "run these through (pdf)latex."
+
+latexpdf:
+	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) _build/latex
+	@echo "Running LaTeX files through pdflatex..."
+	make -C _build/latex all-pdf
+	@echo "pdflatex finished; the PDF files are in _build/latex."
 
 changes:
 	$(SPHINXBUILD) -b changes $(ALLSPHINXOPTS) _build/changes

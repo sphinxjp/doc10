@@ -857,6 +857,21 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 
    C++オブジェクトへの参照です。完全なシグニチャを指定することができます。オーバーロードされた関数へのリンクを張る場合には、完全なシグニチャを指定する必要があります。
 
+..
+   .. admonition:: Note on References
+
+      It is currently impossible to link to a specific version of an
+      overloaded method.  Currently the C++ domain is the first domain
+      that has basic support for overloaded methods and until there is more
+      data for comparison we don't want to select a bad syntax to reference a
+      specific overload.  Currently Sphinx will link to the first overloaded
+      version of the method / function.
+
+
+
+.. admonition:: 参照に関する注意点
+
+   現在の実装では、オーバーロードされた特定のメソッドに対してリンクを張ることはできません。C++ドメインは、オーバーロードされたメソッドを持つ言語をサポートする最初のドメインです。きちんとそれぞれのメソッドを比較できるようなデータ構造を持つまでは、特定のメソッドを参照するために見難い構文を導入するのは避けたいと考えています。現在のSphinxでは、オーバーロードされた最初のメソッドや関数をリンクしに行きます。
 
 .. The Standard Domain
    -------------------
