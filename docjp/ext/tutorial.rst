@@ -263,7 +263,7 @@ setup関数
 
 .. The ``todolist`` directive is quite simple:
 
-``todolist``\ ディレクティブはきわめてシンプルです：：
+``todolist``\ ディレクティブはきわめてシンプルです::
 
    from sphinx.util.compat import Directive
 

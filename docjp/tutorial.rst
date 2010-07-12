@@ -124,7 +124,7 @@ Sphinxの最初の第一歩は :program:`sphinx-quickstart` と呼ばれるプ�
    and hierarchy of your documents.  (They may contain ``toctree`` directives
    themselves, which means you can create deeply nested hierarchies if necessary.)
 
-次に、toctreeに追加下ファイルを作成し、内容を書くことができるようになりました。"maxdepth"で指定された階層まで、toctreeディレクティブの書かれた場所に、リストされたドキュメントのセクションタイトルとリンクが挿入され、目次ができあがります。Sphinxはこのディレクティブを通じて、ドキュメントの階層と順番を知ります。子供の文章の中にも ``toctree`` ディレクティブを書くことができるため、必要であれば深い階層構造を作ることもできます。
+次に、toctreeに追加したファイルを作成し、内容を書くことができるようになりました。"maxdepth"で指定された階層まで、toctreeディレクティブの書かれた場所に、リストされたドキュメントのセクションタイトルとリンクが挿入され、目次ができあがります。Sphinxはこのディレクティブを通じて、ドキュメントの階層と順番を知ります。子供の文章の中にも ``toctree`` ディレクティブを書くことができるため、必要であれば深い階層構造を作ることもできます。
 
 .. Adding content
    --------------

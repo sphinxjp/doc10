@@ -987,7 +987,7 @@ C++ドメインは(**cpp**)は、C++プロジェクトのドキュメント作�
 .. There is also a very generic object description directive, which is not tied to
    any domain:
 
-どこのドメインにも俗さ名様な、非常に汎用的なオブジェクトの説明用のディレクティブも存在します:
+どこのドメインにも属さないような、非常に汎用的なオブジェクトの説明用のディレクティブも存在します:
 
 
 .. .. rst:directive:: .. describe:: text

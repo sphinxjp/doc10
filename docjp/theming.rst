@@ -364,7 +364,7 @@ Sphinxではテーマを選択することができます。
      highlighting.  This can be overridden by the user in the
      :confval:`pygments_style` config value.
 
-* **pygments_style** には、ハイライトに使用する、Pygmentsのスタイルの名前を競ってします。この設定は、コンフィグ値の :confval:`pygments_style` を使用することで、上書きすることができます。
+* **pygments_style** には、ハイライトに使用する、Pygmentsのスタイルの名前を設定します。この設定は、コンフィグ値の :confval:`pygments_style` を使用することで、上書きすることができます。
 
 .. * The **options** section contains pairs of variable names and default values.
      These options can be overridden by the user in :confval:`html_theme_options`
