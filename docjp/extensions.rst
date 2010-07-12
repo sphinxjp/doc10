@@ -112,4 +112,4 @@ Sphinxのディストリビューション内で(まだ)メンテナンスされ
 .. You can also install extensions anywhere else on ``sys.path``, e.g. in the
    ``site-packages`` directory.
 
-``sys.path``\ を使う以外の方法では、\ ``site-packages``\ ディレクトリの中にインストールするという方法などもあります。k
+``sys.path``\ を使う以外の方法では、\ ``site-packages``\ ディレクトリの中にインストールするという方法などもあります。
