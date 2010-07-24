@@ -1240,6 +1240,11 @@ LaTeX出力のオプション
       * *documentclass*: Must be one of ``'manual'`` or ``'howto'``.  Only "manual"
         documents will get appendices.  Also, howtos will have a simpler title
         page.
+      * *documentclass*: Normally, one of ``'manual'`` or ``'howto'`` (provided by
+        Sphinx).  Other document classes can be given, but they must include the
+        "sphinx" package in order to define Sphinx' custom LaTeX commands.
+        "howto" documents will not get appendices.  Also, howtos will have a simpler
+        title page.
       * *toctree_only*: Must be ``True`` or ``False``.  If ``True``, the *startdoc*
         document itself is not included in the output, only the documents
         referenced by it via TOC trees.  With this option, you can put extra stuff
@@ -1249,7 +1254,7 @@ LaTeX出力のオプション
    * *targetname*: 出力ディレクトリに出力される、LaTeXのファイル名です。
    * *title*: LaTeXのドキュメントのタイトルです。 *startdoc* の名前を使用する場合には、空にすることも可能です。この設定値はLaTeXのマークアップとして挿入されます。バックスラッシュやアンパサンドなどの特別な文字を入れる場合には、適切なLaTeXコマンドを使って表現しなければなりません。
    * *author*: LaTeXドキュメントの著者です。これも *title* と同じように、LaTeXマークアップとして挿入されます。複数人の名前を書く場合には、著者名の区切りに ``\and`` を使用して、 ``'John \and Sarah'`` のように書きます。
-   * documentclass*: ``'manual'`` か ``'howto'`` を使用します。 "manual"ドキュメントにはAppendixが追加されます。"howto"はシンプルなタイトルページが追加されます。
+   * documentclass*: 通常はSphinxから提供されている ``'manual'`` か ``'howto'`` を使用します。他のドキュメントクラスも定義されていますが、SphinxのカスタムのLaTeXコマンドを定義するために、"sphinx"パッケージをインクルードしなければなりません。"howto"では、Appendixが追加されず、シンプルなタイトルページだけが追加されます。
    * toctree_only*: ``True`` か ``False`` を設定します。もしも ``True`` を設定した場合には *startdoc* ドキュメント自身は出力には含まれず、そのドキュメントのTOCツリーで参照されたドキュメントだけになります。このオプションを付けると、HTMLではマスタードキュメント内の項目も表示させて、LaTeXでは出さない、ということができます。
 
    .. .. versionadded:: 0.3
