@@ -75,7 +75,7 @@
    (not broken) SVN trunk snapshot.  If you like to have source code highlighting
    support, you must also install the Pygments_ library.
 
-Sphinxおよび、 docutils, Jinja2_ などのライブラリの実行には **Python 2.4** よりも新しいバージョンのPythonが必要です。Sphinxが依存しているコンポーネントとしては、docutilsのバージョン 0.5、もしくはSVNリポジトリのTrunkのスナップショット(壊れていないものに限定)があります。もしもソースコードハイライトのサポートが必要であれば、 Pygments_ ライブラリも一緒にインストールする必要がありますが、setuptoolsのeasy_installを使用して、インストールすることができます。
+Sphinxおよび、 docutils_, Jinja2_ などのライブラリの実行には **Python 2.4** よりも新しいバージョンのPythonが必要です。Sphinxが依存しているコンポーネントとしては、docutilsのバージョン 0.5、もしくはSVNリポジトリのTrunkのスナップショット(壊れていないものに限定)があります。もしもソースコードハイライトのサポートが必要であれば、 Pygments_ ライブラリも一緒にインストールする必要がありますが、setuptoolsのeasy_installを使用して、インストールすることができます。
 
  
 .. _reStructuredText: http://docutils.sf.net/rst.html
