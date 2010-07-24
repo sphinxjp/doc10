@@ -49,6 +49,7 @@ Sphinxを使用しているプロジェクト
 * PyCuda: http://documen.tician.de/pycuda/
 * Pyevolve: http://pyevolve.sourceforge.net/
 * Pylo: http://documen.tician.de/pylo/
+* PyMQI: http://packages.python.org/pymqi/
 * PyPubSub: http://pubsub.sourceforge.net/
 * pyrticle: http://documen.tician.de/pyrticle/
 * Python: http://docs.python.org/
@@ -102,6 +103,7 @@ sphinxdocテーマを使用しているドキュメント
 * Fityk: http://www.unipress.waw.pl/fityk/
 * MapServer: http://mapserver.org/
 * Matplotlib: http://matplotlib.sourceforge.net/
+* Music21: http://mit.edu/music21/doc/html/contents.html
 * MyHDL: http://www.myhdl.org/doc/0.6/
 * NetworkX: http://networkx.lanl.gov/
 * Pysparse: http://pysparse.sourceforge.net/
@@ -126,6 +128,8 @@ sphinxdocテーマを使用しているドキュメント
 * Jinja: http://jinja.pocoo.org/2/documentation/ (scrolls)
 * pip: http://pip.openplans.org/ (nature)
 * Programmieren mit PyGTK und Glade (German):
+* Spring Python: http://springpython.webfactional.com/current/sphinx/index.html
+  (nature)
   http://www.florian-diesch.de/doc/python-und-glade/online/ (agogo)
 * sqlparse: http://python-sqlparse.googlecode.com/svn/docs/api/index.html
   (agogo)
@@ -149,11 +153,13 @@ sphinxdocテーマを使用しているドキュメント
 * PyEphem: http://rhodesmill.org/pyephem/
 * Pylons: http://pylonshq.com/docs/en/0.9.7/
 * PyMOTW: http://www.doughellmann.com/PyMOTW/
+* qooxdoo: http://manual.qooxdoo.org/current
 * Roundup: http://www.roundup-tracker.org/
 * Selenium: http://seleniumhq.org/docs/
 * Self: http://selflanguage.org/
 * SQLAlchemy: http://www.sqlalchemy.org/docs/
 * tinyTiM: http://tinytim.sourceforge.net/docs/2.0/
+* tipfy: http://www.tipfy.org/docs/
 * Werkzeug: http://werkzeug.pocoo.org/documentation/dev/
 * WFront: http://discorporate.us/projects/WFront/
 
