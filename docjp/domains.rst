@@ -588,6 +588,15 @@ Pythonオブジェクトのクロススリファンレス
 
 通常、これらのロールで使用される名前は、最初は修飾子なしで検索されます。次に現在のモジュール名を前に付けて検索されます。その次に現在のモジュール名とクラス名(あれば)を付けて検索されます。もし、ドットが先頭についた名前が指定された場合には、この探索順は逆になります。例えば、 :mod:`codecs` というPythonモジュールの定義の中で ``:py:func:`open``` が定義されると、常に組み込み関数を参照しますが、 ``:py:func:`.open``` と書かれると、 :func:`codecs.open` を参照するようになります。
 
+.. Also, if the name is prefixed with a dot, and no exact match is found, the
+   target is taken as a suffix and all object names with that suffix are
+   searched.  For example, ``:py:meth:`.TarFile.close``` references the
+   ``tarfile.TarFile.close()`` function, even if the current module is not
+   ``tarfile``.  Since this can get ambiguous, if there is more than one possible
+   match, you will get a warning from Sphinx.
+
+また、名前の前にドットがついていて、正確に一致するものがないと、ドットを外した名前を持つオブジェクトと、その名前を末尾に含むすべてのオブジェクトが検索されます。例えば、 ``:py:meth:`.TarFile.close``` という文字列は、現在のモジュールが ``tarfile`` でなかったとしても、 ``tarfile.TarFile.close()`` を見つけ出して参照します。もしも該当するオブジェクトが複数ある場合には、どれを参照すればいいのか一意に定まらないため、Sphinxは警告を出します。
+
 .. A similar heuristic is used to determine whether the name is an attribute of the
    currently documented class.
 

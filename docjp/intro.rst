@@ -70,15 +70,19 @@
 前提条件
 --------
 
-.. Sphinx needs at least **Python 2.4** to run.  If you like to have source code 
-   highlighting support, you must also install the Pygments_ library, which you can 
-   do via setuptools' easy_install.  Sphinx should work with docutils version 0.4 
-   or some (not broken) SVN trunk snapshot.
+.. Sphinx needs at least **Python 2.4** to run, as well as the docutils_ and
+   Jinja2_ libraries.  Sphinx should work with docutils version 0.5 or some
+   (not broken) SVN trunk snapshot.  If you like to have source code highlighting
+   support, you must also install the Pygments_ library.
 
-Sphinxの実行には **Python 2.4** よりも新しいバージョンのPythonが必要です。もしもソースコードハイライトのサポートが必要であれば、 Pygments_ ライブラリも一緒にインストールする必要がありますが、 setuptoolsのeasy_installを使用すれば一緒にインストールできます。Sphinxが依存しているコンポーネントとしては、docutilsのバージョン 0.4、もしくはSVNリポジトリのTrunkのスナップショット(壊れていないものに限定)があります。
+Sphinxおよび、 docutils, Jinja2_ などのライブラリの実行には **Python 2.4** よりも新しいバージョンのPythonが必要です。Sphinxが依存しているコンポーネントとしては、docutilsのバージョン 0.5、もしくはSVNリポジトリのTrunkのスナップショット(壊れていないものに限定)があります。もしもソースコードハイライトのサポートが必要であれば、 Pygments_ ライブラリも一緒にインストールする必要がありますが、setuptoolsのeasy_installを使用して、インストールすることができます。
 
-.. _Pygments: http://pygments.org
+ 
 .. _reStructuredText: http://docutils.sf.net/rst.html
+.. _docutils: http://docutils.sf.net/
+.. _Jinja2: http://jinja.pocoo.org/2/
+.. _Pygments: http://pygments.org/
+
 
 .. Usage
    -----

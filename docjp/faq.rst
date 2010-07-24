@@ -222,6 +222,20 @@ Epub情報
 
 * 作成されたepubファイルはテストしてください。いくつかの選択肢があります。私が確認するようにしているのは、 Epubcheck_, Calibre_, FBreader_ (これはCSSをレンダリングできません), Bookworm_ です。Bookwormは、 http://code.google.com/p/threepress/ からダウンロードして、ローカルのサーバ上で実行します。
 
+.. * Large floating divs are not displayed properly.
+     If they cover more than one page, the div is only shown on the first page.
+     In that case you can copy the :file:`epub.css` from the
+     ``sphinx/themes/epub/static/`` directory to your local ``_static/``
+     directory and remove the float settings.
+
+* 大きなフローティング指定のdiv要素は適切に表示されません。もしも複数ページにわたるdiv要素があったとしても、最初のページにしか表示されません。もしこのような場合には、 ``sphinx/themes/epub/static/`` にある :file:`epub.css` をローカルの ``_static/`` にコピーして、float設定を削除してください。
+
+.. * Files that are inserted outside of the ``toctree`` directive must be manually
+     included. This sometimes applies to appendixes, e.g. the glossary or
+     the indices.  You can add them with the :confval:`epub_post_files` option.
+
+ * ``toctree`` ディレクティブ外のファイルは、手動でインクルードしなければなりません。用語集、索引などのAppendixが、時々これに該当します。 :confval:`epub_post_files` オプションを使うと、これらのファイルを追加することができます。 
+
 .. _Epubcheck: http://code.google.com/p/epubcheck/
 .. _Calibre: http://calibre-ebook.com/
 .. _FBreader: http://www.fbreader.org/

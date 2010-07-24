@@ -13,9 +13,29 @@
 .. versionadded:: 0.5
 
 .. This extension can generate automatic links to the documentation of objects 
-   in other projects.  This works as follows:
+   in other projects.
 
-この拡張機能は他のプロジェクトのオブジェクトのドキュメントに対して、自動リンクを生成することができるようになります。この拡張機能は以下のように動作します。
+この拡張機能は他のプロジェクトのオブジェクトのドキュメントに対して、自動リンクを生成することができるようになります。
+
+.. Usage is simple: whenever Sphinx encounters a cross-reference that has no
+   matching target in the current documentation set, it looks for targets in the
+   documentation sets configured in :confval:`intersphinx_mapping`.  A reference
+   like ``:py:class:`zipfile.ZipFile``` can then link to the Python documentation
+   for the ZipFile class, without you having to specify where it is located
+   exactly.
+
+使用方法はシンプルで、Sphinxがクロスリファレンスの参照を解決しようとして、現在のドキュメントの中から見つけられなかった場合には、 :confval:`intersphinx_mapping` で設定されたドキュメント集の中を探索しにいくようになります。 ``:py:class:`zipfile.ZipFile``` という参照があった場合には、そのドキュメントの詳細な場所を知らなくても、Pythonの標準ライブラリのドキュメントの、ZipFileクラスに対してリンクが張られます。
+
+.. When using the "new" format (see below), you can even force lookup in a foreign
+   set by prefixing the link target appropriately.  A link like ``:ref:`comparison
+   manual <python:comparisons>``` will then link to the label "comparisons" in the
+   doc set "python", if it exists.
+
+もし、「新しい」フォーマット(後述)を使用する場合、リンクターゲット名に特定のプリフィックスを付けることで、強制的に外部ドキュメントを探索しにいくように設定することができます。  ``:ref:`比較マニュアル <python:comparisons>``` というリンクがあれば、もし"python"という名前のドキュメントセットが設定されていたとすると、その中の"comparisons"というラベルを探索しに行きます。
+
+.. Behind the scenes, this works as follows:
+
+この仕組みの背後では、次のようなことが行われています。
 
 .. * Each Sphinx HTML build creates a file named :file:`objects.inv` that contains 
      a mapping from object names to URIs relative to the HTML set's root.
