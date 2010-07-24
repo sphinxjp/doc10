@@ -388,7 +388,6 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
    ビルダーの :attr:`out_suffix` アトリビュートの値です。出力ファイル名に付く拡張子などです。標準のHTMLビルダーの場合には、通常は ``.html`` になります。
 
 
-
 .. data:: has_source
 
    .. True if the reST document sources are copied (if :confval:`html_copy_source`
@@ -440,14 +439,12 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
    現在のファイルの "ページ名" です。reSTのソースから生成されていたらドキュメント名になります。あるいは出力ディレクトリからの相対パス名から拡張子を抜いた名前 (``[ディレクトリ/]拡張子なしのファイル名``) となる、階層名付きの名前になります。
 
 
-
 .. data:: parents
 
    .. A list of parent documents for navigation, structured like the :data:`next`
       item.
 
    ナビゲーションのための、親のドキュメントのリストです。それぞれの要素は :data:`next` と同じような構造体になっています。
-
 
 
 .. data:: prev
@@ -545,9 +542,9 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
 
 .. data:: meta
 
-   .. Document metadata, see :ref:`metadata`.
+   .. Document metadata (a dictionary), see :ref:`metadata`.
 
-   ドキュメントのメタデータです。 :ref:`metadata` を参照してください。
+   ドキュメントのメタデータの辞書です。 :ref:`metadata` を参照してください。
 
 
 .. data:: sourcename
