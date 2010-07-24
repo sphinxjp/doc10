@@ -302,7 +302,7 @@ Pythonドメインはデフォルトのドメインとなるので、それに�
    Sphinx, you can do non-trivial tasks in it, like extending :data:`sys.path` or
    importing a module to find out the version your are documenting.
 
-最初の法で、Sphinxがドキュメントをどのように処理するのかを制御する、 :file:`conf.py` というファイルがあるということについては軽く紹介しました。このファイルはPythonのソースファイルとして実行され、中に設定値を記述することができます。上級のユーザは、Sphinxが処理をする際に、 :data:`sys.path` を拡張したり、ドキュメントの記述するバージョン番号を取得してくるために、製品コードをインポートして情報を得るような、いくつかの処理を実装するでしょう。
+最初の方で、Sphinxがドキュメントをどのように処理するのかを制御する、 :file:`conf.py` というファイルがあるということについては軽く紹介しました。このファイルはPythonのソースファイルとして実行され、中に設定値を記述することができます。上級のユーザは、Sphinxが処理をする際に、 :data:`sys.path` を拡張したり、ドキュメントの記述するバージョン番号を取得してくるために、製品コードをインポートして情報を得るような、いくつかの処理を実装するでしょう。
 
 .. The config values that you probably want to change are already put into the
    :file:`conf.py` by :program:`sphinx-quickstart` and initially commented out
