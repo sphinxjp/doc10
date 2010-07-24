@@ -27,7 +27,7 @@ Sphinx拡張
    notifies Sphinx of everything the extension offers -- see the extension tutorial
    for examples.
 
-Sphinx拡張はシンプルなPythonモジュールです。拡張機能がロードされる時には、Sphinxはこのモジュールをインポートして、モジュール内にある\ ``setup()``\ 関数を呼び出します。この関数の中では拡張機能が提供するものをするものをSphinxに知らせます。詳しくはSphinx拡張のチュートリアルの例を見てください。
+Sphinx拡張はシンプルなPythonモジュールです。拡張機能がロードされる時には、Sphinxはこのモジュールをインポートして、モジュール内にある\ ``setup()``\ 関数を呼び出します。この関数の中では拡張機能が提供するものをSphinxに知らせます。詳しくはSphinx拡張のチュートリアルの例を見てください。
 
 .. The configuration file itself can be treated as an extension if it contains a
    ``setup()`` function.  All other extensions to load must be listed in the
