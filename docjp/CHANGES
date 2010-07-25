@@ -141,6 +141,32 @@ Release 1.0 (Jul 23, 2010)
   - 単一HTMLファイルビルダーを追加しました。
 
 .. * HTML output:
+..   - Inline roles now get a CSS class with their name, allowing styles to
+..     customize their appearance.  Domain-specific roles get two classes,
+..     ``domain`` and ``domain-rolename``.
+..   - References now get the class ``internal`` if they are internal to
+..     the whole project, as opposed to internal to the current page.
+..   - External references can be styled differently with the new
+..     ``externalrefs`` theme option for the default theme.
+..   - In the default theme, the sidebar can experimentally now be made
+..     collapsible using the new ``collapsiblesidebar`` theme option.
+..   - #129: Toctrees are now wrapped in a ``div`` tag with class
+..     ``toctree-wrapper`` in HTML output.
+..   - The :data:`toctree` callable in templates now has a ``maxdepth``
+..     keyword argument to control the depth of the generated tree.
+..   - The :data:`toctree` callable in templates now accepts a
+..     ``titles_only`` keyword argument.
+..   - Added ``htmltitle`` block in layout template.
+..   - In the JavaScript search, allow searching for object names including
+..     the module name, like ``sys.argv``.
+..   - Added new theme ``haiku``, inspired by the Haiku OS user guide.
+..   - Added new theme ``nature``.
+..   - Added new theme ``agogo``, created by Andi Albrecht.
+..   - Added new theme ``scrolls``, created by Armin Ronacher.
+..   - #193: Added a ``visitedlinkcolor`` theme option to the default
+..     theme.
+..   - #322: Improved responsiveness of the search page by loading the
+..     search index asynchronously.
 
 * HTML出力:
 
@@ -171,6 +197,15 @@ Release 1.0 (Jul 23, 2010)
   - #322: Improved responsiveness of the search page by loading the
     search index asynchronously.
 
+.. * Extension API:
+.. 
+..   - Added :event:`html-collect-pages`.
+..   - Added :confval:`needs_sphinx` config value and
+..     :meth:`~sphinx.application.Sphinx.require_sphinx` application API
+..     method.
+..   - #200: Added :meth:`~sphinx.application.Sphinx.add_stylesheet`
+..     application API method.
+
 * Extension API:
 
   - Added :event:`html-collect-pages`.
@@ -179,6 +214,26 @@ Release 1.0 (Jul 23, 2010)
     method.
   - #200: Added :meth:`~sphinx.application.Sphinx.add_stylesheet`
     application API method.
+
+.. * Extensions:
+.. 
+..   - Added the :mod:`~sphinx.ext.viewcode` extension.
+..   - Added the :mod:`~sphinx.ext.extlinks` extension.
+..   - Added support for source ordering of members in autodoc, with
+..     ``autodoc_member_order = 'bysource'``.
+..   - Added :confval:`autodoc_default_flags` config value, which can be
+..     used to select default flags for all autodoc directives.
+..   - Added a way for intersphinx to refer to named labels in other
+..     projects, and to specify the project you want to link to.
+..   - #280: Autodoc can now document instance attributes assigned in
+..     ``__init__`` methods.
+..   - Many improvements and fixes to the :mod:`~sphinx.ext.autosummary`
+..     extension, thanks to Pauli Virtanen.
+..   - #309: The :mod:`~sphinx.ext.graphviz` extension can now output SVG
+..     instead of PNG images, controlled by the
+..     :confval:`graphviz_output_format` config value.
+..   - Added ``alt`` option to :rst:dir:`graphviz` extension directives.
+..   - Added ``exclude`` argument to :func:`.autodoc.between`.
 
 * Extensions:
 
@@ -201,15 +256,21 @@ Release 1.0 (Jul 23, 2010)
   - Added ``exclude`` argument to :func:`.autodoc.between`.
 
 .. * Translations:
+..   - Added Croatian translation, thanks to Bojan Mihelaﾄ・
+..   - Added Turkish translation, thanks to Firat Ozgul.
+..   - Added Catalan translation, thanks to Pau Fernﾃ｡ndez.
+..   - Added simplified Chinese translation.
+..   - Added Danish translation, thanks to Hjorth Larsen.
+..   - Added Lithuanian translation, thanks to Dalius Dobravolskas.
 
 * 翻訳:
 
-  - Added Croatian translation, thanks to Bojan Mihelaﾄ・
-  - Added Turkish translation, thanks to Firat Ozgul.
-  - Added Catalan translation, thanks to Pau Fernﾃ｡ndez.
-  - Added simplified Chinese translation.
-  - Added Danish translation, thanks to Hjorth Larsen.
-  - Added Lithuanian translation, thanks to Dalius Dobravolskas.
+  - クロアチア語の翻訳を追加しました。ありがとう Bojan Mihelaﾄ・
+  - トルコ語の翻訳を追加しました。ありがとう Firat Ozgul.
+  - カタロニア語の翻訳を追加しました。ありがとう Pau Fernﾃ｡ndez.
+  - 中国語の翻訳をシンプルにしました。
+  - デンマーク語の翻訳を追加しました。ありがとう Hjorth Larsen.
+  - リトアニア語の翻訳を追加しました。ありがとう Dalius Dobravolskas.
 
 
 Release 0.6.8 (in development)
