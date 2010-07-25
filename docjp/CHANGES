@@ -195,7 +195,7 @@ Release 1.0 (Jul 23, 2010)
 ..   - #200: Added :meth:`~sphinx.application.Sphinx.add_stylesheet`
 ..     application API method.
 
-* Extension API:
+* Sphinx拡張API:
 
   - :event:`html-collect-pages` を追加しました。
   - :confval:`needs_sphinx` 設定値を追加し、 :meth:`~sphinx.application.Sphinx.require_sphinx` アプリケーションAPIメソッドを追加しました。
@@ -221,25 +221,18 @@ Release 1.0 (Jul 23, 2010)
 ..   - Added ``alt`` option to :rst:dir:`graphviz` extension directives.
 ..   - Added ``exclude`` argument to :func:`.autodoc.between`.
 
-* Extensions:
+* Sphinx拡張:
 
-  - Added the :mod:`~sphinx.ext.viewcode` extension.
-  - Added the :mod:`~sphinx.ext.extlinks` extension.
-  - Added support for source ordering of members in autodoc, with
-    ``autodoc_member_order = 'bysource'``.
-  - Added :confval:`autodoc_default_flags` config value, which can be
-    used to select default flags for all autodoc directives.
-  - Added a way for intersphinx to refer to named labels in other
-    projects, and to specify the project you want to link to.
-  - #280: Autodoc can now document instance attributes assigned in
-    ``__init__`` methods.
-  - Many improvements and fixes to the :mod:`~sphinx.ext.autosummary`
-    extension, thanks to Pauli Virtanen.
-  - #309: The :mod:`~sphinx.ext.graphviz` extension can now output SVG
-    instead of PNG images, controlled by the
-    :confval:`graphviz_output_format` config value.
-  - Added ``alt`` option to :rst:dir:`graphviz` extension directives.
-  - Added ``exclude`` argument to :func:`.autodoc.between`.
+  - :mod:`~sphinx.ext.viewcode` 拡張を追加しました。
+  - :mod:`~sphinx.ext.extlinks` 拡張を追加しました。
+  - autodocのソート順にsource順を指定する設定を追加しました。次のように記載します ``autodoc_member_order = 'bysource'``
+  - :confval:`autodoc_default_flags` 設定値を追加しました。これは全てのautodocディレクティブのデフォルトフラグを選択するために使用されます。
+  - intersphinxにおいて、他のプロジェクト内の名前付きラベルを参照する方法と、強制的にリンク先プロジェクト名を指定する方法を追加しました。
+  - #280: autodoc はドキュメントのインスタンス属性を ``__init__`` メソッドで設定出来るようになりました。
+  - :mod:`~sphinx.ext.autosummary` 拡張について、多くの改良と修正を行いました。ありがとう Pauli Virtanen.
+  - #309: :mod:`~sphinx.ext.graphviz` 拡張がPNGではなくSVG画像を出力するオプションを追加しました。設定は :confval:`graphviz_output_format` で行います。
+  - :rst:dir:`graphviz` 拡張のディレクティブに ``alt`` オプションを追加しました。
+  - :func:`.autodoc.between` に ``exclude`` 引数を追加しました。
 
 .. * Translations:
 ..   - Added Croatian translation, thanks to Bojan Mihelaﾄ・
