@@ -89,33 +89,45 @@ Release 1.0 (Jul 23, 2010)
 
 
 .. * Configuration:
+..  - Added :confval:`rst_prolog` config value.
+..  - Added :confval:`html_secnumber_suffix` config value to control
+..    section numbering format.
+..  - Added :confval:`html_compact_lists` config value to control
+..    docutils' compact lists feature.
+..  - The :confval:`html_sidebars` config value can now contain patterns
+..    as keys, and the values can be lists that explicitly select which
+..    sidebar templates should be rendered.  That means that the builtin
+..    sidebar contents can be included only selectively.
+..  - :confval:`html_static_path` can now contain single file entries.
+..  - The new universal config value :confval:`exclude_patterns` makes the
+..    old :confval:`unused_docs`, :confval:`exclude_trees` and
+..    :confval:`exclude_dirnames` obsolete.
+..  - Added :confval:`html_output_encoding` config value.
+..  - Added the :confval:`latex_docclass` config value and made the
+..    "twoside" documentclass option overridable by "oneside".
+..  - Added the :confval:`trim_doctest_flags` config value, which is true
+..    by default.
+..  - Added :confval:`html_show_copyright` config value.
+..  - Added :confval:`latex_show_pagerefs` and :confval:`latex_show_urls`
+..    config values.
+..  - The behavior of :confval:`html_file_suffix` changed slightly: the
+..    empty string now means "no suffix" instead of "default suffix", use
+..    ``None`` for "default suffix".
 
 * 設定:
 
-  - Added :confval:`rst_prolog` config value.
-  - Added :confval:`html_secnumber_suffix` config value to control
-    section numbering format.
-  - Added :confval:`html_compact_lists` config value to control
-    docutils' compact lists feature.
-  - The :confval:`html_sidebars` config value can now contain patterns
-    as keys, and the values can be lists that explicitly select which
-    sidebar templates should be rendered.  That means that the builtin
-    sidebar contents can be included only selectively.
-  - :confval:`html_static_path` can now contain single file entries.
-  - The new universal config value :confval:`exclude_patterns` makes the
-    old :confval:`unused_docs`, :confval:`exclude_trees` and
-    :confval:`exclude_dirnames` obsolete.
-  - Added :confval:`html_output_encoding` config value.
-  - Added the :confval:`latex_docclass` config value and made the
-    "twoside" documentclass option overridable by "oneside".
-  - Added the :confval:`trim_doctest_flags` config value, which is true
-    by default.
-  - Added :confval:`html_show_copyright` config value.
-  - Added :confval:`latex_show_pagerefs` and :confval:`latex_show_urls`
-    config values.
-  - The behavior of :confval:`html_file_suffix` changed slightly: the
-    empty string now means "no suffix" instead of "default suffix", use
-    ``None`` for "default suffix".
+  - :confval:`rst_prolog` 設定値を追加しました。
+  - セクションの番号付けフォーマット指定の :confval:`html_secnumber_suffix` 設定値を追加しました。
+  - docutilsのリスト出力方法の :confval:`html_compact_lists` 設定値を追加しました。
+  - :confval:`html_sidebars` 設定値はキーリストとしてパターンを、値として描画されるべきサイドバーテンプレートを明示することができるようになりました。これはビルトインのサイドバーのうちどれを含めるかを選べるようになった事を意味しています。
+  - :confval:`html_static_path` に、単独のファイルを指定することができます。
+  - 従来の :confval:`unused_docs`, :confval:`exclude_trees`, :confval:`exclude_dirnames` を廃止し、新しい共通の設定値 :confval:`exclude_patterns` を導入しました。
+  - :confval:`html_output_encoding` 設定値を追加しました。
+  - :confval:`latex_docclass` 設定値を追加し、2つ目のdocumentclassオプションを1つ目で上書きできるようにしました。
+  - :confval:`trim_doctest_flags` 設定値を追加しました。デフォルトはtrueです。
+  - :confval:`html_show_copyright` 設定値を追加しました。
+  - :confval:`latex_show_pagerefs` と :confval:`latex_show_urls` 設定値を追加しました。
+  - :confval:`html_file_suffix` の動作を若干変更しました。空の文字列を設定した場合は"default suffix"ではなく"no suffix"となるようにし、"default suffix"を指定する場合は ``None`` を設定します。
 
 .. * New builders:
 
