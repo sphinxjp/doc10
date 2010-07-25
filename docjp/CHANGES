@@ -77,8 +77,8 @@ Release 1.0 (Jul 23, 2010)
 
 * マークアップ:
 
-  - :rst:role:`menuselection` と :rst:role:`guilabel` ロールに '&' アクセラレータサポートを追加しました。
-  - 新しい簡潔なdocフィールドの文法として次の書き方を推奨します: ``:param type name: description``.
+  - :rst:role:`menuselection` と :rst:role:`guilabel` ロールにアンパサンドを利用したアクセラレータの表示に対応しました。
+  - docフィールドの新しい簡潔な文法として、次の書き方を推奨します: ``:param type name: description``.
   - ``tab-width`` オプションを :rst:dir:`literalinclude` ディレクティブに追加しました。
   - ``titlesonly`` オプションを :rst:dir:`toctree` ディレクティブに追加しました。
   - ``prepend`` と ``append`` オプションを :rst:dir:`literalinclude` ディレクティブに追加しました。
