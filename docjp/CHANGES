@@ -170,32 +170,21 @@ Release 1.0 (Jul 23, 2010)
 
 * HTML出力:
 
-  - Inline roles now get a CSS class with their name, allowing styles to
-    customize their appearance.  Domain-specific roles get two classes,
-    ``domain`` and ``domain-rolename``.
-  - References now get the class ``internal`` if they are internal to
-    the whole project, as opposed to internal to the current page.
-  - External references can be styled differently with the new
-    ``externalrefs`` theme option for the default theme.
-  - In the default theme, the sidebar can experimentally now be made
-    collapsible using the new ``collapsiblesidebar`` theme option.
-  - #129: Toctrees are now wrapped in a ``div`` tag with class
-    ``toctree-wrapper`` in HTML output.
-  - The :data:`toctree` callable in templates now has a ``maxdepth``
-    keyword argument to control the depth of the generated tree.
-  - The :data:`toctree` callable in templates now accepts a
-    ``titles_only`` keyword argument.
-  - Added ``htmltitle`` block in layout template.
-  - In the JavaScript search, allow searching for object names including
-    the module name, like ``sys.argv``.
-  - Added new theme ``haiku``, inspired by the Haiku OS user guide.
-  - Added new theme ``nature``.
-  - Added new theme ``agogo``, created by Andi Albrecht.
-  - Added new theme ``scrolls``, created by Armin Ronacher.
-  - #193: Added a ``visitedlinkcolor`` theme option to the default
-    theme.
-  - #322: Improved responsiveness of the search page by loading the
-    search index asynchronously.
+  - インラインのroleはそのロール名のCSSクラス名が付くようになりました。このCSSクラス名を利用してデザインのカスタマイズを行うことが出来ます。ドメインのロールは二つのCSSクラス ``domain`` と ``domain-rolename`` が設定されます。
+  - 同一ページ内への参照だけでなく、同一プロジェクト内への参照にはCSSクラス名 ``internal`` が付くようになりました。
+  - 外部への参照のデザインを調整可能とするため、 ``externalrefs`` テーマオプションがデフォルトのテーマに追加されました。
+  - デフォルトテーマにおいて、サイドバーに実験的な機能、サイドバー折りたたみ機能が追加されました。利用するためには ``collapsiblesidebar`` テーマオプションを指定して下さい。
+  - #129: HTML出力時に、目次ツリー全体を ``div`` タグで囲み、class名 ``toctree-wrapper`` を付けました。
+  - テンプレート内の :data:`toctree` 呼び出しに ``maxdepth`` キーワード引数を追加し、ツリーの深さをコントロール出来るようにしました。
+  - テンプレート内の :data:`toctree` 呼び出しに ``titles_only`` キーワード引数を追加しました。
+  - ``htmltitle`` ブロックをレイアウトテンプレートに追加しました。
+  - JavaScript検索において、 ``sys.argv`` のようにモジュール名とオブジェクト名を含む名前を検索出来るようにしました。
+  - 新しいテーマ ``haiku`` を追加しました。これは Haiku OS ユーザーガイドにインスパイアされています。
+  - 新しいテーマ ``nature`` を追加しました。
+  - 新しいテーマ ``agogo`` を追加しました。Andi Albrecht が作成しました。
+  - 新しいテーマ ``scrolls`` を追加しました。 Armin Ronacher が作成しました。
+  - #193: ``visitedlinkcolor`` テーマオプションをデフォルトテーマに追加しました。
+  - #322: 検索ページの応答速度を改善しました。検索インデックスを非同期で読み込むようにしています。
 
 .. * Extension API:
 .. 
