@@ -130,12 +130,15 @@ Release 1.0 (Jul 23, 2010)
   - :confval:`html_file_suffix` の動作を若干変更しました。空の文字列を設定した場合は"default suffix"ではなく"no suffix"となるようにし、"default suffix"を指定する場合は ``None`` を設定します。
 
 .. * New builders:
+..   - Added a builder for the Epub format.
+..   - Added a builder for manual pages.
+..   - Added a single-file HTML builder.
 
 * 新しいビルダー:
 
-  - Added a builder for the Epub format.
-  - Added a builder for manual pages.
-  - Added a single-file HTML builder.
+  - Epubビルダーを追加しました。
+  - manual pageビルダーを追加しました。
+  - 単一HTMLファイルビルダーを追加しました。
 
 .. * HTML output:
 
