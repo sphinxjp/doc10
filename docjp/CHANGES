@@ -197,12 +197,9 @@ Release 1.0 (Jul 23, 2010)
 
 * Extension API:
 
-  - Added :event:`html-collect-pages`.
-  - Added :confval:`needs_sphinx` config value and
-    :meth:`~sphinx.application.Sphinx.require_sphinx` application API
-    method.
-  - #200: Added :meth:`~sphinx.application.Sphinx.add_stylesheet`
-    application API method.
+  - :event:`html-collect-pages` を追加しました。
+  - :confval:`needs_sphinx` 設定値を追加し、 :meth:`~sphinx.application.Sphinx.require_sphinx` アプリケーションAPIメソッドを追加しました。
+  - #200: :meth:`~sphinx.application.Sphinx.add_stylesheet` アプリケーションAPIメソッドを追加しました。
 
 .. * Extensions:
 .. 
