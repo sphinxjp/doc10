@@ -142,7 +142,7 @@ Sphinxドメイン
 .. For cross-reference roles provided by domains, the same facilities exist as for
    general cross-references.  See :ref:`xref-syntax`.
 
-汎用的なクロスリファレンスのために使用されるのと同じような機能を持つ、クロスリファレンスのためのロールが、ドメインによって提供されます。詳しくは :ref:`xref-syntax` を参照してください。n
+汎用的なクロスリファレンスのために使用されるのと同じような機能を持つ、クロスリファレンスのためのロールが、ドメインによって提供されます。詳しくは :ref:`xref-syntax` を参照してください。
 
 .. In short:
 
