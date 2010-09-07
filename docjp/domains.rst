@@ -107,7 +107,7 @@ Sphinxドメイン
    .. Select a new default domain.  While the :confval:`primary_domain` selects a
       global default, this only has an effect within the same file.
 
-   新しいデフォルトのドメインを設定します。 :confval:`primary_domain` はプロジェクト全体のデフォルトを決定しますが、このディレクティブは同じファイル内にのみ影響を与えます。n
+   新しいデフォルトのドメインを設定します。 :confval:`primary_domain` はプロジェクト全体のデフォルトを決定しますが、このディレクティブは同じファイル内にのみ影響を与えます。
 
 .. If no other default is selected, the Python domain (named ``py``) is the default
    one, mostly for compatibility with documentation written for older versions of
