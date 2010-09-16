@@ -532,7 +532,7 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
    (prefixed by ``theme_``), as well as the values given by the user in
    :confval:`html_context`.
 
-これらの値に加えて、すべての **テーマオプション** も利用可能です。テーマオプションには ``theme_`` という文字列が先頭に尽きます。ユーザが :confval:`html_context` を通じて設定した値も同じように利用可能です。
+これらの値に加えて、すべての **テーマオプション** も利用可能です。テーマオプションには ``theme_`` という文字列が先頭に付きます。ユーザが :confval:`html_context` を通じて設定した値も同じように利用可能です。
 
 .. In documents that are created from source files (as opposed to
    automatically-generated files like the module index, or documents that already
