@@ -18,14 +18,12 @@ from skel import *
 class Splitter(object):
     def __init__(self, option={}):
         type = option.get("type", "default")
-        if type not in ("mecab", "yahoo", "default"):
+        if type not in ("mecab", "default"):
             raise ValueError(("Japanese tokenizer's type should be 'mecab'"
-                              " or 'yahoo' or 'default'"))
+                              " or 'default'"))
         self.libmecab = None
         if type is "mecab":
             self._init_mecab(option)
-        elif type is "yahoo":
-            self._init_yahoo(option)
         else:
             self._init_default(option)
 
@@ -51,21 +49,6 @@ class Splitter(object):
 
     def split_by_tinysegmenter(self, input):
         return self.tinysegmenter.segment(input)
-
-    def _init_yahoo(self, option):
-        self.appid = option["appid"]
-        self.split = self.split_by_yahoo_api
-
-    def split_by_yahoo_api(self, input):
-        postdata = {"appid":self.appid, 
-                    "sentence":input,
-                    "results":"ma", "ma_response":"surface",
-                    "ma_filter":"1|2|9|10|13"}
-        url = 'http://jlp.yahooapis.jp/DAService/V1/parse'
-        result = urllib.urlopen(url, urllib.urlencode(postdata)).read()
-        etree = ElementTree.fromstring(result)
-        return [node.text for node in 
-                   etree.getiterator("{urn:yahoo:jp:jlp:DAService}Surface")]
 
 
 class TinySegmenter(object):
