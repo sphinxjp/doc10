@@ -106,6 +106,8 @@ class Config(object):
         html_output_encoding = ('utf-8', 'html'),
         html_compact_lists = (True, 'html'),
         html_secnumber_suffix = ('. ', 'html'),
+        html_search_language = ('en', 'html'),
+        html_search_language_option = ({}, 'html'),
 
         # HTML help only options
         htmlhelp_basename = (lambda self: make_filename(self.project), None),

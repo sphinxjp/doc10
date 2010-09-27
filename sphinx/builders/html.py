@@ -548,12 +548,14 @@ class StandaloneHTMLBuilder(Builder):
             self.config.exclude_patterns +
             ['**/' + d for d in self.config.exclude_dirnames]
         )
+        ctx = self.globalcontext.copy()
+        ctx.update(self.indexer.globalcontext_for_searchtool())
         for entry in staticentries:
             if not path.exists(entry):
                 self.warn('html_static_path entry %r does not exist' % entry)
                 continue
             copy_static_entry(entry, path.join(self.outdir, '_static'), self,
-                              self.globalcontext, exclude_matchers=matchers)
+                              ctx, exclude_matchers=matchers)
         # copy logo and favicon files if not already in static path
         if self.config.html_logo:
             logobase = path.basename(self.config.html_logo)
