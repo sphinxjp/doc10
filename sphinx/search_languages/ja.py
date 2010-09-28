@@ -38,8 +38,6 @@ class MecabBinder(object):
         else:
             result = self.ctypes_libmecab.mecab_sparse_tostr(
                 self.ctypes_mecab, input)
-        for word in result.decode("utf-8").split(" "):
-            print word
         return result.decode(self.dict_encode).split(" ")  
 
     def init_native(self, option):
