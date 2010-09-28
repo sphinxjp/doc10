@@ -41,7 +41,11 @@ class MecabBinder(object):
         return result.decode(self.dict_encode).split(" ")  
 
     def init_native(self, option):
-        self.native = MeCab.Tagger("-Owakati")
+        param = "-Owakati"
+        dict = option.get("dict")
+        if dict:
+            param += " -d %s" % dict
+        self.native = MeCab.Tagger(param)
 
     def init_ctypes(self, option):
         import ctypes.util
@@ -63,9 +67,14 @@ class MecabBinder(object):
         if libpath is None:
             raise RuntimeError("MeCab dynamic library is not available")
 
+        param = "mecab -Owakati"
+        dict = option.get("dict")
+        if dict:
+            param += " -d %s" % dict
+
         self.ctypes_libmecab = ctypes.CDLL(libpath)
         self.ctypes_libmecab.mecab_sparse_tostr.restype = ctypes.c_char_p
-        self.ctypes_mecab = self.libmecab.mecab_new2("mecab -Owakati")
+        self.ctypes_mecab = self.libmecab.mecab_new2(param)
 
     def __del__(self):
         if self.ctypes_libmecab:
