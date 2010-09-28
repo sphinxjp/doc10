@@ -8,12 +8,71 @@
 # Python Version was developed by xnights <programming.magic(at)gmail.com>.
 # For details, see http://programming-magic.com/?id=170
 
+import os
 import re
+import sys
 import ctypes
-import urllib
-import xml.etree.ElementTree as ElementTree
+
+try:
+    import MeCab
+    native_module = True
+except ImportError:
+    native_module = False
 
 from skel import *
+
+class MecabBinder(object):
+    def __init__(self, option):
+        self.ctypes_libmecab = None
+        self.ctypes_mecab = None
+        if not native_module:
+            self.init_ctypes(option)
+        else:
+            self.init_native(option)
+        self.dict_encode = option.get("dic_enc", "utf-8")
+
+    def split(self, input):
+        input2 = input.encode(self.dict_encode)
+        if native_module:
+            result = self.native.parse(input2)
+        else:
+            result = self.ctypes_libmecab.mecab_sparse_tostr(
+                self.ctypes_mecab, input)
+        for word in result.decode("utf-8").split(" "):
+            print word
+        return result.decode(self.dict_encode).split(" ")  
+
+    def init_native(self, option):
+        self.native = MeCab.Tagger("-Owakati")
+
+    def init_ctypes(self, option):
+        import ctypes.util
+        
+        lib = option.get("lib")
+
+        if lib is None:
+            if sys.platform.startswith("win"):
+               libname = "libmecab.dll"
+            else:
+               libname = "mecab"
+            libpath = ctypes.util.find_library(libname)
+        elif os.path.basename(lib) == lib:
+            libpath = ctypes.util.find_library(lib)
+        else:
+            libpath = None
+            if os.path.exists(lib):
+                libpath = lib
+        if libpath is None:
+            raise RuntimeError("MeCab dynamic library is not available")
+
+        self.ctypes_libmecab = ctypes.CDLL(libpath)
+        self.ctypes_libmecab.mecab_sparse_tostr.restype = ctypes.c_char_p
+        self.ctypes_mecab = self.libmecab.mecab_new2("mecab -Owakati")
+
+    def __del__(self):
+        if self.ctypes_libmecab:
+            self.ctypes_libmecab.mecab_destroy(self.ctypes_mecab)
+
 
 class Splitter(object):
     def __init__(self, option={}):
@@ -27,21 +86,12 @@ class Splitter(object):
         else:
             self._init_default(option)
 
-    def __del__(self):
-        if self.libmecab:
-            self.libmecab.mecab_destroy(self.mecab)
-
     def _init_mecab(self, option):
-        self.libmecab = ctypes.CDLL(option["libpath"])
-        self.libmecab.mecab_sparse_tostr.restype = ctypes.c_char_p
-        self.libmecab.mecab_version.restype = ctypes.c_char_p
-        self.mecab = self.libmecab.mecab_new2("mecab -Owakati")
-        print "Japanese Tokenizer(Mecab): %s" % self.libmecab.mecab_version()
+        self.mecab = MecabBinder(option)
         self.split = self.split_by_mecab
 
     def split_by_mecab(self, input):
-        result = self.libmecab.mecab_sparse_tostr(self.mecab, input)
-        return result.split(" ")
+        return self.mecab.split(input)
 
     def _init_default(self, option):
         self.tinysegmenter = TinySegmenter()
