@@ -534,13 +534,18 @@ class StandaloneHTMLBuilder(Builder):
                     copyfile(jsfile, path.join(self.outdir, '_static',
                                                'translations.js'))
                     break
+        
+        # add search function for searchtools.js_t temporarily
+        ctx = self.globalcontext.copy()
+        ctx.update(self.indexer.globalcontext_for_searchtool())
+
         # then, copy over theme-supplied static files
         if self.theme:
             themeentries = [path.join(themepath, 'static')
                             for themepath in self.theme.get_dirchain()[::-1]]
             for entry in themeentries:
                 copy_static_entry(entry, path.join(self.outdir, '_static'),
-                                  self, self.globalcontext)
+                                  self, ctx)
         # then, copy over all user-supplied static files
         staticentries = [path.join(self.confdir, spath)
                          for spath in self.config.html_static_path]
@@ -548,8 +553,6 @@ class StandaloneHTMLBuilder(Builder):
             self.config.exclude_patterns +
             ['**/' + d for d in self.config.exclude_dirnames]
         )
-        ctx = self.globalcontext.copy()
-        ctx.update(self.indexer.globalcontext_for_searchtool())
         for entry in staticentries:
             if not path.exists(entry):
                 self.warn('html_static_path entry %r does not exist' % entry)

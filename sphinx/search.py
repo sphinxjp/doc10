@@ -185,7 +185,7 @@ class IndexBuilder(object):
 
         def add_term(word, stem=self._stemmer.stem):
             word = stem(word)
-            if len(word) < 3 or word in self.lang.stopwords or word.isdigit():
+            if self.lang.should_not_register(word):
                 return
             self._mapping.setdefault(word, set()).add(filename)
 
@@ -197,7 +197,6 @@ class IndexBuilder(object):
 
     def globalcontext_for_searchtool(self):
         ctx = {'search_langauge_stemming_code': self.lang.js_stemmer_code}
-        stopwords = ", ".join(["'%s'" % word for word in self.lang.stopwords])
-        ctx['search_language_stop_words'] = "[%s]" % stopwords
+        ctx['search_language_stop_words'] = jsdump.dumps(self.lang.stopwords)
         return ctx
 

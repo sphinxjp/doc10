@@ -1,4 +1,4 @@
-import re
+from skel import *
 
 try:
     # http://bitbucket.org/methane/porterstemmer/
@@ -222,10 +222,3 @@ else:
             return PorterStemmer.stem(self, word, 0, len(word) - 1)
 
 
-class Splitter(object):
-    word_re = re.compile(r'\w+(?u)')
-    def __init__(self, option):
-        pass
-
-    def split(self, input):
-        return self.word_re.findall(input)
