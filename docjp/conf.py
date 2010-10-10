@@ -17,7 +17,7 @@ copyright = '2007-2010, Georg Brandl, Shibukawa Yoshiki(Japanese)'
 version = sphinx.__released__
 release = version
 show_authors = True
-language = 'ja'
+#language = 'ja'
 
 html_theme = 'sphinxdoc'
 modindex_common_prefix = ['sphinx.']
@@ -46,6 +46,14 @@ latex_logo = '_static/sphinx.png'
 latex_elements = {
     'fontpkg': '\\usepackage{palatino}',
 }
+
+latex_docclass = {"manual":"jarticle"}
+
+latex_elements = {
+  "papersize": "a4paper",
+  "pointsize": "12pt",
+}
+
 
 autodoc_member_order = 'groupwise'
 todo_include_todos = True
