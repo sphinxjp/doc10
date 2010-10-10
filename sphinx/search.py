@@ -163,6 +163,14 @@ class IndexBuilder(object):
         objtypes = dict((v, k[0] + ':' + k[1])
                         for (k, v) in self._objtypes.iteritems())
         objnames = self._objnames
+        # ============================================================
+        # Debug
+        # ============================================================
+        import codecs
+        debugout = codecs.open("debug_indexes.txt", "w", "utf-8")
+        for word in self._mapping.keys():
+            debugout.write(word+"\n")
+        debugout.close()
         return dict(filenames=filenames, titles=titles, terms=terms,
                     objects=objects, objtypes=objtypes, objnames=objnames)
 
