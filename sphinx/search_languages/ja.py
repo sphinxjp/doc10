@@ -92,6 +92,7 @@ class Splitter(object):
             self._init_mecab(option)
         else:
             self._init_default(option)
+        print "search word splitter: %s" % type
 
     def _init_mecab(self, option):
         self.mecab = MecabBinder(option)
