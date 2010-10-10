@@ -2,21 +2,19 @@
 
 .. _templating:
 
+.. Templating
+
 テンプレート
 ============
-
-.. Templating
-.. ==========
 
 .. Sphinx uses the `Jinja <http://jinja.pocoo.org>`_ templating engine for its HTML
    templates.  Jinja is a text-based engine, and inspired by Django templates, so
    anyone having used Django will already be familiar with it.  It also has
    excellent documentation for those who need to make themselves familiar with it.
 
-SphinxはHTMLのテンプレートとして `Jinja <http://jinja.pocoo.org>`_ テンプレートエンジンを利用しています。Jinjaはテキストベースのエンジンで。Djangoのテンプレートにインスパイアされたものです。Djangoを触ったことがある人ならば、すぐに慣れることができるでしょう。これはつまり、Djangoテンプレート用にかかれた、既存のすばらしいドキュメントは、Jinjaを学ぼうとしている人にも役に立つということを意味しています。
+SphinxはHTMLのテンプレートとして `Jinja <http://jinja.pocoo.org>`_ テンプレートエンジンを利用しています。Jinjaは、Djangoのテンプレートにインスパイアされた、テキストベースのテンプレートエンジンです。Djangoを触ったことがある人ならば、すぐに慣れるでしょう。つまり、Djangoテンプレート用に書かれた、既存のすばらしいドキュメントは、Jinjaを学ぼうとしている人にも役に立つということを意味しています。
 
 .. Do I need to use Sphinx' templates to produce HTML?
-.. ---------------------------------------------------
 
 HTMLを生成するのにSphinxのテンプレートを使用する必要があるのか？
 ----------------------------------------------------------------
@@ -45,7 +43,6 @@ HTMLを生成するのにSphinxのテンプレートを使用する必要があ�
 
 
 .. Jinja/Sphinx Templating Primer
-.. ------------------------------
 
 Jinja/Sphinxテンプレートの基礎
 ------------------------------
@@ -55,7 +52,7 @@ Jinja/Sphinxテンプレートの基礎
    inheritance`, which means that you can overwrite only specific blocks within a
    template, customizing it while also keeping the changes at a minimum.
 
-Sphinxのデフォルトのテンプレート言語はJinjaです。これはDjango/Smartyにインスパイアされて作成されたもので、理解しやすくなっています。Jinjaにおける最も重要なコンセプトとしては :dfn:`テンプレート継承` です。これは、テンプレートの特定のブロックのみをオーバーライドして、変更箇所を最小限にしたカスタマイズを可能にします。
+Sphinxのデフォルトのテンプレート言語はJinjaです。これはDjango/Smartyにインスパイアされて作成されたもので、理解しやすくなっています。Jinjaにおける最も重要なコンセプトは :dfn:`テンプレート継承` です。これは、テンプレートの特定のブロックのみをオーバーライドして、変更箇所を最小限にしたカスタマイズを可能にします。
 
 .. To customize the output of your documentation you can override all the templates
    (both the layout templates and the child templates) by adding files with the
@@ -109,7 +106,6 @@ Sphinxの *basic* テーマでは2つのブロックを持つ基本となるテ�
 
 
 .. Working the the builtin templates
-   ---------------------------------
 
 組み込みテンプレートの働き
 --------------------------
@@ -117,17 +113,16 @@ Sphinxの *basic* テーマでは2つのブロックを持つ基本となるテ�
 .. The builtin **basic** theme supplies the templates that all builtin Sphinx
    themes are based on.  It has the following elements you can override or use:
 
-組み込みの **basic** テーマははすべての組み込みSphinxテーマの骨組みとなるテンプレートを提供しています。このうち、以下の要素オーバーライドしたり、使用したりすることができます。
+組み込みの **basic** テーマはすべての組み込みSphinxテーマの骨組みとなるテンプレートを提供しています。このうち、以下の要素オーバーライドしたり、使用したりすることができます。
 
 .. Blocks
-   ~~~~~~
 
 ブロック
 ~~~~~~~~
 
 .. The following blocks exist in the ``layout.html`` template:
 
-以下のブロックが、 ``layout.html`` テンプレートの中に定義されています。
+``layout.html`` テンプレートの中には、次のようなブロックが定義されています。
 
 .. `doctype`
     The doctype of the output format.  By default this is XHTML 1.0 Transitional
@@ -143,7 +138,7 @@ Sphinxの *basic* テーマでは2つのブロックを持つ基本となるテ�
     template.
 
 `linktags`
-   このブロックは、テンプレートのheadセクションに ``<link>`` タグをいくつかするものです。
+   このブロックは、テンプレートのheadセクションに ``<link>`` タグをいくつか追加するものです。
 
 .. `extrahead`
     This block is empty by default and can be used to add extra contents into
@@ -200,7 +195,7 @@ Sphinxの *basic* テーマでは2つのブロックを持つ基本となるテ�
         {% block sidebar1 %}{{ sidebar() }}{% endblock %}
         {% block sidebar2 %}{% endblock %}
 
-    サイドバーのが置かれる `sidebar2` の位置も ``sphinxdoc.css`` といったスタイルシートから必要になります。
+    サイドバーが置かれる `sidebar2` の位置も ``sphinxdoc.css`` といったスタイルシートから必要になります。
 
 .. `sidebarlogo`
     The logo location within the sidebar.  Override this if you want to place
@@ -423,7 +418,7 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
       two attributes `link` and `title`.  The title contains HTML markup.  For
       example, to generate a link to the next page, you can use this snippet
 
-   ナビゲーションで「次のトピック」にあたるドキュメントです。この変数はflaseか、 `link` と `title` の二つの属性を持つオブジェクトのどちらかになります。タイトルにはHTMLのマークアップが含まれます。例えば、次のページへのリンクを生成するには、以下のようなコードを利用します::
+   ナビゲーションで「次のトピック」にあたるドキュメントです。この変数は ``false`` か、 `link` と `title` の二つの属性を持つオブジェクトのどちらかになります。タイトルにはHTMLのマークアップが含まれます。例えば、次のページへのリンクを生成するには、以下のようなコードを利用します::
 
       {% if next %}
       <a href="{{ next.link|e }}">{{ next.title }}</a>
@@ -504,7 +499,7 @@ Sphinxはテンプレートで使用できるJinja関数をいくつか提供し
    .. The name of the main stylesheet, as given by the theme or
       :confval:`html_style`.
 
-   メインのスタイルシートの名前です。テーマで設定されたものか、あるいは :confval:`html_style` で設定されてる値になります。
+   メインのスタイルシートの名前です。テーマで設定されたものか、あるいは :confval:`html_style` で設定されている値になります。
 
 
 .. data:: title
