@@ -29,6 +29,9 @@ html_use_opensearch = 'http://sphinx.pocoo.org'
 
 htmlhelp_basename = 'Sphinxdoc'
 
+search_language = 'ja'
+search_language_option = {"type":"mecab"}
+
 epub_theme = 'epub'
 epub_basename = 'sphinx'
 epub_author = 'Georg Brandl'
