@@ -2,15 +2,14 @@ Release 1.0 (Jul 23, 2010)
 ==========================
 
 .. Incompatible changes
-.. --------------------
 
 互換性のない変更
 ----------------
 
 .. * Support for domains has been added.  A domain is a collection of
-..   directives and roles that all describe objects belonging together,
-..   e.g. elements of a programming language.  A few builtin domains are
-..   provided:
+     directives and roles that all describe objects belonging together,
+     e.g. elements of a programming language.  A few builtin domains are
+     provided:
 
 * 言語ドメインサポートを追加しました。ドメインとはディレクティブとロールの集合で例えばプログラミング言語の要素などです。いくつかのドメインを標準で提供しています:
 
@@ -21,9 +20,9 @@ Release 1.0 (Jul 23, 2010)
   - reStructuredText
 
 .. * The old markup for defining and linking to C directives is now
-..   deprecated.  It will not work anymore in future versions without
-..   activating the :mod:`~sphinx.ext.oldcmarkup` extension; in Sphinx
-..   1.0, it is activated by default.
+     deprecated.  It will not work anymore in future versions without
+     activating the :mod:`~sphinx.ext.oldcmarkup` extension; in Sphinx
+     1.0, it is activated by default.
 
 * C言語の定義とリンク向けの以前のマークアップは非推奨となりました。この機能は将来のバージョンでは標準では利用できなくなります。利用するためには :mod:`~sphinx.ext.oldcmarkup` 拡張を有効にしてください。Sphinx 1.0 では標準で有効です。
 
@@ -42,16 +41,15 @@ Release 1.0 (Jul 23, 2010)
   - ``sphinx.builder`` モジュール
 
 .. Features added
-.. --------------
 
 機能拡張
 --------
 
 .. * General:
-..  - Added a "nitpicky" mode that emits warnings for all missing
-..    references.  It is activated by the :option:`-n` command-line switch
-..    or the :confval:`nitpicky` config value.
-..  - Added ``latexpdf`` target in quickstart Makefile.
+    - Added a "nitpicky" mode that emits warnings for all missing
+      references.  It is activated by the :option:`-n` command-line switch
+      or the :confval:`nitpicky` config value.
+    - Added ``latexpdf`` target in quickstart Makefile.
 
 * 共通機能:
 
@@ -59,21 +57,21 @@ Release 1.0 (Jul 23, 2010)
   - Makefileのターゲットに ``latexpdf`` を追加しました。
 
 .. * Markup:
-..  - The :rst:role:`menuselection` and :rst:role:`guilabel` roles now
-..    support ampersand accelerators.
-..  - New more compact doc field syntax is now recognized: ``:param type
-..    name: description``.
-..  - Added ``tab-width`` option to :rst:dir:`literalinclude` directive.
-..  - Added ``titlesonly`` option to :rst:dir:`toctree` directive.
-..  - Added the ``prepend`` and ``append`` options to the
-..    :rst:dir:`literalinclude` directive.
-..  - #284: All docinfo metadata is now put into the document metadata, not
-..    just the author.
-..  - The :rst:role:`ref` role can now also reference tables by caption.
-..  - The :rst:dir:`include` directive now supports absolute paths, which
-..    are interpreted as relative to the source directory.
-..  - In the Python domain, references like ``:func:`.name``` now look for
-..    matching names with any prefix if no direct match is found.
+    - The :rst:role:`menuselection` and :rst:role:`guilabel` roles now
+      support ampersand accelerators.
+    - New more compact doc field syntax is now recognized: ``:param type
+      name: description``.
+    - Added ``tab-width`` option to :rst:dir:`literalinclude` directive.
+    - Added ``titlesonly`` option to :rst:dir:`toctree` directive.
+    - Added the ``prepend`` and ``append`` options to the
+      :rst:dir:`literalinclude` directive.
+    - #284: All docinfo metadata is now put into the document metadata, not
+      just the author.
+    - The :rst:role:`ref` role can now also reference tables by caption.
+    - The :rst:dir:`include` directive now supports absolute paths, which
+      are interpreted as relative to the source directory.
+    - In the Python domain, references like ``:func:`.name``` now look for
+      matching names with any prefix if no direct match is found.
 
 * マークアップ:
 
@@ -89,30 +87,30 @@ Release 1.0 (Jul 23, 2010)
 
 
 .. * Configuration:
-..  - Added :confval:`rst_prolog` config value.
-..  - Added :confval:`html_secnumber_suffix` config value to control
-..    section numbering format.
-..  - Added :confval:`html_compact_lists` config value to control
-..    docutils' compact lists feature.
-..  - The :confval:`html_sidebars` config value can now contain patterns
-..    as keys, and the values can be lists that explicitly select which
-..    sidebar templates should be rendered.  That means that the builtin
-..    sidebar contents can be included only selectively.
-..  - :confval:`html_static_path` can now contain single file entries.
-..  - The new universal config value :confval:`exclude_patterns` makes the
-..    old :confval:`unused_docs`, :confval:`exclude_trees` and
-..    :confval:`exclude_dirnames` obsolete.
-..  - Added :confval:`html_output_encoding` config value.
-..  - Added the :confval:`latex_docclass` config value and made the
-..    "twoside" documentclass option overridable by "oneside".
-..  - Added the :confval:`trim_doctest_flags` config value, which is true
-..    by default.
-..  - Added :confval:`html_show_copyright` config value.
-..  - Added :confval:`latex_show_pagerefs` and :confval:`latex_show_urls`
-..    config values.
-..  - The behavior of :confval:`html_file_suffix` changed slightly: the
-..    empty string now means "no suffix" instead of "default suffix", use
-..    ``None`` for "default suffix".
+    - Added :confval:`rst_prolog` config value.
+    - Added :confval:`html_secnumber_suffix` config value to control
+      section numbering format.
+    - Added :confval:`html_compact_lists` config value to control
+      docutils' compact lists feature.
+    - The :confval:`html_sidebars` config value can now contain patterns
+      as keys, and the values can be lists that explicitly select which
+      sidebar templates should be rendered.  That means that the builtin
+      sidebar contents can be included only selectively.
+    - :confval:`html_static_path` can now contain single file entries.
+    - The new universal config value :confval:`exclude_patterns` makes the
+      old :confval:`unused_docs`, :confval:`exclude_trees` and
+      :confval:`exclude_dirnames` obsolete.
+    - Added :confval:`html_output_encoding` config value.
+    - Added the :confval:`latex_docclass` config value and made the
+      "twoside" documentclass option overridable by "oneside".
+    - Added the :confval:`trim_doctest_flags` config value, which is true
+      by default.
+    - Added :confval:`html_show_copyright` config value.
+    - Added :confval:`latex_show_pagerefs` and :confval:`latex_show_urls`
+      config values.
+    - The behavior of :confval:`html_file_suffix` changed slightly: the
+      empty string now means "no suffix" instead of "default suffix", use
+      ``None`` for "default suffix".
 
 * 設定:
 
@@ -130,43 +128,43 @@ Release 1.0 (Jul 23, 2010)
   - :confval:`html_file_suffix` の動作を若干変更しました。空の文字列を設定した場合は"default suffix"ではなく"no suffix"となるようにし、"default suffix"を指定する場合は ``None`` を設定します。
 
 .. * New builders:
-..   - Added a builder for the Epub format.
-..   - Added a builder for manual pages.
-..   - Added a single-file HTML builder.
+     - Added a builder for the Epub format.
+     - Added a builder for manual pages.
+     - Added a single-file HTML builder.
 
 * 新しいビルダー:
 
   - Epubビルダーを追加しました。
   - manual pageビルダーを追加しました。
-  - 単一HTMLファイルビルダーを追加しました。
+  - 一つのHTMLファイルにまとめて出力するビルダーを追加しました。
 
 .. * HTML output:
-..   - Inline roles now get a CSS class with their name, allowing styles to
-..     customize their appearance.  Domain-specific roles get two classes,
-..     ``domain`` and ``domain-rolename``.
-..   - References now get the class ``internal`` if they are internal to
-..     the whole project, as opposed to internal to the current page.
-..   - External references can be styled differently with the new
-..     ``externalrefs`` theme option for the default theme.
-..   - In the default theme, the sidebar can experimentally now be made
-..     collapsible using the new ``collapsiblesidebar`` theme option.
-..   - #129: Toctrees are now wrapped in a ``div`` tag with class
-..     ``toctree-wrapper`` in HTML output.
-..   - The :data:`toctree` callable in templates now has a ``maxdepth``
-..     keyword argument to control the depth of the generated tree.
-..   - The :data:`toctree` callable in templates now accepts a
-..     ``titles_only`` keyword argument.
-..   - Added ``htmltitle`` block in layout template.
-..   - In the JavaScript search, allow searching for object names including
-..     the module name, like ``sys.argv``.
-..   - Added new theme ``haiku``, inspired by the Haiku OS user guide.
-..   - Added new theme ``nature``.
-..   - Added new theme ``agogo``, created by Andi Albrecht.
-..   - Added new theme ``scrolls``, created by Armin Ronacher.
-..   - #193: Added a ``visitedlinkcolor`` theme option to the default
-..     theme.
-..   - #322: Improved responsiveness of the search page by loading the
-..     search index asynchronously.
+     - Inline roles now get a CSS class with their name, allowing styles to
+       customize their appearance.  Domain-specific roles get two classes,
+       ``domain`` and ``domain-rolename``.
+     - References now get the class ``internal`` if they are internal to
+       the whole project, as opposed to internal to the current page.
+     - External references can be styled differently with the new
+       ``externalrefs`` theme option for the default theme.
+     - In the default theme, the sidebar can experimentally now be made
+       collapsible using the new ``collapsiblesidebar`` theme option.
+     - #129: Toctrees are now wrapped in a ``div`` tag with class
+       ``toctree-wrapper`` in HTML output.
+     - The :data:`toctree` callable in templates now has a ``maxdepth``
+       keyword argument to control the depth of the generated tree.
+     - The :data:`toctree` callable in templates now accepts a
+       ``titles_only`` keyword argument.
+     - Added ``htmltitle`` block in layout template.
+     - In the JavaScript search, allow searching for object names including
+       the module name, like ``sys.argv``.
+     - Added new theme ``haiku``, inspired by the Haiku OS user guide.
+     - Added new theme ``nature``.
+     - Added new theme ``agogo``, created by Andi Albrecht.
+     - Added new theme ``scrolls``, created by Armin Ronacher.
+     - #193: Added a ``visitedlinkcolor`` theme option to the default
+       theme.
+     - #322: Improved responsiveness of the search page by loading the
+       search index asynchronously.
 
 * HTML出力:
 
@@ -187,13 +185,13 @@ Release 1.0 (Jul 23, 2010)
   - #322: 検索ページの応答速度を改善しました。検索インデックスを非同期で読み込むようにしています。
 
 .. * Extension API:
-.. 
-..   - Added :event:`html-collect-pages`.
-..   - Added :confval:`needs_sphinx` config value and
-..     :meth:`~sphinx.application.Sphinx.require_sphinx` application API
-..     method.
-..   - #200: Added :meth:`~sphinx.application.Sphinx.add_stylesheet`
-..     application API method.
+ 
+     - Added :event:`html-collect-pages`.
+     - Added :confval:`needs_sphinx` config value and
+       :meth:`~sphinx.application.Sphinx.require_sphinx` application API
+       method.
+     - #200: Added :meth:`~sphinx.application.Sphinx.add_stylesheet`
+       application API method.
 
 * Sphinx拡張API:
 
@@ -202,24 +200,24 @@ Release 1.0 (Jul 23, 2010)
   - #200: :meth:`~sphinx.application.Sphinx.add_stylesheet` アプリケーションAPIメソッドを追加しました。
 
 .. * Extensions:
-.. 
-..   - Added the :mod:`~sphinx.ext.viewcode` extension.
-..   - Added the :mod:`~sphinx.ext.extlinks` extension.
-..   - Added support for source ordering of members in autodoc, with
-..     ``autodoc_member_order = 'bysource'``.
-..   - Added :confval:`autodoc_default_flags` config value, which can be
-..     used to select default flags for all autodoc directives.
-..   - Added a way for intersphinx to refer to named labels in other
-..     projects, and to specify the project you want to link to.
-..   - #280: Autodoc can now document instance attributes assigned in
-..     ``__init__`` methods.
-..   - Many improvements and fixes to the :mod:`~sphinx.ext.autosummary`
-..     extension, thanks to Pauli Virtanen.
-..   - #309: The :mod:`~sphinx.ext.graphviz` extension can now output SVG
-..     instead of PNG images, controlled by the
-..     :confval:`graphviz_output_format` config value.
-..   - Added ``alt`` option to :rst:dir:`graphviz` extension directives.
-..   - Added ``exclude`` argument to :func:`.autodoc.between`.
+ 
+     - Added the :mod:`~sphinx.ext.viewcode` extension.
+     - Added the :mod:`~sphinx.ext.extlinks` extension.
+     - Added support for source ordering of members in autodoc, with
+       ``autodoc_member_order = 'bysource'``.
+     - Added :confval:`autodoc_default_flags` config value, which can be
+       used to select default flags for all autodoc directives.
+     - Added a way for intersphinx to refer to named labels in other
+       projects, and to specify the project you want to link to.
+     - #280: Autodoc can now document instance attributes assigned in
+       ``__init__`` methods.
+     - Many improvements and fixes to the :mod:`~sphinx.ext.autosummary`
+       extension, thanks to Pauli Virtanen.
+     - #309: The :mod:`~sphinx.ext.graphviz` extension can now output SVG
+       instead of PNG images, controlled by the
+       :confval:`graphviz_output_format` config value.
+     - Added ``alt`` option to :rst:dir:`graphviz` extension directives.
+     - Added ``exclude`` argument to :func:`.autodoc.between`.
 
 * Sphinx拡張:
 
@@ -235,18 +233,18 @@ Release 1.0 (Jul 23, 2010)
   - :func:`.autodoc.between` に ``exclude`` 引数を追加しました。
 
 .. * Translations:
-..   - Added Croatian translation, thanks to Bojan Mihelaﾄ・
-..   - Added Turkish translation, thanks to Firat Ozgul.
-..   - Added Catalan translation, thanks to Pau Fernﾃ｡ndez.
-..   - Added simplified Chinese translation.
-..   - Added Danish translation, thanks to Hjorth Larsen.
-..   - Added Lithuanian translation, thanks to Dalius Dobravolskas.
+     - Added Croatian translation, thanks to Bojan Mihelaト・
+     - Added Turkish translation, thanks to Firat Ozgul.
+     - Added Catalan translation, thanks to Pau Fernテ。ndez.
+     - Added simplified Chinese translation.
+     - Added Danish translation, thanks to Hjorth Larsen.
+     - Added Lithuanian translation, thanks to Dalius Dobravolskas.
 
 * 翻訳:
 
-  - クロアチア語の翻訳を追加しました。ありがとう Bojan Mihelaﾄ・
+  - クロアチア語の翻訳を追加しました。ありがとう Bojan Mihelaト・
   - トルコ語の翻訳を追加しました。ありがとう Firat Ozgul.
-  - カタロニア語の翻訳を追加しました。ありがとう Pau Fernﾃ｡ndez.
+  - カタロニア語の翻訳を追加しました。ありがとう Pau Fernテ。ndez.
   - 中国語の翻訳をシンプルにしました。
   - デンマーク語の翻訳を追加しました。ありがとう Hjorth Larsen.
   - リトアニア語の翻訳を追加しました。ありがとう Dalius Dobravolskas.
@@ -907,7 +905,7 @@ New features added
     * Horst Gutmann -- German
     * Pavel Kosina -- Czech
     * David Larlet -- French
-    * Michaﾅ・Kandulski -- Polish
+    * Michaナ・Kandulski -- Polish
     * Yasushi Masuda -- Japanese
     * Guillem Borrell -- Spanish
     * Luc Saffre and Peter Bertels -- Dutch
@@ -1510,3 +1508,4 @@ Release 0.1.61611 (Mar 21, 2008)
 
 * First public release.
 
+>>>>>>> other
