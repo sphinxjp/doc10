@@ -334,7 +334,7 @@ Autodoc
    docstrings from your modules with an :dfn:`extension` (an extension is a Python
    module that provides additional features for Sphinx projects) called "autodoc".
 
-もしもPythonで書かれたコードのドキュメントを書こうとしている場合には、docstring形式でソースファイル中に既に多くのドキュメントを書いているでしょう。Sphinxは "autodoc" という :dfn:`拡張機能` を利用することでソースファイルからdocstringを抽出してくて文章に取り込むというのをサポートしています。拡張伊能はPythonで書かれたモジュールで、Sphinxのプロジェクトに様々な機能を付加します。
+もしもPythonで書かれたコードのドキュメントを書こうとしている場合には、docstring形式でソースファイル中に既に多くのドキュメントを書いているでしょう。Sphinxは "autodoc" という :dfn:`拡張機能` を利用することでソースファイルからdocstringを抽出してくて文章に取り込むというのをサポートしています。拡張機能はPythonで書かれたモジュールで、Sphinxのプロジェクトに様々な機能を付加します。
 
 .. In order to use autodoc, you need to activate it in :file:`conf.py` by putting
    the string ``'sphinx.ext.autodoc'`` into the list assigned to the
