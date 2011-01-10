@@ -11,6 +11,7 @@
 """
 
 import re
+import codecs
 import posixpath
 from os import path
 from math import ceil
@@ -46,23 +47,45 @@ class Graphviz(Directive):
     """
     has_content = True
     required_arguments = 0
-    optional_arguments = 0
+    optional_arguments = 1
     final_argument_whitespace = False
     option_spec = {
         'alt': directives.unchanged,
+        'inline': directives.flag,
     }
 
     def run(self):
-        dotcode = '\n'.join(self.content)
-        if not dotcode.strip():
-            return [self.state_machine.reporter.warning(
-                'Ignoring "graphviz" directive without content.',
-                line=self.lineno)]
+        if self.arguments:
+            document = self.state.document
+            if self.content:
+                return [document.reporter.warning(
+                    'Graphviz directive cannot have both content and '
+                    'a filename argument', line=self.lineno)]
+            env = self.state.document.settings.env
+            rel_filename, filename = env.relfn2path(self.arguments[0])
+            env.note_dependency(rel_filename)
+            try:
+                fp = codecs.open(filename, 'r', 'utf-8')
+                try:
+                    dotcode = fp.read()
+                finally:
+                    fp.close()
+            except (IOError, OSError):
+                return [document.reporter.warning(
+                    'External Graphviz file %r not found or reading '
+                    'it failed' % filename, line=self.lineno)]
+        else:
+            dotcode = '\n'.join(self.content)
+            if not dotcode.strip():
+                return [self.state_machine.reporter.warning(
+                    'Ignoring "graphviz" directive without content.',
+                    line=self.lineno)]
         node = graphviz()
         node['code'] = dotcode
         node['options'] = []
         if 'alt' in self.options:
             node['alt'] = self.options['alt']
+        node['inline'] = 'inline' in self.options
         return [node]
 
 
@@ -76,6 +99,7 @@ class GraphvizSimple(Directive):
     final_argument_whitespace = False
     option_spec = {
         'alt': directives.unchanged,
+        'inline': directives.flag,
     }
 
     def run(self):
@@ -85,14 +109,14 @@ class GraphvizSimple(Directive):
         node['options'] = []
         if 'alt' in self.options:
             node['alt'] = self.options['alt']
+        node['inline'] = 'inline' in self.options
         return [node]
 
 
 def render_dot(self, code, options, format, prefix='graphviz'):
-    """
-    Render graphviz code into a PNG or PDF output file.
-    """
+    """Render graphviz code into a PNG or PDF output file."""
     hashkey = code.encode('utf-8') + str(options) + \
+              str(self.builder.config.graphviz_dot) + \
               str(self.builder.config.graphviz_dot_args)
     fname = '%s-%s.%s' % (prefix, sha(hashkey).hexdigest(), format)
     if hasattr(self.builder, 'imgpath'):
@@ -193,7 +217,12 @@ def render_dot_html(self, node, code, options, prefix='graphviz',
         self.builder.warn('dot code %r: ' % code + str(exc))
         raise nodes.SkipNode
 
-    self.body.append(self.starttag(node, 'p', CLASS='graphviz'))
+    if node.get('inline', False):
+        wrapper = 'span'
+    else:
+        wrapper = 'p'
+
+    self.body.append(self.starttag(node, wrapper, CLASS='graphviz'))
     if fname is None:
         self.body.append(self.encode(code))
     else:
@@ -220,7 +249,7 @@ def render_dot_html(self, node, code, options, prefix='graphviz',
                                  (fname, alt, mapname, imgcss))
                 self.body.extend(imgmap)
 
-    self.body.append('</p>\n')
+    self.body.append('</%s>\n' % wrapper)
     raise nodes.SkipNode
 
 
@@ -234,6 +263,11 @@ def render_dot_latex(self, node, code, options, prefix='graphviz'):
     except GraphvizError, exc:
         self.builder.warn('dot code %r: ' % code + str(exc))
         raise nodes.SkipNode
+
+    if node.get('inline', False):
+        para_separator = ''
+    else:
+        para_separator = '\n'
 
     if fname is not None:
         self.body.append('\n\\includegraphics{%s}\n' % fname)

@@ -14,28 +14,7 @@ import cPickle as pickle
 from docutils.nodes import comment, Text, NodeVisitor, SkipNode
 
 from sphinx.util import jsdump, rpartition
-try:
-    # http://bitbucket.org/methane/porterstemmer/
-    from porterstemmer import Stemmer as CStemmer
-    CSTEMMER = True
-except ImportError:
-    from sphinx.util.stemmer import PorterStemmer
-    CSTEMMER = False
-
-
-word_re = re.compile(r'\w+(?u)')
-
-stopwords = set("""
-a  and  are  as  at
-be  but  by
-for
-if  in  into  is  it
-near  no  not
-of  on  or
-such
-that  the  their  then  there  these  they  this  to
-was  will  with
-""".split())
+import search_languages
 
 
 class _JavaScriptIndex(object):
@@ -67,39 +46,21 @@ class _JavaScriptIndex(object):
 js_index = _JavaScriptIndex()
 
 
-if CSTEMMER:
-    class Stemmer(CStemmer):
-
-        def stem(self, word):
-            return self(word.lower())
-
-else:
-    class Stemmer(PorterStemmer):
-        """
-        All those porter stemmer implementations look hideous.
-        make at least the stem method nicer.
-        """
-
-        def stem(self, word):
-            word = word.lower()
-            return PorterStemmer.stem(self, word, 0, len(word) - 1)
-
-
-
 class WordCollector(NodeVisitor):
     """
     A special visitor that collects words for the `IndexBuilder`.
     """
 
-    def __init__(self, document):
+    def __init__(self, document, splitter):
         NodeVisitor.__init__(self, document)
         self.found_words = []
+        self.splitter = splitter
 
     def dispatch_visit(self, node):
         if node.__class__ is comment:
             raise SkipNode
         if node.__class__ is Text:
-            self.found_words.extend(word_re.findall(node.astext()))
+            self.found_words.extend(self.splitter.split(node.astext()))
 
 
 class IndexBuilder(object):
@@ -114,7 +75,6 @@ class IndexBuilder(object):
 
     def __init__(self, env):
         self.env = env
-        self._stemmer = Stemmer()
         # filename -> title
         self._titles = {}
         # stemmed word -> set(filenames)
@@ -123,6 +83,11 @@ class IndexBuilder(object):
         self._objtypes = {}
         # objtype index -> objname (localized)
         self._objnames = {}
+        # support attribute for search index creation 
+        self.lang = search_languages.get(env.config.html_search_language)
+        self._stemmer = self.lang.Stemmer()
+        self.splitter = self.lang.Splitter(
+            env.config.html_search_language_option)
 
     def load(self, stream, format):
         """Reconstruct from frozen data."""
@@ -198,6 +163,14 @@ class IndexBuilder(object):
         objtypes = dict((v, k[0] + ':' + k[1])
                         for (k, v) in self._objtypes.iteritems())
         objnames = self._objnames
+        # ============================================================
+        # Debug
+        # ============================================================
+        import codecs
+        debugout = codecs.open("debug_indexes.txt", "w", "utf-8")
+        for word in self._mapping.keys():
+            debugout.write(word+"\n")
+        debugout.close()
         return dict(filenames=filenames, titles=titles, terms=terms,
                     objects=objects, objtypes=objtypes, objnames=objnames)
 
@@ -215,17 +188,23 @@ class IndexBuilder(object):
         """Feed a doctree to the index."""
         self._titles[filename] = title
 
-        visitor = WordCollector(doctree)
+        visitor = WordCollector(doctree, self.splitter)
         doctree.walk(visitor)
 
         def add_term(word, stem=self._stemmer.stem):
             word = stem(word)
-            if len(word) < 3 or word in stopwords or word.isdigit():
+            if self.lang.should_not_register(word):
                 return
             self._mapping.setdefault(word, set()).add(filename)
 
-        for word in word_re.findall(title):
+        for word in self.splitter.split(title):
             add_term(word)
 
         for word in visitor.found_words:
             add_term(word)
+
+    def globalcontext_for_searchtool(self):
+        ctx = {'search_langauge_stemming_code': self.lang.js_stemmer_code}
+        ctx['search_language_stop_words'] = jsdump.dumps(self.lang.stopwords)
+        return ctx
+

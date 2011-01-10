@@ -18,6 +18,8 @@ import tempfile
 import posixpath
 import traceback
 from os import path
+from codecs import open
+from collections import deque
 
 import docutils
 from docutils.utils import relative_path
@@ -48,8 +50,7 @@ def docname_join(basedocname, docname):
 
 
 def get_matching_files(dirname, exclude_matchers=()):
-    """
-    Get all file names in a directory, recursively.
+    """Get all file names in a directory, recursively.
 
     Exclude files and dirs matching some matcher in *exclude_matchers*.
     """
@@ -75,9 +76,8 @@ def get_matching_files(dirname, exclude_matchers=()):
 
 
 def get_matching_docs(dirname, suffix, exclude_matchers=()):
-    """
-    Get all file names (without suffix) matching a suffix in a
-    directory, recursively.
+    """Get all file names (without suffix) matching a suffix in a directory,
+    recursively.
 
     Exclude files and dirs matching a pattern in *exclude_patterns*.
     """
@@ -140,8 +140,8 @@ def copy_static_entry(source, targetdir, builder, context={},
         target = path.join(targetdir, path.basename(source))
         if source.lower().endswith('_t') and builder.templates:
             # templated!
-            fsrc = open(source, 'rb')
-            fdst = open(target[:-2], 'wb')
+            fsrc = open(source, 'r', encoding='utf-8')
+            fdst = open(target[:-2], 'w', encoding='utf-8')
             fdst.write(builder.templates.render_string(fsrc.read(), context))
             fsrc.close()
             fdst.close()
@@ -161,6 +161,12 @@ def copy_static_entry(source, targetdir, builder, context={},
                 shutil.rmtree(target)
             shutil.copytree(source, target)
 
+
+_DEBUG_HEADER = '''\
+# Sphinx version: %s
+# Docutils version: %s %s
+# Jinja2 version: %s
+'''
 
 def save_traceback():
     """
@@ -227,8 +233,7 @@ class Tee(object):
 
 
 def parselinenos(spec, total):
-    """
-    Parse a line number spec (such as "1,2,4-6") and return a list of
+    """Parse a line number spec (such as "1,2,4-6") and return a list of
     wanted line numbers.
     """
     items = list()
@@ -282,9 +287,7 @@ def rpartition(s, t):
 
 
 def format_exception_cut_frames(x=1):
-    """
-    Format an exception with traceback, but only the last x frames.
-    """
+    """Format an exception with traceback, but only the last x frames."""
     typ, val, tb = sys.exc_info()
     #res = ['Traceback (most recent call last):\n']
     res = []
@@ -292,3 +295,34 @@ def format_exception_cut_frames(x=1):
     res += tbres[-x:]
     res += traceback.format_exception_only(typ, val)
     return ''.join(res)
+
+
+class PeekableIterator(object):
+    """
+    An iterator which wraps any iterable and makes it possible to peek to see
+    what's the next item.
+    """
+    def __init__(self, iterable):
+        self.remaining = deque()
+        self._iterator = iter(iterable)
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        """Return the next item from the iterator."""
+        if self.remaining:
+            return self.remaining.popleft()
+        return self._iterator.next()
+
+    def push(self, item):
+        """Push the `item` on the internal stack, it will be returned on the
+        next :meth:`next` call.
+        """
+        self.remaining.append(item)
+
+    def peek(self):
+        """Return the next item without changing the state of the iterator."""
+        item = self.next()
+        self.push(item)
+        return item

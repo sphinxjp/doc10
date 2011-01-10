@@ -22,7 +22,8 @@ from sphinx.util.console import darkred, nocolor, color_terminal
 
 
 class BuildDoc(Command):
-    """Distutils command to build Sphinx documentation.
+    """
+    Distutils command to build Sphinx documentation.
 
     The Sphinx build can then be triggered from distutils, and some Sphinx
     options can be set in ``setup.py`` or ``setup.cfg`` instead of Sphinx own
@@ -64,16 +65,14 @@ class BuildDoc(Command):
         ('all-files', 'a', 'build all files'),
         ('source-dir=', 's', 'Source directory'),
         ('build-dir=', None, 'Build directory'),
-        ('config-dir=', 'c', 'Location of the configuration directory'),
         ('builder=', 'b', 'The builder to use. Defaults to "html"'),
         ('project=', None, 'The documented project\'s name'),
         ('version=', None, 'The short X.Y version'),
         ('release=', None, 'The full version, including alpha/beta/rc tags'),
         ('today=', None, 'How to format the current date, used as the '
          'replacement for |today|'),
-        ('link-index', 'i', 'Link index.html to the master doc'),
     ]
-    boolean_options = ['fresh-env', 'all-files', 'link-index']
+    boolean_options = ['fresh-env', 'all-files']
 
 
     def initialize_options(self):
@@ -83,8 +82,6 @@ class BuildDoc(Command):
         self.version = ''
         self.release = ''
         self.today = ''
-        self.config_dir = None
-        self.link_index = False
 
     def _guess_source_dir(self):
         for guess in ('doc', 'docs'):
@@ -93,18 +90,13 @@ class BuildDoc(Command):
             for root, dirnames, filenames in os.walk(guess):
                 if 'conf.py' in filenames:
                     return root
-        return None
 
     def finalize_options(self):
         if self.source_dir is None:
             self.source_dir = self._guess_source_dir()
             self.announce('Using source directory %s' % self.source_dir)
         self.ensure_dirname('source_dir')
-        if self.source_dir is None:
-            self.source_dir = os.curdir
         self.source_dir = os.path.abspath(self.source_dir)
-        if self.config_dir is None:
-            self.config_dir = self.source_dir
 
         if self.build_dir is None:
             build = self.get_finalized_command('build')
@@ -130,7 +122,7 @@ class BuildDoc(Command):
              confoverrides['release'] = self.release
         if self.today:
              confoverrides['today'] = self.today
-        app = Sphinx(self.source_dir, self.config_dir,
+        app = Sphinx(self.source_dir, self.source_dir,
                      self.builder_target_dir, self.doctree_dir,
                      self.builder, confoverrides, status_stream,
                      freshenv=self.fresh_env)
@@ -145,8 +137,3 @@ class BuildDoc(Command):
                                                        'backslashreplace')
             else:
                 raise
-
-        if self.link_index:
-            src = app.config.master_doc + app.builder.out_suffix
-            dst = app.builder.get_outfilename('index')
-            os.symlink(src, dst)
