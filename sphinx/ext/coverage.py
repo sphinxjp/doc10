@@ -173,11 +173,8 @@ class CoverageBuilder(Builder):
 
                         attrs = []
 
-                        for attr_name in dir(obj):
-                            attr = getattr(obj, attr_name)
                         for attr_name, attr in inspect.getmembers(
-                                obj, lambda x: inspect.ismethod(x) or \
-                                               inspect.isfunction(x)):
+                               obj, inspect.ismethod):
                             if attr_name[0] == '_':
                                 # starts with an underscore, ignore it
                                 continue
