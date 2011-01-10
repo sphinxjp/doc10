@@ -67,8 +67,7 @@ class InheritanceGraph(object):
     graphviz dot graph from them.
     """
     def __init__(self, class_names, currmodule, show_builtins=False, parts=0):
-        """
-        *class_names* is a list of child classes to show bases from.
+        """*class_names* is a list of child classes to show bases from.
 
         If *show_builtins* is True, then Python builtins will be shown
         in the graph.
@@ -81,9 +80,7 @@ class InheritanceGraph(object):
                                        'inheritance diagram')
 
     def _import_class_or_module(self, name, currmodule):
-        """
-        Import a class using its fully-qualified *name*.
-        """
+        """Import a class using its fully-qualified *name*."""
         try:
             path, base = class_sig_re.match(name).groups()
         except ValueError:
@@ -182,9 +179,7 @@ class InheritanceGraph(object):
         return '.'.join(name_parts[-parts:])
 
     def get_all_class_names(self):
-        """
-        Get all of the class names involved in the graph.
-        """
+        """Get all of the class names involved in the graph."""
         return [fullname for (_, fullname, _) in self.class_info]
 
     # These are the default attrs for graphviz
@@ -213,9 +208,8 @@ class InheritanceGraph(object):
 
     def generate_dot(self, name, urls={}, env=None,
                      graph_attrs={}, node_attrs={}, edge_attrs={}):
-        """
-        Generate a graphviz dot graph from the classes that
-        were passed in to __init__.
+        """Generate a graphviz dot graph from the classes that were passed in
+        to __init__.
 
         *name* is the name of the graph.
 

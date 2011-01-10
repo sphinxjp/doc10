@@ -97,6 +97,12 @@ _content_template = u'''\
 </package>
 '''
 
+_cover_template = u'''\
+    <meta name="cover" content="%(cover)s"/>
+'''
+
+_coverpage_name = u'epub-cover.html'
+
 _file_template = u'''\
     <item id="%(id)s"
           href="%(href)s"
@@ -132,7 +138,8 @@ _refuri_re = re.compile("([^#:]*#)(.*)")
 # The epub publisher
 
 class EpubBuilder(StandaloneHTMLBuilder):
-    """Builder that outputs epub files.
+    """
+    Builder that outputs epub files.
 
     It creates the metainfo files container.opf, toc.ncx, mimetype, and
     META-INF/container.xml.  Afterwards, all necessary files are zipped to an
@@ -229,12 +236,12 @@ class EpubBuilder(StandaloneHTMLBuilder):
             })
 
     def fix_fragment(self, prefix, fragment):
-        """Return a href/id attribute with colons replaced by hyphens.
-        """
+        """Return a href/id attribute with colons replaced by hyphens."""
         return prefix + fragment.replace(':', '-')
 
     def fix_ids(self, tree):
         """Replace colons with hyphens in href and id attributes.
+
         Some readers crash because they interpret the part as a
         transport protocol specification.
         """
@@ -253,8 +260,7 @@ class EpubBuilder(StandaloneHTMLBuilder):
             node.attributes['ids'] = newids
 
     def add_visible_links(self, tree):
-        """Append visible link targets after external links.
-        """
+        """Append visible link targets after external links."""
         for node in tree.traverse(nodes.reference):
             uri = node.get('refuri', '')
             if (uri.startswith('http:') or uri.startswith('https:') or
@@ -268,6 +274,7 @@ class EpubBuilder(StandaloneHTMLBuilder):
 
     def write_doc(self, docname, doctree):
         """Write one document file.
+
         This method is overwritten in order to fix fragment identifiers
         and to add visible external links.
         """
@@ -276,8 +283,7 @@ class EpubBuilder(StandaloneHTMLBuilder):
         return StandaloneHTMLBuilder.write_doc(self, docname, doctree)
 
     def fix_genindex(self, tree):
-        """Fix href attributes for genindex pages.
-        """
+        """Fix href attributes for genindex pages."""
         # XXX: modifies tree inline
         # Logic modeled from themes/basic/genindex.html
         for key, columns in tree:
@@ -296,8 +302,9 @@ class EpubBuilder(StandaloneHTMLBuilder):
     def handle_page(self, pagename, addctx, templatename='page.html',
                     outfilename=None, event_arg=None):
         """Create a rendered page.
-        This method is overwritten for genindex pages in order to fix
-        href link attributes.
+
+        This method is overwritten for genindex pages in order to fix href link
+        attributes.
         """
         if pagename.startswith('genindex'):
             self.fix_genindex(addctx['genindexentries'])
@@ -388,7 +395,6 @@ class EpubBuilder(StandaloneHTMLBuilder):
                     'media_type': self.esc(_media_types[ext])
                 })
                 self.files.append(filename)
-        projectfiles = '\n'.join(projectfiles)
 
         # spine
         spine = []
@@ -400,12 +406,38 @@ class EpubBuilder(StandaloneHTMLBuilder):
             spine.append(_spine_template % {
                 'idref': self.esc(self.make_id(item['refuri']))
             })
+
+        # add the optional cover
+        content_tmpl = _content_template
+        if self.config.epub_cover:
+            image, tmpl = self.config.epub_cover
+            mpos = content_tmpl.rfind('</metadata>')
+            cpos = content_tmpl.rfind('\n', 0 , mpos) + 1
+            content_tmpl = content_tmpl[:cpos] + \
+                _cover_template % {'cover': self.esc(self.make_id(image))} + \
+                content_tmpl[cpos:]
+            if tmpl:
+                spine.insert(0, _spine_template % {
+                    'idref': self.esc(self.make_id(_coverpage_name))})
+                if _coverpage_name not in self.files:
+                    ext = path.splitext(_coverpage_name)[-1]
+                    self.files.append(_coverpage_name)
+                    projectfiles.append(_file_template % {
+                        'href': self.esc(_coverpage_name),
+                        'id': self.esc(self.make_id(_coverpage_name)),
+                        'media_type': self.esc(_media_types[ext])
+                    })
+                ctx = {'image': self.esc(image), 'title': self.config.project}
+                self.handle_page(
+                        os.path.splitext(_coverpage_name)[0], ctx, tmpl)
+
+        projectfiles = '\n'.join(projectfiles)
         spine = '\n'.join(spine)
 
         # write the project file
         f = codecs.open(path.join(outdir, outname), 'w', 'utf-8')
         try:
-            f.write(_content_template % \
+            f.write(content_tmpl % \
                 self.content_metadata(projectfiles, spine))
         finally:
             f.close()
@@ -422,6 +454,7 @@ class EpubBuilder(StandaloneHTMLBuilder):
 
     def insert_subnav(self, node, subnav):
         """Insert nested navpoints for given node.
+
         The node and subnav are already rendered to text.
         """
         nlist = node.rsplit('\n', 1)
@@ -431,8 +464,8 @@ class EpubBuilder(StandaloneHTMLBuilder):
     def build_navpoints(self, nodes):
         """Create the toc navigation structure.
 
-        Subelements of a node are nested inside the navpoint.
-        For nested nodes the parent node is reinserted in the subnav.
+        Subelements of a node are nested inside the navpoint.  For nested nodes
+        the parent node is reinserted in the subnav.
         """
         navstack = []
         navlist = []
@@ -472,8 +505,8 @@ class EpubBuilder(StandaloneHTMLBuilder):
         return '\n'.join(navlist)
 
     def toc_metadata(self, level, navpoints):
-        """Create a dictionary with all metadata for the toc.ncx
-        file properly escaped.
+        """Create a dictionary with all metadata for the toc.ncx file
+        properly escaped.
         """
         metadata = {}
         metadata['uid'] = self.config.epub_uid
@@ -498,8 +531,8 @@ class EpubBuilder(StandaloneHTMLBuilder):
     def build_epub(self, outdir, outname):
         """Write the epub file.
 
-        It is a zip file with the mimetype file stored uncompressed
-        as the first entry.
+        It is a zip file with the mimetype file stored uncompressed as the first
+        entry.
         """
         self.info('writing %s file...' % outname)
         projectfiles = ['META-INF/container.xml', 'content.opf', 'toc.ncx'] \

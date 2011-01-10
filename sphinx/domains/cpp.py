@@ -109,7 +109,7 @@ class DefinitionError(Exception):
         return self.description
 
     def __str__(self):
-        return unicode(self.encode('utf-8'))
+        return unicode(self).encode('utf-8')
 
 
 class DefExpr(object):
@@ -131,17 +131,21 @@ class DefExpr(object):
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    __hash__ = None
+
     def clone(self):
-        """Close a definition expression node"""
+        """Clone a definition expression node."""
         return deepcopy(self)
 
     def get_id(self):
-        """Returns the id for the node"""
+        """Return the id for the node."""
         return u''
 
     def get_name(self):
-        """Returns the name.  Returns either `None` or a node with
-        a name you might call :meth:`split_owner` on.
+        """Return the name.
+
+        Returns either `None` or a node with a name you might call
+        :meth:`split_owner` on.
         """
         return None
 
@@ -154,7 +158,7 @@ class DefExpr(object):
         return None, self
 
     def prefix(self, prefix):
-        """Prefixes a name node (a node returned by :meth:`get_name`)."""
+        """Prefix a name node (a node returned by :meth:`get_name`)."""
         raise NotImplementedError()
 
     def __str__(self):
@@ -977,8 +981,9 @@ class CPPFunctionObject(CPPObject):
 
 
 class CPPCurrentNamespace(Directive):
-    """This directive is just to tell Sphinx that we're documenting
-    stuff in namespace foo.
+    """
+    This directive is just to tell Sphinx that we're documenting stuff in
+    namespace foo.
     """
 
     has_content = False
