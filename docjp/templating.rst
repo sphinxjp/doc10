@@ -1,8 +1,8 @@
 .. highlight:: html+jinja
 
-.. _templating:
-
 .. Templating
+
+.. _templating:
 
 テンプレート
 ============

@@ -7,8 +7,10 @@
     :license: BSD, see LICENSE for details.
 """
 
+import os
 import sys
 import codecs
+from os import path
 
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
@@ -92,11 +94,23 @@ class LiteralInclude(Directive):
 
     def run(self):
         document = self.state.document
+        filename = self.arguments[0]
         if not document.settings.file_insertion_enabled:
             return [document.reporter.warning('File insertion disabled',
                                               line=self.lineno)]
         env = document.settings.env
-        rel_filename, filename = env.relfn2path(self.arguments[0])
+        if filename.startswith('/') or filename.startswith(os.sep):
+            rel_fn = filename[1:]
+        else:
+            docdir = path.dirname(env.doc2path(env.docname, base=None))
+            rel_fn = path.join(docdir, filename)
+        try:
+            fn = path.join(env.srcdir, rel_fn)
+        except UnicodeDecodeError:
+            # the source directory is a bytestring with non-ASCII characters;
+            # let's try to encode the rel_fn in the file system encoding
+            rel_fn = rel_fn.encode(sys.getfilesystemencoding())
+            fn = path.join(env.srcdir, rel_fn)
 
         if 'pyobject' in self.options and 'lines' in self.options:
             return [document.reporter.warning(
@@ -106,7 +120,7 @@ class LiteralInclude(Directive):
         encoding = self.options.get('encoding', env.config.source_encoding)
         codec_info = codecs.lookup(encoding)
         try:
-            f = codecs.StreamReaderWriter(open(filename, 'rb'),
+            f = codecs.StreamReaderWriter(open(fn, 'U'),
                     codec_info[2], codec_info[3], 'strict')
             lines = f.readlines()
             f.close()
@@ -123,7 +137,7 @@ class LiteralInclude(Directive):
         objectname = self.options.get('pyobject')
         if objectname is not None:
             from sphinx.pycode import ModuleAnalyzer
-            analyzer = ModuleAnalyzer.for_file(filename, '')
+            analyzer = ModuleAnalyzer.for_file(fn, '')
             tags = analyzer.find_tags()
             if objectname not in tags:
                 return [document.reporter.warning(
@@ -165,14 +179,14 @@ class LiteralInclude(Directive):
         text = ''.join(lines)
         if self.options.get('tab-width'):
             text = text.expandtabs(self.options['tab-width'])
-        retnode = nodes.literal_block(text, text, source=filename)
+        retnode = nodes.literal_block(text, text, source=fn)
         retnode.line = 1
         retnode.attributes['line_number'] = self.lineno
         if self.options.get('language', ''):
             retnode['language'] = self.options['language']
         if 'linenos' in self.options:
             retnode['linenos'] = True
-        env.note_dependency(rel_filename)
+        document.settings.env.note_dependency(rel_fn)
         return [retnode]
 
 

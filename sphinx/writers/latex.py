@@ -330,7 +330,7 @@ class LaTeXTranslator(nodes.NodeVisitor):
             # ... and all others are the appendices
             self.body.append(u'\n\\appendix\n')
             self.first_document = -1
-        if 'docname' in node:
+        if node.has_key('docname'):
             self.body.append(self.hypertarget(':doc'))
         # "- 1" because the level is increased before the title is visited
         self.sectionlevel = self.top_sectionlevel - 1
@@ -718,7 +718,7 @@ class LaTeXTranslator(nodes.NodeVisitor):
         self.table.rowcount += 1
 
     def visit_entry(self, node):
-        if 'morerows' in node or 'morecols' in node:
+        if node.has_key('morerows') or node.has_key('morecols'):
             raise UnsupportedError('%s:%s: column or row spanning cells are '
                                    'not yet implemented.' %
                                    (self.curfilestack[-1], node.line or ''))
@@ -781,7 +781,7 @@ class LaTeXTranslator(nodes.NodeVisitor):
 
     def visit_term(self, node):
         ctx = '}] \\leavevmode'
-        if node.get('ids'):
+        if node.has_key('ids') and node['ids']:
             ctx += self.hypertarget(node['ids'][0])
         self.body.append('\\item[{')
         self.context.append(ctx)
@@ -869,20 +869,20 @@ class LaTeXTranslator(nodes.NodeVisitor):
         post = []
         include_graphics_options = []
         is_inline = self.is_inline(node)
-        if 'scale' in attrs:
+        if attrs.has_key('scale'):
             # Could also be done with ``scale`` option to
             # ``\includegraphics``; doing it this way for consistency.
             pre.append('\\scalebox{%f}{' % (attrs['scale'] / 100.0,))
             post.append('}')
-        if 'width' in attrs:
+        if attrs.has_key('width'):
             w = self.latex_image_length(attrs['width'])
             if w:
                 include_graphics_options.append('width=%s' % w)
-        if 'height' in attrs:
+        if attrs.has_key('height'):
             h = self.latex_image_length(attrs['height'])
             if h:
                 include_graphics_options.append('height=%s' % h)
-        if 'align' in attrs:
+        if attrs.has_key('align'):
             align_prepost = {
                 # By default latex aligns the top of an image.
                 (1, 'top'): ('', ''),
@@ -927,13 +927,13 @@ class LaTeXTranslator(nodes.NodeVisitor):
         for id in self.next_figure_ids:
             ids += self.hypertarget(id, anchor=False)
         self.next_figure_ids.clear()
-        if 'width' in node and node.get('align', '') in ('left', 'right'):
+        if node.has_key('width') and node.get('align', '') in ('left', 'right'):
             self.body.append('\\begin{wrapfigure}{%s}{%s}\n\\centering' %
                              (node['align'] == 'right' and 'r' or 'l',
                               node['width']))
             self.context.append(ids + '\\end{wrapfigure}\n')
         else:
-            if (not 'align' in node.attributes or
+            if (not node.attributes.has_key('align') or
                 node.attributes['align'] == 'center'):
                 # centering does not add vertical space like center.
                 align = '\n\\centering'
@@ -1212,7 +1212,7 @@ class LaTeXTranslator(nodes.NodeVisitor):
         self.no_contractions -= 1
         if self.in_title:
             self.body.append(r'\texttt{%s}' % content)
-        elif node.get('role') == 'samp':
+        elif node.has_key('role') and node['role'] == 'samp':
             self.body.append(r'\samp{%s}' % content)
         else:
             self.body.append(r'\code{%s}' % content)
@@ -1245,10 +1245,10 @@ class LaTeXTranslator(nodes.NodeVisitor):
         code = self.verbatim.rstrip('\n')
         lang = self.hlsettingstack[-1][0]
         linenos = code.count('\n') >= self.hlsettingstack[-1][1] - 1
-        if 'language' in node:
+        if node.has_key('language'):
             # code-block directives
             lang = node['language']
-        if 'linenos' in node:
+        if node.has_key('linenos'):
             linenos = node['linenos']
         def warner(msg):
             self.builder.warn(msg, (self.curfilestack[-1], node.line))

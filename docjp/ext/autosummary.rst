@@ -1,4 +1,4 @@
-﻿.. highlight:: rest
+.. highlight:: rest
 
 .. :mod:`sphinx.ext.autosummary` -- Generate autodoc summaries
    ===========================================================

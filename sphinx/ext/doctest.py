@@ -149,14 +149,14 @@ class TestCode(object):
 
 class SphinxDocTestRunner(doctest.DocTestRunner):
     def summarize(self, out, verbose=None):
-        string_io = StringIO.StringIO()
+        io = StringIO.StringIO()
         old_stdout = sys.stdout
-        sys.stdout = string_io
+        sys.stdout = io
         try:
             res = doctest.DocTestRunner.summarize(self, verbose)
         finally:
             sys.stdout = old_stdout
-        out(string_io.getvalue())
+        out(io.getvalue())
         return res
 
     def _DocTestRunner__patched_linecache_getlines(self, filename,
