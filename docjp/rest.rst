@@ -571,7 +571,7 @@ Sphinxによって追加されたディレクティブに関しては :ref:`sphi
 .. _images:
 
 画像
---------
+----
 
 .. reST supports an image directive(:dudir:`ref <image>`), used like so
 
@@ -718,7 +718,7 @@ reSTは"置換"(:duref:`ref <substitution-definitions>`)をサポートしてい
 .. See the :duref:`reST reference for substitutions <substitution-definitions>`
    for details.
 
-詳しくは `reSTリファレンスの置換の説明 <substitution-definitions>`_ を参照してください。
+詳しくは :duref:`reSTリファレンスの置換の説明 <substitution-definitions>`_ を参照してください。
 
 .. If you want to use some substitutions for all documents, put them into
    :confval:`rst_prolog` or put them into a separate file and include it into all 
