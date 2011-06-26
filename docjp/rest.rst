@@ -602,7 +602,7 @@ Sphinx内で使用する場合には、ソースファイルからの相対パ�
    respected for output channels that support pixels (i.e. not in LaTeX output).
    Other units (like ``pt`` for points) will be used for HTML and LaTeX output.
 
-イメージサイズに関するオプション(``width`` と ``height``)は以下のように解釈されます。もし単位が無い、もしくは単位がpixelsの場合には、与えられたサイズは出力するチャンネルがピクセルをサポートしているかどうかだけが考慮されます。例えば、LaTeX出力はこれをサポートしていません。田の単位(ポイントを表す ``pt`` など)はHTMLでもLaTeXでも使用されます。
+イメージサイズに関するオプション(``width`` と ``height``)は以下のように解釈されます。もし単位が無い、もしくは単位がpixelsの場合には、与えられたサイズは出力するチャンネルがピクセルをサポートしているかどうかだけが考慮されます。例えば、LaTeX出力はこれをサポートしていません。他の単位(ポイントを表す ``pt`` など)はHTMLでもLaTeXでも使用されます。
 
 .. Sphinx extends the standard docutils behavior by allowing an asterisk for the
    extension::
