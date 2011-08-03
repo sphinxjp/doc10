@@ -294,7 +294,7 @@ Sphinxによって追加されたロールに関しては :ref:`inline-markup` �
    limited: they must contain more than one row, and the first column cannot
    contain multiple lines.  They look like this:
 
-**シンプルテーブル** (:duref:`ref <simple-tables>`)はより書くのが簡単な方法ですが、制限があります。1つ以上の列を含み、最初のカラムには複数行のテキストを書くことができません。次のように表現されます::
+**シンプルテーブル** (:duref:`ref <simple-tables>`)はより書くのが簡単な方法ですが、制限があります。複数の行を含み、最初のカラムには複数行のテキストを書くことができません。次のように表現されます::
 
    =====  =====  =======
    A      B      A and B
